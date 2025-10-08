@@ -278,9 +278,67 @@ $(document).ready(function () {
 
   
 });
-
-
-
  
 </script>
+
+<script>
+  function createLoader() {
+    const loader = document.createElement('div');
+    loader.id = 'loader';
+    loader.style.position = 'fixed';
+    loader.style.top = '0';
+    loader.style.left = '0';
+    loader.style.width = '100%';
+    loader.style.height = '100%';
+    loader.style.backgroundColor = 'rgba(128, 128, 128, 0.6)';
+    loader.style.display = 'flex';
+    loader.style.alignItems = 'center';
+    loader.style.justifyContent = 'center';
+    loader.style.zIndex = '9999';
+
+    const spinner = document.createElement('div');
+    spinner.style.border = '6px solid #f3f3f3';
+    spinner.style.borderTop = '6px solid #3498db';
+    spinner.style.borderRadius = '50%';
+    spinner.style.width = '50px';
+    spinner.style.height = '50px';
+    spinner.style.animation = 'spin 0.8s linear infinite';
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    loader.appendChild(spinner);
+    document.body.appendChild(loader);
+  }
+
+  function loadPage(url, pushStateUrl) {
+    createLoader();
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+        window.history.pushState({}, '', pushStateUrl);
+
+        // ✅ After the page is written, wait a tick, then re-run scripts
+        setTimeout(initScripts, 100);
+      })
+      .catch(error => console.error('Error loading page:', error))
+      .finally(() => {
+        const existingLoader = document.getElementById('loader');
+        if (existingLoader) existingLoader.remove();
+      });
+  }
+
+  function loadaboutpage() { loadPage('/about-us', '/about-us'); }
+  function loadhomepage() { loadPage('/', '/'); }
+</script>
+
 </body>

@@ -38,6 +38,9 @@ Route::get('reset-password/{token}', [ResetPasswordController::class, 'showReset
 //to reset password
 Route::post('reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
 
+//to open about us page
+Route::get("/about-us", [UserAuthcontroller::class, "aboutus"]);
+
 Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get("users", [UserAuthcontroller::class, "users"]);

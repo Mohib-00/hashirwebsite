@@ -23,8 +23,8 @@
 
       <nav id="nav-menu">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="/" onclick="loadhomepage(); return false;">Home</a></li>
+          <li><a  href="/about-us" onclick="loadaboutpage(); return false;">About US</a></li>
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle">Services <i class="fa-solid fa-caret-down"></i></a>
             <ul class="dropdown-menu">

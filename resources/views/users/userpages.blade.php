@@ -24,6 +24,7 @@
   @include('users.section11')
   @include('users.section12')
   @include('users.js')
+  @include('ajax')
 
 
 </body>

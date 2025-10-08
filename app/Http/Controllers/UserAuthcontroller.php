@@ -21,6 +21,11 @@ class UserAuthController extends Controller
     {
         return view('users.aboutus');
     }
+
+     public function career()
+    {
+        return view('users.careers');
+    }
     public function loginn()
     {
         return view('login');

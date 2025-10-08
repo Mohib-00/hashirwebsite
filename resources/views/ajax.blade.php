@@ -327,7 +327,6 @@ $(document).ready(function () {
         document.close();
         window.history.pushState({}, '', pushStateUrl);
 
-        // ✅ After the page is written, wait a tick, then re-run scripts
         setTimeout(initScripts, 100);
       })
       .catch(error => console.error('Error loading page:', error))
@@ -339,6 +338,7 @@ $(document).ready(function () {
 
   function loadaboutpage() { loadPage('/about-us', '/about-us'); }
   function loadhomepage() { loadPage('/', '/'); }
+  function loadcareerspage() { loadPage('/careers', '/careers'); }
 </script>
 
 </body>

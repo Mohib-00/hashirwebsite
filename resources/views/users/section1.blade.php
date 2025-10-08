@@ -24,7 +24,7 @@
       <nav id="nav-menu">
         <ul>
           <li><a href="/" onclick="loadhomepage(); return false;">Home</a></li>
-          <li><a  href="/about-us" onclick="loadaboutpage(); return false;">About US</a></li>
+          <li><a href="/about-us" onclick="loadaboutpage(); return false;">About US</a></li>
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle">Services <i class="fa-solid fa-caret-down"></i></a>
             <ul class="dropdown-menu">
@@ -36,7 +36,7 @@
               <li><a href="#">Accounting Services</a></li>
             </ul>
           </li>
-          <li><a href="#">Careers</a></li>
+          <li><a href="/careers" onclick="loadcareerspage(); return false;">Careers</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Contact Us</a></li>
         </ul>

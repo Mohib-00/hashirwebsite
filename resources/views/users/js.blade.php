@@ -140,40 +140,7 @@ faqItems.forEach(item => {
 
 </script>
 
-<script>
-const industryCards = document.querySelectorAll('.industry-card');
 
-const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active'); 
-      cardObserver.unobserve(entry.target); 
-    }
-  });
-}, { threshold: 0.3 });
-
-industryCards.forEach((card, index) => {
-  if (index % 2 === 0) {
-    card.style.transform = 'translateX(-100px)'; 
-  } else {
-    card.style.transform = 'translateX(100px)'; 
-  }
-  card.style.opacity = '0';
-  card.style.transition = 'all 0.8s ease-out';
-
-  cardObserver.observe(card);
-});
-
-industryCards.forEach(card => {
-  card.addEventListener('transitionend', () => {
-    if (card.classList.contains('active')) {
-      card.style.transform = 'translateX(0)';
-      card.style.opacity = '1';
-    }
-  });
-});
-
-</script>
 
 <script>
 const slidesLeft = document.querySelectorAll('.slide-left');

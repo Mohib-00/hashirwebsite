@@ -559,6 +559,7 @@
   background-position: center;
   padding: 80px 20px;
   color: #fff;
+  overflow-x: hidden; /* prevent horizontal scrollbar */
 }
 
 .why-container {
@@ -598,7 +599,7 @@
   background-color: rgba(255,255,255,0.05);
   padding: 20px;
   border-radius: 15px;
-  flex: 1 1 calc(25% - 30px);
+  flex: 1 1 min(250px, 100%); 
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
   opacity: 0;
@@ -633,6 +634,22 @@
   line-height: 1.6;
   color: #fff;
 }
+
+@media (max-width: 320px) {
+  .why-card {
+    flex: 1 1 100%; 
+    padding: 15px;
+  }
+  
+  .why-header h2 {
+    font-size: 2rem;
+  }
+
+  .why-header p {
+    font-size: 1rem;
+  }
+}
+
 
 @keyframes fadeInUp {
   to {
@@ -1028,5 +1045,20 @@
         transform: translateY(0) scale(1);
     }
 }
+
+
+@media (max-width: 280px) {
+  .dropdown-menu {
+    margin-left: -50px; 
+  }
+}
+
+
+@media (min-width: 990.4px) {
+  nav ul li a {
+    margin-left: -19%;
+  }
+}
+
 
 </style>

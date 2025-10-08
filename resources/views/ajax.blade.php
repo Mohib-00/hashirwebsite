@@ -339,6 +339,8 @@ $(document).ready(function () {
   function loadaboutpage() { loadPage('/about-us', '/about-us'); }
   function loadhomepage() { loadPage('/', '/'); }
   function loadcareerspage() { loadPage('/careers', '/careers'); }
+  function loadblogspage() { loadPage('/blogs', '/blogs'); }
+  function loadcontactuspage() { loadPage('/contact-us', '/contact-us'); }
 </script>
 
 </body>

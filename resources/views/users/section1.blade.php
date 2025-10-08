@@ -14,7 +14,7 @@
 
     <div class="main-header">
       <div class="logo logo-animated">
-        <a href="https://cabcallexperts.com/"><img src="./index_files/cce-logo3.png" alt="Cab Call Experts Logo"></a>
+        <a href="/" onclick="loadhomepage(); return false;"><img src="./index_files/cce-logo3.png" alt="Cab Call Experts Logo"></a>
       </div>
 
       <div class="menu-toggle" id="menu-toggle">
@@ -37,8 +37,8 @@
             </ul>
           </li>
           <li><a href="/careers" onclick="loadcareerspage(); return false;">Careers</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="/blogs" onclick="loadblogspage(); return false;">Blogs</a></li>
+          <li><a href="/contact-us" onclick="loadcontactuspage(); return false;">Contact Us</a></li>
         </ul>
       </nav>
     </div>

@@ -26,6 +26,16 @@ class UserAuthController extends Controller
     {
         return view('users.careers');
     }
+
+     public function blog()
+    {
+        return view('users.blogs');
+    }
+
+     public function contact()
+    {
+        return view('users.contactus');
+    }
     public function loginn()
     {
         return view('login');

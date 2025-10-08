@@ -45,7 +45,22 @@
       font-size: 1.6rem;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    h2 i {
+      color: #43d17a;
+      font-size: 1.5rem;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.15); opacity: 1; }
     }
 
     .input-box {
@@ -115,13 +130,28 @@
       #loginContent {
         padding: 25px 20px;
       }
+
+      h2 {
+        font-size: 1.4rem;
+        gap: 6px;
+      }
+
+      h2 i {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
 
   <div id="loginContent">
-    <h2>Sign In</h2>
+   <h2>
+  <a href="/" onclick="loadhomepage(); return false;" class="home-link">
+    <i class="fa fa-home"></i>
+  </a>
+  Sign In
+</h2>
+
     <form id="loginForm">
       <div class="input-box">
         <label for="loginEmail">Email</label>

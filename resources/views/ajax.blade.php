@@ -290,19 +290,61 @@ $(document).ready(function () {
     loader.style.left = '0';
     loader.style.width = '100%';
     loader.style.height = '100%';
-    loader.style.backgroundColor = 'rgba(128, 128, 128, 0.6)';
+    loader.style.overflow = 'hidden';
     loader.style.display = 'flex';
     loader.style.alignItems = 'center';
     loader.style.justifyContent = 'center';
+    loader.style.flexDirection = 'column';
     loader.style.zIndex = '9999';
+    loader.style.transition = 'opacity 0.5s ease';
+    loader.style.background = 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)';
+    loader.style.perspective = '1000px';
+
+    for (let i = 0; i < 12; i++) {
+      const orb = document.createElement('div');
+      orb.classList.add('orb');
+      orb.style.position = 'absolute';
+      orb.style.borderRadius = '50%';
+      orb.style.width = `${Math.random() * 100 + 50}px`;
+      orb.style.height = orb.style.width;
+      orb.style.background = `radial-gradient(circle, rgba(52,152,219,0.8) 0%, rgba(255,255,255,0) 70%)`;
+      orb.style.top = `${Math.random() * 100}%`;
+      orb.style.left = `${Math.random() * 100}%`;
+      orb.style.transform = `translate3d(0,0,${Math.random() * 500 - 250}px)`;
+      orb.style.animation = `floatOrb ${4 + Math.random() * 6}s ease-in-out infinite alternate`;
+      loader.appendChild(orb);
+    }
+
+    const spinnerContainer = document.createElement('div');
+    spinnerContainer.style.position = 'relative';
+    spinnerContainer.style.width = '80px';
+    spinnerContainer.style.height = '80px';
+    spinnerContainer.style.zIndex = '10';
 
     const spinner = document.createElement('div');
-    spinner.style.border = '6px solid #f3f3f3';
-    spinner.style.borderTop = '6px solid #3498db';
+    spinner.style.position = 'absolute';
+    spinner.style.width = '80px';
+    spinner.style.height = '80px';
+    spinner.style.border = '6px solid rgba(255,255,255,0.3)';
+    spinner.style.borderTop = '6px solid #00d2ff';
     spinner.style.borderRadius = '50%';
-    spinner.style.width = '50px';
-    spinner.style.height = '50px';
-    spinner.style.animation = 'spin 0.8s linear infinite';
+    spinner.style.animation = 'spin 1.2s linear infinite, glow 2s ease-in-out infinite';
+
+    const text = document.createElement('p');
+    text.textContent = 'Loading... Please wait';
+    text.style.color = '#fff';
+    text.style.fontSize = '18px';
+    text.style.fontWeight = '500';
+    text.style.marginTop = '20px';
+    text.style.letterSpacing = '1px';
+    text.style.textShadow = '0 0 10px rgba(255,255,255,0.4)';
+    text.style.animation = 'fadeText 2s infinite ease-in-out';
+    text.style.zIndex = '10';
+
+    spinnerContainer.appendChild(spinner);
+    loader.appendChild(spinnerContainer);
+    loader.appendChild(text);
+    document.body.appendChild(loader);
 
     const style = document.createElement('style');
     style.innerHTML = `
@@ -310,11 +352,20 @@ $(document).ready(function () {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff; }
+        50% { box-shadow: 0 0 30px #0072ff, 0 0 60px #0072ff; }
+      }
+      @keyframes fadeText {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
+      @keyframes floatOrb {
+        0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+        100% { transform: translate3d(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) scale(1.3); opacity: 0.5; }
+      }
     `;
     document.head.appendChild(style);
-
-    loader.appendChild(spinner);
-    document.body.appendChild(loader);
   }
 
   function loadPage(url, pushStateUrl) {
@@ -332,7 +383,10 @@ $(document).ready(function () {
       .catch(error => console.error('Error loading page:', error))
       .finally(() => {
         const existingLoader = document.getElementById('loader');
-        if (existingLoader) existingLoader.remove();
+        if (existingLoader) {
+          existingLoader.style.opacity = '0';
+          setTimeout(() => existingLoader.remove(), 500);
+        }
       });
   }
 
@@ -341,6 +395,8 @@ $(document).ready(function () {
   function loadcareerspage() { loadPage('/careers', '/careers'); }
   function loadblogspage() { loadPage('/blogs', '/blogs'); }
   function loadcontactuspage() { loadPage('/contact-us', '/contact-us'); }
+  function loadloginpage() { loadPage('/login', '/login'); }
 </script>
+
 
 </body>

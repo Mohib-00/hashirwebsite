@@ -1,31 +1,6 @@
 <script>
   function initScripts() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdown = document.querySelector('.dropdown');
 
-    if (menuToggle && navMenu) {
-      menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        menuToggle.innerHTML = navMenu.classList.contains('active')
-          ? '<i class="fa-solid fa-times"></i>'
-          : '<i class="fa-solid fa-bars"></i>';
-      });
-    }
-
-    if (dropdownToggle && dropdown) {
-      dropdownToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        dropdown.classList.toggle('show');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target) && !e.target.classList.contains('dropdown-toggle')) {
-          dropdown.classList.remove('show');
-        }
-      });
-    }
 
     let slides = document.querySelectorAll('.banner img');
     let current = 0;

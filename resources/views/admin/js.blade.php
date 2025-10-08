@@ -24,6 +24,8 @@
 <script src="{{asset('lite/assets/js/setting-demo.js')}}"></script>
 <script src="{{asset('lite/assets/js/demo.js')}}"></script>
 
+
+
 <script>
   $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
     type: "line",

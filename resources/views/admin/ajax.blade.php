@@ -231,6 +231,7 @@ function loadeditUser(element) {
     const edituserId = element.getAttribute('data-user-id');
     loadPage(`/admin/edit_user/${edituserId}`, `/admin/edit_user/${edituserId}`);
 }
+function loadsection1Page() { loadPage('/admin/section_1', '/admin/section_1'); }
 </script>
 
 </body>

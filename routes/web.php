@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Section1Controller;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserAuthcontroller;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,8 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("add_user", [UserAuthcontroller::class, "adduser"]);
     Route::get("admin_profile", [SettingsController::class, "adminprofile"]);
     Route::get('edit_user/{id}', [UserAuthcontroller::class, 'edituserpage']);
+    Route::get("section_1", [Section1Controller::class, "section1"]);
+    
 });
 
 //register user from admin panel
@@ -54,3 +57,11 @@ Route::post("changePassword",[UserAuthcontroller::class,"changePassword"]);
 Route::post('/user/update/{id}', [UserAuthcontroller::class, 'updateUser'])->name('user.update');
 //to chnge user password
 Route::post('/admin/change-password/{id}', [UserAuthController::class, 'changePasswordofuser'])->name('admin.change-password');
+//to save banner
+Route::post('/banners/store', [Section1Controller::class, 'store'])->name('banners.store');
+//to get banner
+Route::get('/banners/{id}/edit', [Section1Controller::class, 'edit'])->name('banners.edit');
+//to edit banner
+Route::post('/banners/update', [Section1Controller::class, 'update'])->name('banners.update');
+//to del banner
+Route::delete('/banners/{id}', [Section1Controller::class, 'destroy'])->name('banners.destroy');

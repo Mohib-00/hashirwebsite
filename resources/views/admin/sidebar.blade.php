@@ -52,6 +52,13 @@
               <p>Users</p>
             </a>
           </li>
+
+           <li class="nav-item">
+            <a href="/admin/section_1" onclick="loadsection1Page(); return false;">
+              <i class="icon-list"></i>
+              <p>Section 1</p>
+            </a>
+          </li>
                 
         </ul>
       </div>

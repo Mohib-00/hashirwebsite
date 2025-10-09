@@ -8,7 +8,7 @@
         align-items: center;
     }
 
-    .addsection5btn {
+    .addsection6btn {
         padding: 8px 16px;
         background-color: #4CAF50;
         color: white;            
@@ -19,11 +19,11 @@
         margin-left: auto;
     }
 
-    .addsection5btn:hover {
+    .addsection6btn:hover {
         background-color: #45a049;  
     }
 
-    .custom-modal.addsection5 {
+    .custom-modal.addsection6 {
       position: fixed;
     z-index: 1050;
     left: 0;
@@ -37,7 +37,7 @@
 }
 
 
-.custom-modal1.etstgssection5 {
+.custom-modal1.etstgssection6 {
   position: fixed;
     z-index: 1050;
     left: 0;
@@ -93,12 +93,12 @@
                   <div class="card-header">
                     <div class="d-flex align-items-center">
                        
-              <button class="addsection5"
+              <button class="addsection6"
   style="background: linear-gradient(135deg, #4CAF50, #2E7D32); 
          color: white; border: none; padding: 10px 20px; border-radius: 8px; 
          font-size: 14px; font-weight: bold; cursor: pointer; 
          box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: all 0.3s ease;"
-  data-bs-toggle="modal" data-bs-target="#section5Modal">
+  data-bs-toggle="modal" data-bs-target="#section6Modal">
   Add Row
 </button>
 
@@ -108,41 +108,45 @@
                   </div>
                  <div class="card-body">
   <div class="table-responsive">
-    <table  class="display table table-striped table-hover section5-table">
+    <table  class="display table table-striped table-hover section6-table">
       <thead>
         <tr>
           <th>Id</th>
           <th style="white-space: nowrap;">Image</th>
           <th>Heading</th>
           <th>Paragraph</th>
+          <th>Point Headings</th>
+          <th>Points</th>
           <th style="width:10%">Action</th>
         </tr>
       </thead>
       <tbody>
         @php $counter = 1; @endphp
-      @foreach($section5s as $section5)
-<tr id="section5-row-{{ $section5->id }}">
+      @foreach($section6s as $section6)
+<tr id="section6-row-{{ $section6->id }}">
     <td>{{ $counter }}</td>
-    <td class="section5-image">
-        @if($section5->image)
-            <img src="{{ asset('logos/'.$section5->image) }}" width="80" height="80">
+    <td class="section6-image">
+        @if($section6->image)
+            <img src="{{ asset('logos/'.$section6->image) }}" width="80" height="80">
         @endif
     </td>
-    <td class="section5-heading">{{ $section5->heading }}</td>
+    <td class="section6-heading">{{ $section6->heading }}</td>
     @php
-        $words = str_word_count($section5->paragraph, 2);
+        $words = str_word_count($section6->paragraph, 2);
         $limitedText = implode(' ', array_slice($words, 0, 5));
-        $isTruncated = str_word_count($section5->paragraph) > 5;
+        $isTruncated = str_word_count($section6->paragraph) > 5;
     @endphp
-    <td class="section5-paragraph" style="white-space: nowrap" title="{{ $section5->paragraph }}">
+    <td class="section6-paragraph" style="white-space: nowrap" title="{{ $section6->paragraph }}">
         {{ $limitedText }}{{ $isTruncated ? ' ...' : '' }}
     </td>
+    <td class="section6-points_headings">{{ $section6->points_headings }}</td>
+    <td class="section6-point">{{ $section6->point }}</td>
     <td>
         <div style="display: flex; gap: 6px;">
-            <button class="btn btn-sm btn-primary edit-section5-btn" data-section5-id="{{ $section5->id }}" title="Edit section5">
+            <button class="btn btn-sm btn-primary edit-section6-btn" data-section6-id="{{ $section6->id }}" title="Edit section6">
                 <i class="fas fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-danger delete-section5-btn" data-section5-id="{{ $section5->id }}" title="Delete section5">
+            <button class="btn btn-sm btn-danger delete-section6-btn" data-section6-id="{{ $section6->id }}" title="Delete section6">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
@@ -165,13 +169,13 @@
     </div>
 
 
-    <div class="modal fade" id="section5Modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="section6Modal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
-    <form id="section5Form" enctype="multipart/form-data">
+    <form id="section6Form" enctype="multipart/form-data">
       @csrf
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add Section 5</h5>
+          <h5 class="modal-title">Add Section 6</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -192,6 +196,16 @@
   <textarea name="paragraph" class="form-control"></textarea>
 </div>
 
+<div class="mb-3">
+  <label>Point Heading</label>
+  <input type="text" name="points_headings" class="form-control">
+</div>
+
+<div class="mb-3">
+  <label>Point</label>
+  <input type="text" name="point" class="form-control">
+</div>
+
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success">Save</button>
@@ -201,21 +215,31 @@
   </div>
 </div>
 
-<div class="modal fade" id="editsection5Modal" tabindex="-1">
+<div class="modal fade" id="editsection6Modal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Section 5</h5>
+        <h5 class="modal-title">Edit Section 6</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <form id="editsection5Form" enctype="multipart/form-data">
+        <form id="editsection6Form" enctype="multipart/form-data">
           @csrf
-          <input type="hidden" name="section5_id" id="edit_section5_id">
+          <input type="hidden" name="section6_id" id="edit_section6_id">
 
           <div class="mb-3">
             <label>Heading</label>
             <input type="text" name="heading" id="edit_heading" class="form-control">
+          </div>
+
+           <div class="mb-3">
+            <label>Point Heading</label>
+            <input type="text" name="points_headings" id="edit_points_headings" class="form-control">
+          </div>
+
+           <div class="mb-3">
+            <label>Point</label>
+            <input type="text" name="point" id="edit_point" class="form-control">
           </div>
 
           <div class="mb-3">
@@ -231,7 +255,7 @@
 
          
 
-          <button type="submit" class="btn btn-primary">Update section5</button>
+          <button type="submit" class="btn btn-primary">Update section6</button>
         </form>
       </div>
     </div>
@@ -245,7 +269,7 @@
 
 <script>
 $(document).ready(function () {
-    $('#section5Form').on('submit', function (e) {
+    $('#section6Form').on('submit', function (e) {
         e.preventDefault();
 
         let formData = new FormData(this);
@@ -258,7 +282,7 @@ $(document).ready(function () {
         });
 
         $.ajax({
-            url: "{{ route('section5.store') }}",
+            url: "{{ route('section6.store') }}",
             type: "POST",
             data: formData,
             contentType: false,
@@ -267,25 +291,27 @@ $(document).ready(function () {
                 Swal.close();
 
                 if (res.status === 'success') {
-                    Swal.fire('Success', 'section5 added successfully!', 'success');
+                    Swal.fire('Success', 'section6 added successfully!', 'success');
 
                     // Use consistent row ID
                     let newRow = `
-                        <tr id="section5-row-${res.section5.id}">
+                        <tr id="section6-row-${res.section6.id}">
                             <td>${$('.table tbody tr').length + 1}</td>
-                            <td class="section5-image">
-                                ${res.section5.image ? `<img height=100 width=100 src="/logos/${res.section5.image}" />` : ''}
+                            <td class="section6-image">
+                                ${res.section6.image ? `<img height=100 width=100 src="/logos/${res.section6.image}" />` : ''}
                             </td>
-                            <td class="section5-heading">${res.section5.heading ?? ''}</td>
-                            <td class="section5-paragraph" style="white-space:nowrap">${res.section5.paragraph ?? ''}</td>
+                            <td class="section6-heading">${res.section6.heading ?? ''}</td>
+                            <td class="section6-paragraph" style="white-space:nowrap">${res.section6.paragraph ?? ''}</td>
+                            <td class="section6-points_headings">${res.section6.points_headings ?? ''}</td>
+                            <td class="section6-point">${res.section6.point ?? ''}</td>
                             <td>
                                 <div style="display: flex; gap: 6px;">
-                                    <button class="btn btn-sm btn-primary edit-section5-btn" 
-                                            data-section5-id="${res.section5.id}" title="Edit section5">
+                                    <button class="btn btn-sm btn-primary edit-section6-btn" 
+                                            data-section6-id="${res.section6.id}" title="Edit section6">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-danger delete-section5-btn" 
-                                            data-section5-id="${res.section5.id}" title="Delete section5">
+                                    <button class="btn btn-sm btn-danger delete-section6-btn" 
+                                            data-section6-id="${res.section6.id}" title="Delete section6">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -294,8 +320,8 @@ $(document).ready(function () {
                     `;
 
                     $('table tbody').append(newRow);
-                    $('#section5Modal').modal('hide');
-                    $('#section5Form')[0].reset();
+                    $('#section6Modal').modal('hide');
+                    $('#section6Form')[0].reset();
                 }
             },
             error: function (xhr) {
@@ -307,12 +333,12 @@ $(document).ready(function () {
 });
 
 
-$(document).on('click', '.edit-section5-btn', function () {
-    let id = $(this).data('section5-id');
+$(document).on('click', '.edit-section6-btn', function () {
+    let id = $(this).data('section6-id');
 
     Swal.fire({
         title: 'Loading...',
-        text: 'Fetching section5 details',
+        text: 'Fetching section6 details',
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
@@ -320,18 +346,20 @@ $(document).on('click', '.edit-section5-btn', function () {
     });
 
     $.ajax({
-        url: `/section5/${id}/edit`,
+        url: `/section6/${id}/edit`,
         type: "GET",
         success: function (res) {
             if (res.status === 'success') {
-                let section5 = res.section5;
+                let section6 = res.section6;
 
-                $('#edit_section5_id').val(section5.id);
-                $('#edit_heading').val(section5.heading);
-                $('#edit_paragraph').val(section5.paragraph);
+                $('#edit_section6_id').val(section6.id);
+                $('#edit_heading').val(section6.heading);
+                $('#edit_paragraph').val(section6.paragraph);
+                $('#edit_points_headings').val(section6.points_headings);
+                $('#edit_point').val(section6.point);
 
-                if (section5.image) {
-                    $('#editImagePreview').html(`<img src="/logos/${section5.image}" width="100">`);
+                if (section6.image) {
+                    $('#editImagePreview').html(`<img src="/logos/${section6.image}" width="100">`);
                 } else {
                     $('#editImagePreview').html('');
                 }
@@ -339,23 +367,23 @@ $(document).on('click', '.edit-section5-btn', function () {
 
                 Swal.close();
 
-                $('#editsection5Modal').modal('show');
+                $('#editsection6Modal').modal('show');
             }
         },
         error: function () {
-            Swal.fire('Error', 'Could not fetch section5 details', 'error');
+            Swal.fire('Error', 'Could not fetch section6 details', 'error');
         }
     });
 });
 
-$('#editsection5Form').submit(function (e) {
+$('#editsection6Form').submit(function (e) {
     e.preventDefault();
 
     let formData = new FormData(this);
 
     Swal.fire({
         title: 'Updating...',
-        text: 'Please wait while we update the section5',
+        text: 'Please wait while we update the section6',
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
@@ -363,7 +391,7 @@ $('#editsection5Form').submit(function (e) {
     });
 
     $.ajax({
-        url: "{{ route('section5.update') }}",
+        url: "{{ route('section6.update') }}",
         type: "POST",
         data: formData,
         contentType: false,
@@ -372,40 +400,43 @@ $('#editsection5Form').submit(function (e) {
             Swal.close();
             Swal.fire('Updated!', res.message, 'success');
 
-            $('#editsection5Modal').modal('hide');
+            $('#editsection6Modal').modal('hide');
 
-            let row = $("#section5-row-" + res.section5.id);
+            let row = $("#section6-row-" + res.section6.id);
 
             if (row.length) {
-                if (res.section5.image) {
-                    row.find(".section5-image").html(`<img src="/logos/${res.section5.image}" width="80" height="80">`);
+                if (res.section6.image) {
+                    row.find(".section6-image").html(`<img src="/logos/${res.section6.image}" width="80" height="80">`);
                 } else {
-                    row.find(".section5-image").html('');
+                    row.find(".section6-image").html('');
                 }
 
-                row.find(".section5-heading").text(res.section5.heading);
+                row.find(".section6-heading").text(res.section6.heading);
 
-                let words = res.section5.paragraph ? res.section5.paragraph.split(' ') : [];
+                row.find(".section6-points_headings").text(res.section6.points_headings);
+                row.find(".section6-point").text(res.section6.point);
+
+                let words = res.section6.paragraph ? res.section6.paragraph.split(' ') : [];
                 let limitedText = words.slice(0, 5).join(' ');
                 let isTruncated = words.length > 5;
-                row.find(".section5-paragraph")
+                row.find(".section6-paragraph")
                    .text(limitedText + (isTruncated ? ' ...' : ''))
-                   .attr('title', res.section5.paragraph);
+                   .attr('title', res.section6.paragraph);
             }
         },
         error: function (xhr) {
             Swal.close();
-            Swal.fire('Error', 'Could not update section5', 'error');
+            Swal.fire('Error', 'Could not update section6', 'error');
         }
     });
 });
 
-$(document).on('click', '.delete-section5-btn', function () {
-    let id = $(this).data('section5-id');
+$(document).on('click', '.delete-section6-btn', function () {
+    let id = $(this).data('section6-id');
 
     Swal.fire({
         title: 'Are you sure?',
-        text: "This will permanently delete the section5.",
+        text: "This will permanently delete the section6.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
@@ -415,7 +446,7 @@ $(document).on('click', '.delete-section5-btn', function () {
         if (result.isConfirmed) {
             Swal.fire({
                 title: 'Deleting...',
-                text: 'Please wait while the section5 is being deleted.',
+                text: 'Please wait while the section6 is being deleted.',
                 allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
@@ -423,7 +454,7 @@ $(document).on('click', '.delete-section5-btn', function () {
             });
 
             $.ajax({
-                url: `/section5/${id}`,
+                url: `/section6/${id}`,
                 type: "DELETE",
                 data: {
                     _token: "{{ csrf_token() }}"
@@ -431,13 +462,13 @@ $(document).on('click', '.delete-section5-btn', function () {
                 success: function (res) {
                     if (res.status === 'success') {
                         Swal.fire('Deleted!', res.message, 'success');
-                        $("#section5-row-" + id).fadeOut(500, function () {
+                        $("#section6-row-" + id).fadeOut(500, function () {
                             $(this).remove(); 
                         });
                     }
                 },
                 error: function () {
-                    Swal.fire('Error', 'Could not delete section5.', 'error');
+                    Swal.fire('Error', 'Could not delete section6.', 'error');
                 }
             });
         }

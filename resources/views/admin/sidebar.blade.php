@@ -99,6 +99,13 @@
               <p>Section 5</p>
             </a>
           </li>
+
+           <li class="nav-item">
+            <a href="/admin/section_6" onclick="loadsection6Page(); return false;">
+              <i class="icon-flag"></i>
+              <p>Section 6</p>
+            </a>
+          </li>
                 
         </ul>
       </div>

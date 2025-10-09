@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Section1Controller;
 use App\Http\Controllers\Section2Controller;
+use App\Http\Controllers\Section3Controller;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserAuthcontroller;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get('edit_user/{id}', [UserAuthcontroller::class, 'edituserpage']);
     Route::get("section_1", [Section1Controller::class, "section1"]);
     Route::get("section_2", [Section2Controller::class, "section2"]);
+    Route::get("section_3", [Section3Controller::class, "section3"]);
 });
 
 //register user from admin panel
@@ -74,3 +76,13 @@ Route::get('/sliders/{id}/edit', [Section2Controller::class, 'edit'])->name('sli
 Route::post('/sliders/update', [Section2Controller::class, 'update'])->name('sliders.update');
 //to del sliders
 Route::delete('/sliders/{id}', [Section2Controller::class, 'destroy'])->name('sliders.destroy');
+
+
+//to save section3
+Route::post('/section3/store', [Section3Controller::class, 'store'])->name('section3.store');
+//to get section3
+Route::get('/section3/{id}/edit', [Section3Controller::class, 'edit'])->name('section3.edit');
+//to edit section3
+Route::post('/section3/update', [Section3Controller::class, 'update'])->name('section3.update');
+//to del section3
+Route::delete('/section3/{id}', [Section3Controller::class, 'destroy'])->name('section3.destroy');

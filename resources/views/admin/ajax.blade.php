@@ -237,6 +237,7 @@ function loadsection3Page() { loadPage('/admin/section_3', '/admin/section_3'); 
 function loadsection4Page() { loadPage('/admin/section_4', '/admin/section_4'); }
 function loadsection5Page() { loadPage('/admin/section_5', '/admin/section_5'); }
 function loadsection6Page() { loadPage('/admin/section_6', '/admin/section_6'); }
+function loadsection7Page() { loadPage('/admin/section_7', '/admin/section_7'); }
 </script>
 
 </body>

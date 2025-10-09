@@ -9,6 +9,7 @@ use App\Http\Controllers\Section3Controller;
 use App\Http\Controllers\Section4Controller;
 use App\Http\Controllers\Section5Controller;
 use App\Http\Controllers\Section6Controller;
+use App\Http\Controllers\Section7Controller;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserAuthcontroller;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("section_4", [Section4Controller::class, "section4"]);
     Route::get("section_5", [Section5Controller::class, "section5"]);
     Route::get("section_6", [Section6Controller::class, "section6"]);
+    Route::get("section_7", [Section7Controller::class, "section7"]);
 });
 
 //register user from admin panel
@@ -114,3 +116,11 @@ Route::get('/section6/{id}/edit', [Section6Controller::class, 'edit'])->name('se
 Route::post('/section6/update', [Section6Controller::class, 'update'])->name('section6.update');
 //to del section6
 Route::delete('/section6/{id}', [Section6Controller::class, 'destroy'])->name('section6.destroy');
+//to save section7
+Route::post('/section7/store', [Section7Controller::class, 'store'])->name('section7.store');
+//to get section7
+Route::get('/section7/{id}/edit', [Section7Controller::class, 'edit'])->name('section7.edit');
+//to edit section7
+Route::post('/section7/update', [Section7Controller::class, 'update'])->name('section7.update');
+//to del section7
+Route::delete('/section7/{id}', [Section7Controller::class, 'destroy'])->name('section7.destroy');

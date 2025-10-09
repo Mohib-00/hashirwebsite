@@ -106,6 +106,13 @@
               <p>Section 6</p>
             </a>
           </li>
+
+           <li class="nav-item">
+            <a href="/admin/section_7" onclick="loadsection7Page(); return false;">
+              <i class="icon-cloud-upload"></i>
+              <p>Section 7</p>
+            </a>
+          </li>
                 
         </ul>
       </div>

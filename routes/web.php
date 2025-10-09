@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Section1Controller;
 use App\Http\Controllers\Section2Controller;
 use App\Http\Controllers\Section3Controller;
+use App\Http\Controllers\Section4Controller;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserAuthcontroller;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("section_1", [Section1Controller::class, "section1"]);
     Route::get("section_2", [Section2Controller::class, "section2"]);
     Route::get("section_3", [Section3Controller::class, "section3"]);
+    Route::get("section_4", [Section4Controller::class, "section4"]);
 });
 
 //register user from admin panel
@@ -76,8 +78,6 @@ Route::get('/sliders/{id}/edit', [Section2Controller::class, 'edit'])->name('sli
 Route::post('/sliders/update', [Section2Controller::class, 'update'])->name('sliders.update');
 //to del sliders
 Route::delete('/sliders/{id}', [Section2Controller::class, 'destroy'])->name('sliders.destroy');
-
-
 //to save section3
 Route::post('/section3/store', [Section3Controller::class, 'store'])->name('section3.store');
 //to get section3
@@ -86,3 +86,11 @@ Route::get('/section3/{id}/edit', [Section3Controller::class, 'edit'])->name('se
 Route::post('/section3/update', [Section3Controller::class, 'update'])->name('section3.update');
 //to del section3
 Route::delete('/section3/{id}', [Section3Controller::class, 'destroy'])->name('section3.destroy');
+//to save section4
+Route::post('/section4/store', [Section4Controller::class, 'store'])->name('section4.store');
+//to get section4
+Route::get('/section4/{id}/edit', [Section4Controller::class, 'edit'])->name('section4.edit');
+//to edit section4
+Route::post('/section4/update', [Section4Controller::class, 'update'])->name('section4.update');
+//to del section4
+Route::delete('/section4/{id}', [Section4Controller::class, 'destroy'])->name('section4.destroy');

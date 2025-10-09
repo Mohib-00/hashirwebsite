@@ -73,6 +73,24 @@
               <p>Section 3</p>
             </a>
           </li>
+
+           <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#base">
+                  <i class="fas fa-layer-group"></i>
+                  <p>Section 4</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="base">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="/admin/section_4" onclick="loadsection4Page(); return false;">
+                        <span class="sub-item">Add List</span>
+                      </a>
+                    </li>
+                   
+                  </ul>
+                </div>
+              </li>
                 
         </ul>
       </div>

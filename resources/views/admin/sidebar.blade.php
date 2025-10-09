@@ -113,6 +113,13 @@
               <p>Section 7</p>
             </a>
           </li>
+
+            <li class="nav-item">
+            <a href="/admin/section_8" onclick="loadsection8Page(); return false;">
+              <i class="icon-loop"></i>
+              <p>Section 8</p>
+            </a>
+          </li>
                 
         </ul>
       </div>

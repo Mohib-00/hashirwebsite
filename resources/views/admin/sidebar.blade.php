@@ -134,6 +134,14 @@
               <p>Section 10</p>
             </a>
           </li>
+
+
+           <li class="nav-item">
+            <a href="/admin/website_settings" onclick="loadsettingsPage(); return false;">
+              <i class="icon-settings"></i>
+              <p>Website Settings</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -241,6 +241,7 @@ function loadsection7Page() { loadPage('/admin/section_7', '/admin/section_7'); 
 function loadsection8Page() { loadPage('/admin/section_8', '/admin/section_8'); }
 function loadsection9Page() { loadPage('/admin/section_9', '/admin/section_9'); }
 function loadsection10Page() { loadPage('/admin/section_10', '/admin/section_10'); }
+function loadsettingsPage() { loadPage('/admin/website_settings', '/admin/website_settings'); }
 </script>
 
 </body>

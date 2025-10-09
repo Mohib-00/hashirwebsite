@@ -62,6 +62,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("section_8", [Section8Controller::class, "section8"]);
     Route::get("section_9", [Section9Controller::class, "section9"]);
     Route::get("section_10", [Section10Controller::class, "section10"]);
+    Route::get("website_settings", [SettingsController::class, "websitesettings"]);
 });
 
 //register user from admin panel
@@ -154,3 +155,11 @@ Route::get('/section10/{id}/edit', [Section10Controller::class, 'edit'])->name('
 Route::post('/section10/update', [Section10Controller::class, 'update'])->name('section10.update');
 //to del section10
 Route::delete('/section10/{id}', [Section10Controller::class, 'destroy'])->name('section10.destroy');
+//to save setting
+Route::post('/setting/store', [SettingsController::class, 'store'])->name('setting.store');
+//to get setting
+Route::get('/setting/{id}/edit', [SettingsController::class, 'edit'])->name('setting.edit');
+//to edit setting
+Route::post('/setting/update', [SettingsController::class, 'update'])->name('setting.update');
+//to del setting
+Route::delete('/setting/{id}', [SettingsController::class, 'destroy'])->name('setting.destroy');

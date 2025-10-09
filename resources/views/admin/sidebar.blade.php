@@ -127,7 +127,13 @@
               <p>Section 9</p>
             </a>
           </li>
-                
+          
+           <li class="nav-item">
+            <a href="/admin/section_10" onclick="loadsection10Page(); return false;">
+              <i class="icon-rocket"></i>
+              <p>Section 10</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

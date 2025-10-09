@@ -232,6 +232,7 @@ function loadeditUser(element) {
     loadPage(`/admin/edit_user/${edituserId}`, `/admin/edit_user/${edituserId}`);
 }
 function loadsection1Page() { loadPage('/admin/section_1', '/admin/section_1'); }
+function loadsection2Page() { loadPage('/admin/section_2', '/admin/section_2'); }
 </script>
 
 </body>

@@ -120,36 +120,36 @@
       </thead>
       <tbody>
         @php $counter = 1; @endphp
-        @foreach($banners as $banner)
-          <tr class="banner-row-{{ $banner->id }}">
-            <td>{{ $counter }}</td>
-            <td class="banner-image">
-              @if($banner->image)
-                <img src="{{ asset('logos/'.$banner->image) }}" width="80" height="80">
-              @endif
-            </td>
-            <td class="banner-heading">{{ $banner->heading }}</td>
-            @php
-              $words = str_word_count($banner->paragraph, 2);
-              $limitedText = implode(' ', array_slice($words, 0, 5));
-              $isTruncated = str_word_count($banner->paragraph) > 5;
-            @endphp
-            <td class="banner-paragraph" style="white-space: nowrap" title="{{ $banner->paragraph }}">
-              {{ $limitedText }}{{ $isTruncated ? ' ...' : '' }}
-            </td>
-            <td>
-              <div style="display: flex; gap: 6px;">
-                <button class="btn btn-sm btn-primary edit-banner-btn" data-banner-id="{{ $banner->id }}" title="Edit Banner">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-sm btn-danger delete-banner-btn" data-banner-id="{{ $banner->id }}" title="Delete Banner">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </td>
-          </tr>
-          @php $counter++; @endphp
-        @endforeach
+      @foreach($banners as $banner)
+<tr id="banner-row-{{ $banner->id }}">
+    <td>{{ $counter }}</td>
+    <td class="banner-image">
+        @if($banner->image)
+            <img src="{{ asset('logos/'.$banner->image) }}" width="80" height="80">
+        @endif
+    </td>
+    <td class="banner-heading">{{ $banner->heading }}</td>
+    @php
+        $words = str_word_count($banner->paragraph, 2);
+        $limitedText = implode(' ', array_slice($words, 0, 5));
+        $isTruncated = str_word_count($banner->paragraph) > 5;
+    @endphp
+    <td class="banner-paragraph" style="white-space: nowrap" title="{{ $banner->paragraph }}">
+        {{ $limitedText }}{{ $isTruncated ? ' ...' : '' }}
+    </td>
+    <td>
+        <div style="display: flex; gap: 6px;">
+            <button class="btn btn-sm btn-primary edit-banner-btn" data-banner-id="{{ $banner->id }}" title="Edit Banner">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger delete-banner-btn" data-banner-id="{{ $banner->id }}" title="Delete Banner">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </td>
+</tr>
+@php $counter++; @endphp
+@endforeach
       </tbody>
     </table>
   </div>
@@ -254,9 +254,7 @@ $(document).ready(function () {
             title: 'Saving...',
             text: 'Please wait',
             allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading()
-            }
+            didOpen: () => Swal.showLoading()
         });
 
         $.ajax({
@@ -271,30 +269,27 @@ $(document).ready(function () {
                 if (res.status === 'success') {
                     Swal.fire('Success', 'Banner added successfully!', 'success');
 
+                    // Use consistent row ID
                     let newRow = `
-                        <tr id="banner-${res.banner.id}">
-                             <td>${$('.table tbody tr').length + 1}</td>
-                           
-                            <td id="imageee">
+                        <tr id="banner-row-${res.banner.id}">
+                            <td>${$('.table tbody tr').length + 1}</td>
+                            <td class="banner-image">
                                 ${res.banner.image ? `<img height=100 width=100 src="/logos/${res.banner.image}" />` : ''}
                             </td>
-                          
-                            <td id="emailll">${res.banner.heading ?? ''}</td>
-                            <td id="addreeesss" style="white-space:nowrap">${res.banner.paragraph ?? ''}</td>
-                          
-<td>
-    <div style="display: flex; gap: 6px;">
-        <button class="btn btn-sm btn-primary edit-banner-btn" 
-                data-banner-id="${res.banner.id}" title="Edit Banner">
-            <i class="fas fa-edit"></i>
-        </button>
-
-        <button class="btn btn-sm btn-danger delete-banner-btn" 
-                data-banner-id="${res.banner.id}" title="Delete Banner">
-            <i class="fas fa-trash"></i>
-        </button>
-    </div>
-</td>
+                            <td class="banner-heading">${res.banner.heading ?? ''}</td>
+                            <td class="banner-paragraph" style="white-space:nowrap">${res.banner.paragraph ?? ''}</td>
+                            <td>
+                                <div style="display: flex; gap: 6px;">
+                                    <button class="btn btn-sm btn-primary edit-banner-btn" 
+                                            data-banner-id="${res.banner.id}" title="Edit Banner">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger delete-banner-btn" 
+                                            data-banner-id="${res.banner.id}" title="Delete Banner">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     `;
 
@@ -375,19 +370,28 @@ $('#editBannerForm').submit(function (e) {
         processData: false,
         success: function (res) {
             Swal.close();
-
             Swal.fire('Updated!', res.message, 'success');
 
             $('#editBannerModal').modal('hide');
 
             let row = $("#banner-row-" + res.banner.id);
-             
-            if (res.banner.image) {
-                row.find(".banner-image").html(`<img src="/logos/${res.banner.image}" width="80">`);
+
+            if (row.length) {
+                if (res.banner.image) {
+                    row.find(".banner-image").html(`<img src="/logos/${res.banner.image}" width="80" height="80">`);
+                } else {
+                    row.find(".banner-image").html('');
+                }
+
+                row.find(".banner-heading").text(res.banner.heading);
+
+                let words = res.banner.paragraph ? res.banner.paragraph.split(' ') : [];
+                let limitedText = words.slice(0, 5).join(' ');
+                let isTruncated = words.length > 5;
+                row.find(".banner-paragraph")
+                   .text(limitedText + (isTruncated ? ' ...' : ''))
+                   .attr('title', res.banner.paragraph);
             }
-            row.find(".banner-heading").text(res.banner.heading);
-            row.find(".banner-paragraph").text(res.banner.paragraph);
-           
         },
         error: function (xhr) {
             Swal.close();

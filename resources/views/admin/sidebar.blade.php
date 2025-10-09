@@ -59,6 +59,13 @@
               <p>Section 1</p>
             </a>
           </li>
+
+           <li class="nav-item">
+            <a href="/admin/section_2" onclick="loadsection2Page(); return false;">
+              <i class="icon-plus"></i>
+              <p>Section 2</p>
+            </a>
+          </li>
                 
         </ul>
       </div>

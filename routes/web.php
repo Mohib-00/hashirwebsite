@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Section1Controller;
+use App\Http\Controllers\Section2Controller;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserAuthcontroller;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("admin_profile", [SettingsController::class, "adminprofile"]);
     Route::get('edit_user/{id}', [UserAuthcontroller::class, 'edituserpage']);
     Route::get("section_1", [Section1Controller::class, "section1"]);
-    
+    Route::get("section_2", [Section2Controller::class, "section2"]);
 });
 
 //register user from admin panel
@@ -65,3 +66,11 @@ Route::get('/banners/{id}/edit', [Section1Controller::class, 'edit'])->name('ban
 Route::post('/banners/update', [Section1Controller::class, 'update'])->name('banners.update');
 //to del banner
 Route::delete('/banners/{id}', [Section1Controller::class, 'destroy'])->name('banners.destroy');
+//to save sliders
+Route::post('/sliders/store', [Section2Controller::class, 'store'])->name('sliders.store');
+//to get sliders
+Route::get('/sliders/{id}/edit', [Section2Controller::class, 'edit'])->name('sliders.edit');
+//to edit sliders
+Route::post('/sliders/update', [Section2Controller::class, 'update'])->name('sliders.update');
+//to del sliders
+Route::delete('/sliders/{id}', [Section2Controller::class, 'destroy'])->name('sliders.destroy');

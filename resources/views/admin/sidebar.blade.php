@@ -91,6 +91,14 @@
                   </ul>
                 </div>
               </li>
+
+
+            <li class="nav-item">
+            <a href="/admin/section_5" onclick="loadsection5Page(); return false;">
+              <i class="icon-note"></i>
+              <p>Section 5</p>
+            </a>
+          </li>
                 
         </ul>
       </div>

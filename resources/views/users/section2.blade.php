@@ -1,14 +1,17 @@
- <section class="banner">
-  <img src="images1.jpeg" alt="Slide 1" class="active">
-  <img src="images2.jpeg" alt="Slide 2">
-  <img src="images3.jpeg" alt="Slide 3">
+<section class="banner">
+    @foreach ($sections as $section)
+        <img src="{{ asset('logos/' . $section->image) }}" 
+             alt="Slide {{ $loop->iteration }}" 
+             class="{{ $loop->first ? 'active' : '' }}">
+    @endforeach
 
-  <div class="banner-content">
-    <h1 class="slide-left"><span>CabCall Experts</span> – Inbound Call Centre and Customer Support Services</h1>
-    <p class="slide-right">
-      Reliable Inbound Call Centre for Your Taxi Business. CabCall Experts offers fast, automated, 
-      and dependable services. We also provide taxi dispatch services to help you handle bookings 
-      and improve customer satisfaction.
-    </p>
-  </div>
+    @foreach ($sections as $section)
+        <div class="banner-content {{ $loop->first ? 'active' : '' }}">
+            <h1 class="slide-left">{{ $section->heading }}</h1>
+            <p class="slide-right">{{ $section->paragraph }}</p>
+        </div>
+    @endforeach
 </section>
+
+
+

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Section1;
+use App\Models\Section2;
+use App\Models\Section3;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,13 +16,17 @@ class UserAuthController extends Controller
 {
 
     public function userspage()
-    {
-        return view('users.userpages');
-    }
+{
+    $sections = Section1::all();
+    $section2s = Section2::all();
+    $section3s = Section3::all(); 
+    return view('users.userpages', compact('sections','section2s','section3s'));
+}
 
      public function aboutus()
     {
-        return view('users.aboutus');
+         $sections = Section1::all();
+        return view('users.aboutus', compact('sections'));
     }
 
      public function career()

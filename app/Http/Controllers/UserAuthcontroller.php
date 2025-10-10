@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Section1;
+use App\Models\Section10;
 use App\Models\Section2;
 use App\Models\Section3;
 use App\Models\Section4;
@@ -32,7 +33,8 @@ class UserAuthController extends Controller
     $sections7s = Section7::all();
     $sections8s = Section8::all();
     $sections9s = Section9::all();
-    return view('users.userpages', compact('sections','section2s','section3s','services','section5s','sections6s','sections7s','sections8s','sections9s'));
+    $sections10s = Section10::all();
+    return view('users.userpages', compact('sections','section2s','section3s','services','section5s','sections6s','sections7s','sections8s','sections9s','sections10s'));
 }
 
      public function aboutus()

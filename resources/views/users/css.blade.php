@@ -964,7 +964,6 @@ nav ul li a:hover {
   color: #333;
 }
 
-/* Container wrapper for smooth horizontal scroll */
 .reviews-wrapper {
   position: relative;
   max-width: 100%;
@@ -972,7 +971,6 @@ nav ul li a:hover {
   overflow: hidden;
 }
 
-/* Scrollable carousel */
 .reviews-carousel {
   display: flex;
   gap: 20px;
@@ -988,7 +986,6 @@ nav ul li a:hover {
   display: none;
 }
 
-/* Base card style */
 .review-card {
   background: #f9f9f9;
   border-radius: 16px;
@@ -1003,7 +1000,6 @@ nav ul li a:hover {
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-/* Animation states */
 .review-card.animate-up {
   opacity: 1;
   transform: translateY(0);
@@ -1022,7 +1018,6 @@ nav ul li a:hover {
   animation: fadeInRight 1s ease;
 }
 
-/* Inner styles */
 .review-rating {
   color: #FFD700;
   font-size: 20px;
@@ -1062,7 +1057,6 @@ nav ul li a:hover {
   color: #666;
 }
 
-/* Keyframes */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(40px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -1078,9 +1072,7 @@ nav ul li a:hover {
   100% { opacity: 1; transform: translateX(0); }
 }
 
-/* -------- Responsive Breakpoints -------- */
 
-/* Small tablets & large phones */
 @media (max-width: 768px) {
   .review-card {
     min-width: 260px;
@@ -1098,7 +1090,6 @@ nav ul li a:hover {
   }
 }
 
-/* Small phones under 354px */
 @media (max-width: 354px) {
   .review-card {
     min-width: 90%;
@@ -1128,7 +1119,6 @@ nav ul li a:hover {
   }
 }
 
-/* Extra small devices under 316px */
 @media (max-width: 316px) {
   .review-card {
     min-width: 95%;
@@ -1198,7 +1188,6 @@ nav ul li a:hover {
   transform: scale(1.1);
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .partners-row img {
     width: 80px;
@@ -1283,6 +1272,33 @@ nav ul li a:hover {
     width: auto; 
   }
 }
+
+.faq-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.faq-item.animate-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-item.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.faq-item.animate-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.faq-item.animate-down {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 
 .footer {

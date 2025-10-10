@@ -3,99 +3,36 @@
 
   <div class="services-carousel">
     <div class="carousel-track">
+      @foreach($services as $service)
       <div class="service-card">
-        <img src="images2.jpeg" alt="Service 1">
-        <h3>Call Answering</h3>
-        <p>Reliable inbound call handling with professional agents for your business.</p>
+        <img src="{{ asset('logos/' . $service->image) }}" alt="{{ $service->title }}">
+        <h3>{{ $service->heading }}</h3>
+        <p>{{ $service->paragraph }}</p>
         <a href="#" class="read-more-btn">Read More</a>
       </div>
-      <div class="service-card">
-        <img src="images1.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-      <div class="service-card">
-        <img src="images3.jpeg" alt="Service 3">
-        <h3>QA Management</h3>
-        <p>Quality assurance to monitor calls and maintain high customer satisfaction.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-      <div class="service-card">
-        <img src="images1.jpeg" alt="Service 4">
-        <h3>Digital Marketing</h3>
-        <p>Boost your business visibility with our tailored marketing solutions.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-      <div class="service-card">
-        <img src="images2.jpeg" alt="Service 1">
-        <h3>Call Answering</h3>
-        <p>Reliable inbound call handling with professional agents for your business.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-      <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>  <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-        <div class="service-card">
-        <img src="service2.jpeg" alt="Service 2">
-        <h3>Taxi Dispatch</h3>
-        <p>Efficient dispatch services to manage bookings and drivers seamlessly.</p>
-        <a href="#" class="read-more-btn">Read More</a>
-      </div>
-
+      @endforeach
     </div>
+
     <button class="carousel-btn left"><i class="fa-solid fa-chevron-left"></i></button>
     <button class="carousel-btn right"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".service-card");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
+
+

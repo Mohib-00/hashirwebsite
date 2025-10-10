@@ -44,21 +44,7 @@
       window.addEventListener('resize', moveCarousel);
     }
 
-    const text = document.querySelector('.text-content');
-    const image = document.querySelector('.image-content');
-    if (text && image) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            text.classList.add('visible');
-            image.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.3 });
-      observer.observe(text);
-      observer.observe(image);
-    }
-
+   
     function autoScrollRow(rowId, speed = 2, pause = 1500) {
       const row = document.getElementById(rowId);
       if (!row) return;

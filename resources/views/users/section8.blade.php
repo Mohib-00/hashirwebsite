@@ -1,42 +1,39 @@
-<section class="why-section">
-  <div class="why-container">
-    <div class="why-header">
-      <h2>Why Choose <span>CabCall Experts?</span></h2>
-      <p>We provide reliable call answering and customer support services for businesses worldwide.</p>
+<section class="industries-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Industries We </h2>
     </div>
 
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-img">
-          <img src="images1.jpeg" alt="Effective Communication">
-        </div>
-        <h3>Effective Communication</h3>
-        <p>Our team ensures every customer query is handled promptly and professionally.</p>
-      </div>
+    <div class="industries-grid">
 
-      <div class="why-card">
-        <div class="why-img">
-          <img src="images2.jpeg" alt="Long-term Relationships">
+      @foreach($sections7s as $sections7)
+      <div class="industry-card">
+        <div class="icon-wrapper">
+          <img src="{{ asset('logos/' . $sections7->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
+         
         </div>
-        <h3>Long-term Relationships</h3>
-        <p>We focus on building lasting relationships with our clients through trust and quality service.</p>
+        <h3>{{ $sections7->heading }}</h3>
+        <p>{{ $sections7->paragraph }}</p>
       </div>
+      @endforeach
 
-      <div class="why-card">
-        <div class="why-img">
-          <img src="images3.jpeg" alt="Global Standards">
-        </div>
-        <h3>Global Standards</h3>
-        <p>We follow international customer service standards to give your business a professional edge.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="why-img">
-          <img src="images1.jpeg" alt="24/7 Support">
-        </div>
-        <h3>24/7 Support</h3>
-        <p>Our round-the-clock support ensures your customers are always taken care of.</p>
-      </div>
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".industry-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>

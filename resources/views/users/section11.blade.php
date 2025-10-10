@@ -1,5 +1,5 @@
 <section class="faqs">
-  <h2>FAQs</h2>
+  <h2 class="luxury">{{$settingssssss->section11_heading}}</h2>
   <div class="faq-row">
     
     @foreach($sections10s as $sections10)

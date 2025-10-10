@@ -1,7 +1,7 @@
 <section class="industries-section">
   <div class="container">
-    <div class="section-header">
-      <h2>Industries We Serve</h2>
+    <div class="section-header luxury">
+      <h2 >{{$settingssssss->section6_heading}}</h2>
     </div>
 
     <div class="industries-grid">

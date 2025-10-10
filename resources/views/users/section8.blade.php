@@ -1,10 +1,11 @@
 <section class="industries-section">
   <div class="container">
     <div class="section-header">
-      <h2>Industries We </h2>
+      <h2 class="luxury">{{$settingssssss->section8_heading}}</h2>
+      <p style="color:white;text-align:center">{{$settingssssss->section8_paragraph}}</p>
     </div>
 
-    <div class="industries-grid">
+    <div class="industries-grid" style="margin-top:20px">
 
       @foreach($sections7s as $sections7)
       <div class="industry-card">

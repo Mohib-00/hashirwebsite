@@ -1,5 +1,5 @@
 <section class="trusted-partners">
-  <h2>Trusted Partners</h2>
+  <h2 class="luxury">{{$settingssssss->section10_heading}}</h2>
 
   @php
     $chunks = $sections9s->chunk(ceil($sections9s->count() / 2));

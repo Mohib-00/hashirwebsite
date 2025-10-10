@@ -1,5 +1,5 @@
 <section class="services-section">
-  <h2 class="section-title">Our <span>Services</span></h2>
+  <h2 class="section-title luxury">{{$settingssssss->section5_heading}}</span></h2>
 
   <div class="services-carousel">
     <div class="carousel-track">

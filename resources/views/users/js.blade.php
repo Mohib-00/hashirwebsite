@@ -44,9 +44,6 @@
       window.addEventListener('resize', moveCarousel);
     }
 
-   
-   
-
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
       item.addEventListener('click', () => {

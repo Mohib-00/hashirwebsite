@@ -70,14 +70,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 80px;
+  padding: 0px 20px;
   flex-wrap: wrap;
   position: relative;
   border-bottom: 1px solid #eee;
 }
 
 .logo img {
-  height: 75px;
+  height: 120px;
   transition: transform 0.3s ease;
 }
 
@@ -165,7 +165,7 @@ nav ul li a:hover {
   }
 
   .main-header {
-    padding: 15px 20px;
+    padding: 0px 20px;
   }
 
   nav {
@@ -220,7 +220,7 @@ nav ul li a:hover {
 
 @media (max-width: 350px) {
   .main-header {
-    padding: 10px;
+    padding: 5px;
   }
 
   .logo img {
@@ -759,7 +759,6 @@ nav ul li a:hover {
 .section-header h2 {
   font-size: 32px;
   text-align: center;
-  color: #fff;
   margin-bottom: 50px;
 }
 
@@ -774,7 +773,6 @@ nav ul li a:hover {
 
 .industries-section .section-header h2 {
   text-align: center;
-  color: #fff;
   margin-bottom: 40px;
   font-size: 2.5rem;
 }
@@ -961,7 +959,6 @@ nav ul li a:hover {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 40px;
-  color: #333;
 }
 
 .reviews-wrapper {
@@ -1164,7 +1161,6 @@ nav ul li a:hover {
 .trusted-partners h2 {
   font-size: 2rem;
   margin-bottom: 30px;
-  color: #222;
 }
 
 .partners-row {
@@ -2169,7 +2165,6 @@ nav ul li a:hover {
   box-shadow: 0 8px 15px rgba(0,114,255,0.3);
 }
 
-/* Responsive */
 @media (max-width: 992px) {
   .contact-wrapper {
     flex-direction: column;
@@ -2182,6 +2177,35 @@ nav ul li a:hover {
   .contact-info h2 {
     font-size: 2rem;
   }
+}
+
+.luxury {
+    
+    background: linear-gradient(45deg, 
+        #ff6347, 
+        #ff1493, 
+        #1e90ff, 
+        #32cd32, 
+        #ffcc00, 
+        #8a2be2  
+    ); 
+    background-size: 300% 300%;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 8s infinite linear;
+     
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
 }
 
 </style>

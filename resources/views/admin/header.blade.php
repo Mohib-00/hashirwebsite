@@ -5,7 +5,7 @@
     <div class="logo-header" data-background-color="dark">
       <a href="index.html" class="logo">
         <img
-          src="{{asset('lite/assets/img/kaiadmin/logo_light.svg')}}"
+           src="{{ Auth::user()->image ? asset('public/images/' . Auth::user()->image) : '' }}" 
           alt="navbar brand"
           class="navbar-brand image"
           height="20"
@@ -276,7 +276,7 @@
                 class="avatar-img rounded-circle image"
               />
               @else
-              <img class="avatar-img rounded-circle image" src="{{ asset('images/dummy-image.jpg') }}" />
+              <img class="avatar-img rounded-circle image"  src="{{ Auth::user()->image ? asset('public/images/' . Auth::user()->image) : '' }}"  />
               @endif
             </div>
             <span class="profile-username">
@@ -289,15 +289,15 @@
               <li>
                 <div class="user-box">
                   <div class="avatar-lg">
-                    @if(Auth::check() && Auth::user()->userType == 1)
-                    <img
-                      src="{{ Auth::user()->image ? asset('public/images/' . Auth::user()->image) : '' }}" 
-                      alt="image profile"
-                      class="avatar-img rounded"
-                    />
-                    @else
-                    <img class="avatar-img rounded" src="{{ asset('images/dummy-image.jpg') }}" />
-                    @endif
+                     @if(Auth::check() && Auth::user()->userType == 1)
+              <img
+              src="{{ Auth::user()->image ? asset('images/' . Auth::user()->image) : '' }}" 
+                alt="..."
+                class="avatar-img rounded-circle image"
+              />
+              @else
+              <img class="avatar-img rounded-circle image"  src="{{ Auth::user()->image ? asset('public/images/' . Auth::user()->image) : '' }}"  />
+              @endif
                   </div>
                   <div class="u-text">
                     <h4 class="name">{{$userName}}</h4>

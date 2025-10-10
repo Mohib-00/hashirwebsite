@@ -1,6 +1,6 @@
 <section class="customer-reviews">
   <div class="container">
-    <h2>Success Highlights</h2>
+    <h2 class="luxury">{{$settingssssss->section9_heading}}</h2>
 
     <div class="reviews-wrapper">
       <div class="reviews-carousel">

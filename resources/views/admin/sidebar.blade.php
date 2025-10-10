@@ -2,10 +2,10 @@
     <div class="sidebar-logo">
       <div class="logo-header" data-background-color="dark">
         <a href="/admin" onclick="loadHomePage(); return false;" class="logo" style="color:white">
-          <img style="margin-left:-20px"  width=200 height=80
-            src="{{asset('jerry.png')}}"
+          <img style="margin-left:-20px"  width=140 height=110
+            src="{{asset('logo.png')}}"
             alt="navbar brand"
-            class="navbar-brand"
+            class="navbar-brand mt-2"
           />
         </a>
         <div class="nav-toggle">

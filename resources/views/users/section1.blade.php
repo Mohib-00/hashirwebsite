@@ -1,20 +1,33 @@
 <header>
   <div class="top-bar">
     <div class="contact-info">
-      <a href="tel:02031372799"><i class="fa-solid fa-phone"></i>020 3137 2799</a>
-      <a href="mailto:info@cabcallexperts.com"><i class="fa-solid fa-envelope"></i>info@cabcallexperts.com</a>
+      <a href="tel:02031372799"><i class="fa-solid fa-phone"></i>{{$settingssssss->number}}</a>
+      <a href="mailto:info@cabcallexperts.com"><i class="fa-solid fa-envelope"></i>{{$settingssssss->email}}</a>
     </div>
     <div class="social-icons">
-      <a href="https://www.facebook.com/CabCallExperts/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.linkedin.com/company/cabcall-experts/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/cabcallexperts/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@RayBasit-s9x/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+      @if(isset($settingssssss->facebook_link))
+      <a href="{{ $settingssssss->facebook_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      @endif
+       @if(isset($settingssssss->linkedin_link))
+      <a href="{{$settingssssss->linkedin_link}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      @endif
+       @if(isset($settingssssss->instagram_link))
+      <a href="{{$settingssssss->instagram_link}}" target="_blank"><i class="fab fa-instagram"></i></a>
+      @endif
+       @if(isset($settingssssss->youtube_link))
+      <a href="{{$settingssssss->youtube_link}}" target="_blank"><i class="fab fa-youtube"></i></a>
+      @endif
+      @if(isset($settingssssss->twitter_link))
+      <a href="{{$settingssssss->twitter_link}}" target="_blank"><i class="fab fa-twitter"></i></a>
+      @endif
     </div>
   </div>
 
   <div class="main-header">
     <div class="logo logo-animated">
-      <a href="/" onclick="loadhomepage(); return false;"><img src="./index_files/cce-logo3.png" alt="Cab Call Experts Logo"></a>
+      @if(isset($settingssssss->image))
+      <a href="/" onclick="loadhomepage(); return false;"><img src="{{ asset('logos/' . $settingssssss->image) }}" alt="Hub Solutions Logo"></a>
+      @endif
     </div>
 
     <input type="checkbox" id="menu-toggle" hidden>

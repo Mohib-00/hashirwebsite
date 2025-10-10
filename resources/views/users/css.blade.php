@@ -951,108 +951,217 @@ nav ul li a:hover {
 }
 
 
-
-
-
 .customer-reviews {
-  padding: 50px 20px;
-  background: #f8f8f8;
-  text-align: center;
+  background: #fff;
+  padding: 60px 0;
+  overflow: hidden;
 }
+
 .customer-reviews h2 {
+  text-align: center;
   font-size: 2rem;
   margin-bottom: 40px;
+  color: #333;
 }
 
+/* Container wrapper for smooth horizontal scroll */
 .reviews-wrapper {
   position: relative;
-  max-width: 350px;
+  max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
 
+/* Scrollable carousel */
 .reviews-carousel {
   display: flex;
   gap: 20px;
   scroll-snap-type: x mandatory;
-  overflow-x: scroll;
+  overflow-x: auto;
   scroll-behavior: smooth;
-  padding-bottom: 10px;
+  padding: 10px;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  
 }
 
 .reviews-carousel::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
+/* Base card style */
 .review-card {
-  background: #fff;
-  border-radius: 10px;
+  background: #f9f9f9;
+  border-radius: 16px;
   padding: 20px;
-  min-width: 300px;
-  max-width: 350px;
+  min-width: 280px;
+  max-width: 320px;
   flex: 0 0 auto;
   scroll-snap-align: start;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
+/* Animation states */
+.review-card.animate-up {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 1s ease;
+}
+
+.review-card.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+  animation: fadeInLeft 1s ease;
+}
+
+.review-card.animate-right {
+  opacity: 1;
+  transform: translateX(0);
+  animation: fadeInRight 1s ease;
+}
+
+/* Inner styles */
 .review-rating {
-  color: #ffb400;
-  font-size: 1.2rem;
+  color: #FFD700;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 .review-text {
-  font-size: 0.95rem;
-  color: #333;
+  display: block;
+  font-style: italic;
+  color: #555;
   margin-bottom: 15px;
+  font-size: 0.95rem;
 }
 
 .reviewer-info {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-align: left;
 }
 
 .reviewer-info img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .reviewer-info h4 {
   margin: 0;
   font-size: 1rem;
+  color: #222;
 }
 
 .reviewer-info p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #666;
 }
 
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+/* Keyframes */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.carousel-dots button {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background: #ccc;
-  cursor: pointer;
-  transition: background 0.3s;
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
-.carousel-dots button.active {
-  background: #ffb400;
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* -------- Responsive Breakpoints -------- */
+
+/* Small tablets & large phones */
+@media (max-width: 768px) {
+  .review-card {
+    min-width: 260px;
+    max-width: 300px;
+    padding: 15px;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .reviewer-info img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Small phones under 354px */
+@media (max-width: 354px) {
+  .review-card {
+    min-width: 90%;
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .review-rating {
+    font-size: 16px;
+  }
+
+  .review-text {
+    font-size: 12px;
+  }
+
+  .reviewer-info img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .reviewer-info h4 {
+    font-size: 0.9rem;
+  }
+
+  .reviewer-info p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices under 316px */
+@media (max-width: 316px) {
+  .review-card {
+    min-width: 95%;
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .review-rating {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .review-text {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .reviewer-info {
+    gap: 6px;
+  }
+
+  .reviewer-info img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .reviewer-info h4 {
+    font-size: 0.85rem;
+  }
+
+  .reviewer-info p {
+    font-size: 0.75rem;
+  }
 }
 
 

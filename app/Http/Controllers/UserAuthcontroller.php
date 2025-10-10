@@ -9,6 +9,7 @@ use App\Models\Section4;
 use App\Models\Section5;
 use App\Models\Section6;
 use App\Models\Section7;
+use App\Models\Section8;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,8 @@ class UserAuthController extends Controller
     $section5s = Section5::all();
     $sections6s = Section6::all();
     $sections7s = Section7::all();
-    return view('users.userpages', compact('sections','section2s','section3s','services','section5s','sections6s','sections7s'));
+    $sections8s = Section8::all();
+    return view('users.userpages', compact('sections','section2s','section3s','services','section5s','sections6s','sections7s','sections8s'));
 }
 
      public function aboutus()

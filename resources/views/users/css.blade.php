@@ -1166,30 +1166,45 @@ nav ul li a:hover {
 
 
 .trusted-partners {
-  padding: 50px 20px;
   text-align: center;
-  background: #f8f8f8;
+  padding: 60px 0;
+  background: #fff;
 }
 
 .trusted-partners h2 {
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  color: #222;
 }
 
 .partners-row {
   display: flex;
-  gap: 30px;
-  overflow: hidden;
+  overflow: hidden; 
+  gap: 20px;
   margin-bottom: 30px;
+  padding: 10px;
 }
 
 .partners-row img {
-  width: 120px;
-  height: auto;
-  object-fit: contain;
+  width: 100px;
+  height: 80px;
   flex-shrink: 0;
-  transition: transform 0.3s;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
 }
+
+.partners-row img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .partners-row img {
+    width: 80px;
+  }
+}
+
 
 
 .faqs {

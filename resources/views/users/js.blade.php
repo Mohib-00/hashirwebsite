@@ -45,24 +45,7 @@
     }
 
    
-    function autoScrollRow(rowId, speed = 2, pause = 1500) {
-      const row = document.getElementById(rowId);
-      if (!row) return;
-      const imgs = row.querySelectorAll("img");
-      if (imgs.length === 0) return;
-      let currentIndex = 0;
-      function scrollNext() {
-        const target = imgs[currentIndex];
-        row.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
-        currentIndex++;
-        if (currentIndex >= imgs.length / 2) currentIndex = 0;
-        setTimeout(scrollNext, pause + 500);
-      }
-      scrollNext();
-    }
-
-    autoScrollRow("row1", 2, 1500);
-    autoScrollRow("row2", 2, 1500);
+   
 
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {

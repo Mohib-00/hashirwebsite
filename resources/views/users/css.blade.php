@@ -312,6 +312,32 @@ nav ul li a:hover {
   opacity: 1;
 }
 
+/* === Banner text animation === */
+.banner-content h1,
+.banner-content p {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-in-out;
+}
+
+.banner-content.active h1,
+.banner-content.active p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: smooth entry delay for better effect */
+.banner-content.active h1 {
+  transition-delay: 0.2s;
+}
+
+.banner-content.active p {
+  transition-delay: 0.4s;
+}
+
+
+
+
 .slide-left {
   animation: slideLeft 1s ease forwards;
 }

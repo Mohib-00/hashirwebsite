@@ -2,23 +2,6 @@
   function initScripts() {
 
 
-   let slides = document.querySelectorAll('.banner img');
-let contents = document.querySelectorAll('.banner-content');
-let current = 0;
-
-if (slides.length > 0) {
-  function showNextSlide() {
-    slides[current].classList.remove('active');
-    contents[current].classList.remove('active');
-    
-    current = (current + 1) % slides.length;
-
-    slides[current].classList.add('active');
-    contents[current].classList.add('active');
-  }
-  setInterval(showNextSlide, 4000);
-}
-
     const track = document.querySelector('.services-carousel .carousel-track');
     const cards = document.querySelectorAll('.services-carousel .service-card');
     const leftBtn = document.querySelector('.services-carousel .carousel-btn.left');
@@ -117,7 +100,6 @@ if (slides.length > 0) {
   document.addEventListener('DOMContentLoaded', initScripts);
 
 
-  // Intersection Observer animation trigger
 const sections = document.querySelectorAll('.support-section');
 
 const observer = new IntersectionObserver((entries) => {
@@ -125,10 +107,10 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
     } else {
-      entry.target.classList.remove('active'); // remove for reanimation on scroll up/down
+      entry.target.classList.remove('active');
     }
   });
-}, { threshold: 0.2 }); // trigger when 20% visible
+}, { threshold: 0.2 }); 
 
 sections.forEach(section => observer.observe(section));
 

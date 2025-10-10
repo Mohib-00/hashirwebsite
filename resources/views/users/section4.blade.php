@@ -13,3 +13,23 @@
   </div>
 </section>
 @endforeach
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll('.support-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.25,
+    rootMargin: '0px 0px -10% 0px'
+  });
+
+  sections.forEach(section => observer.observe(section));
+});
+
+</script>

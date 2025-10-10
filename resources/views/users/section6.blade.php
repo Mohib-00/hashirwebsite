@@ -5,38 +5,35 @@
     </div>
 
     <div class="industries-grid">
+
+      @foreach($section5s as $section5)
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="images1.jpeg" alt="Clutch" width="108" height="108" style="border-radius:50%">
+          <img src="{{ asset('logos/' . $section5->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
          
         </div>
-        <h3>Transportation <br>(Cab, Limo, Taxi)</h3>
-        <p>We manage bookings, dispatch, and customer support to keep rides running smoothly.</p>
+        <h3>{{ $section5->heading }}</h3>
+        <p>{{ $section5->paragraph }}</p>
       </div>
+      @endforeach
 
-      <div class="industry-card">
-        <div class="icon-wrapper">
-         <img src="images1.jpeg" alt="Clutch" width="108" height="108" style="border-radius:50%">
-        </div>
-        <h3>E-commerce & <br>Retail</h3>
-        <p>Our agents handle order inquiries, returns, and customer support for online and retail stores.</p>
-      </div>
-
-      <div class="industry-card">
-        <div class="icon-wrapper">
-          <img src="images1.jpeg" alt="Clutch" width="108" height="108" style="border-radius:50%">
-        </div>
-        <h3>Logistics & <br>Delivery Services</h3>
-        <p>We streamline communication, track deliveries, and ensure timely updates for customers.</p>
-      </div>
-
-      <div class="industry-card">
-        <div class="icon-wrapper">
-          <img src="images1.jpeg" alt="Clutch" width="108" height="108" style="border-radius:50%">
-        </div>
-        <h3>Healthcare</h3>
-        <p>Our services help coordinate appointments, patient inquiries, and administrative support.</p>
-      </div>
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".industry-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>

@@ -6,6 +6,7 @@ use App\Models\Section1;
 use App\Models\Section2;
 use App\Models\Section3;
 use App\Models\Section4;
+use App\Models\Section5;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class UserAuthController extends Controller
     $section2s = Section2::all();
     $section3s = Section3::all(); 
     $services = Section4::all();
-    return view('users.userpages', compact('sections','section2s','section3s','services'));
+    $section5s = Section5::all();
+    return view('users.userpages', compact('sections','section2s','section3s','services','section5s'));
 }
 
      public function aboutus()

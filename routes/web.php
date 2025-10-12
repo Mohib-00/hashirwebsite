@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\DetailServiceSection2controller;
 use App\Http\Controllers\Section10Controller;
 use App\Http\Controllers\Section1Controller;
 use App\Http\Controllers\Section2Controller;
@@ -65,6 +66,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("section_10", [Section10Controller::class, "section10"]);
     Route::get("website_settings", [SettingsController::class, "websitesettings"]);
     Route::get("details_service_section1", [ServicesBannerDetailsController::class, "detailsservicesection1"]);
+    Route::get("details_service_section2", [DetailServiceSection2controller::class, "detailsservicesection2"]);
 });
 
 //register user from admin panel
@@ -173,3 +175,11 @@ Route::get('/detailsservicesection1/{id}/edit', [ServicesBannerDetailsController
 Route::post('/detailsservicesection1/update', [ServicesBannerDetailsController::class, 'update'])->name('detailsservicesection1.update');
 //to del detailsservicesection1
 Route::delete('/detailsservicesection1/{id}', [ServicesBannerDetailsController::class, 'destroy'])->name('detailsservicesection1.destroy');
+//to save detailsservicesection2
+Route::post('/detailsservicesection2/store', [DetailServiceSection2controller::class, 'store'])->name('detailsservicesection2.store');
+//to get detailsservicesection2
+Route::get('/detailsservicesection2/{id}/edit', [DetailServiceSection2controller::class, 'edit'])->name('detailsservicesection2.edit');
+//to edit detailsservicesection2
+Route::post('/detailsservicesection2/update', [DetailServiceSection2controller::class, 'update'])->name('detailsservicesection2.update');
+//to del detailsservicesection2
+Route::delete('/detailsservicesection2/{id}', [DetailServiceSection2controller::class, 'destroy'])->name('detailsservicesection2.destroy');

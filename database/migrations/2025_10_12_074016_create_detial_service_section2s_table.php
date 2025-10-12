@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services_details_section1s', function (Blueprint $table) {
+        Schema::create('detial_service_section2s', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable(); 
-            $table->string('heading')->nullable(); 
-            $table->text('paragraph')->nullable(); 
+            $table->text('heading')->nullable();
+            $table->text('paragraph')->nullable();
+            $table->text('points_headings')->nullable();
+            $table->text('point')->nullable();
+            $table->text('image')->nullable();
             $table->text('slug')->nullable();
             $table->timestamps();
         });
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services_details_section1s');
+        Schema::dropIfExists('detial_service_section2s');
     }
 };

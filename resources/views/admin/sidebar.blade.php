@@ -93,6 +93,12 @@
                         <span class="sub-item">Add Details Section 1</span>
                       </a>
                     </li>
+
+                    <li>
+                      <a href="/admin/details_service_section2" onclick="loadservicedetailssection2Page(); return false;">
+                        <span class="sub-item">Add Details Section 2</span>
+                      </a>
+                    </li>
                    
                   </ul>
                 </div>

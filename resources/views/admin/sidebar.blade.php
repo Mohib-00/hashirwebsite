@@ -87,6 +87,12 @@
                         <span class="sub-item">Add List</span>
                       </a>
                     </li>
+
+                     <li>
+                      <a href="/admin/details_service_section1" onclick="loadservicedetailssection1Page(); return false;">
+                        <span class="sub-item">Add Details Section 1</span>
+                      </a>
+                    </li>
                    
                   </ul>
                 </div>

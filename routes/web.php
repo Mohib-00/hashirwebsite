@@ -13,6 +13,7 @@ use App\Http\Controllers\Section6Controller;
 use App\Http\Controllers\Section7Controller;
 use App\Http\Controllers\Section8Controller;
 use App\Http\Controllers\Section9Controller;
+use App\Http\Controllers\ServicesBannerDetailsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserAuthcontroller;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("section_9", [Section9Controller::class, "section9"]);
     Route::get("section_10", [Section10Controller::class, "section10"]);
     Route::get("website_settings", [SettingsController::class, "websitesettings"]);
+    Route::get("details_service_section1", [ServicesBannerDetailsController::class, "detailsservicesection1"]);
 });
 
 //register user from admin panel
@@ -163,3 +165,11 @@ Route::get('/setting/{id}/edit', [SettingsController::class, 'edit'])->name('set
 Route::post('/setting/update', [SettingsController::class, 'update'])->name('setting.update');
 //to del setting
 Route::delete('/setting/{id}', [SettingsController::class, 'destroy'])->name('setting.destroy');
+//to save detailsservicesection1
+Route::post('/detailsservicesection1/store', [ServicesBannerDetailsController::class, 'store'])->name('detailsservicesection1.store');
+//to get detailsservicesection1
+Route::get('/detailsservicesection1/{id}/edit', [ServicesBannerDetailsController::class, 'edit'])->name('detailsservicesection1.edit');
+//to edit detailsservicesection1
+Route::post('/detailsservicesection1/update', [ServicesBannerDetailsController::class, 'update'])->name('detailsservicesection1.update');
+//to del detailsservicesection1
+Route::delete('/detailsservicesection1/{id}', [ServicesBannerDetailsController::class, 'destroy'])->name('detailsservicesection1.destroy');

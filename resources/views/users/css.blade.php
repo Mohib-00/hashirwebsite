@@ -23,7 +23,7 @@ header {
 }
 
 .top-bar {
-  background: #111;
+  background: #093945;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -100,7 +100,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #000;
+  color: #093945;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.4px;
@@ -454,7 +454,7 @@ nav ul li a:hover {
 .text-column h2 {
   font-size: 2.6rem;
   font-weight: 800;
-  color: #1e1e1e;
+  color: #093945;
   margin-bottom: 20px;
   line-height: 1.3;
 }
@@ -513,9 +513,9 @@ nav ul li a:hover {
 }
 
 @media (max-width: 350px) {
-  .support-section {
-    padding: 50px 0;
-    margin-left:-15px
+   .support-section {
+    width:105%;
+    text-align: center
   }
 
   .text-column {
@@ -539,6 +539,39 @@ nav ul li a:hover {
     transform: translateX(-10px);
   }
 }
+
+@media (max-width: 313.6px) {
+  .text-column {
+    text-align: center;
+    transform: translateX(0);
+    margin-left:-20px
+  }
+
+  .text-column h2 {
+    font-size: 1rem; 
+    line-height: 1.2;
+  }
+
+  .text-column p {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 280px) {
+  .text-column {
+    padding: 0 3px;
+  }
+
+  .text-column h2 {
+    font-size: 0.9rem; 
+  }
+
+  .text-column p {
+    font-size: 0.7rem;
+  }
+}
+
 
 .services-section {
   padding: 80px 20px;

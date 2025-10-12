@@ -181,7 +181,6 @@
             }
         }
 
-        // Alternate layout (zigzag)
         $reverse = $loop->iteration % 2 === 0 ? 'reverse' : '';
     @endphp
 
@@ -190,7 +189,7 @@
         <div class="container">
             <div class="content-wrapper">
                 <div class="text-content">
-                    <h2>{{ $section->heading }}</h2>
+                    <h2 style="color:#093945">{{ $section->heading }}</h2>
                     <p>{{ $section->paragraph }}</p>
                     <p><strong>{{ $section->points_headings }}</strong></p>
                     <ul>

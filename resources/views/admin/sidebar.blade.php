@@ -186,10 +186,16 @@
                       </a>
                     </li>
 
-                    <li>
+                   <li>
                       <a href="/admin/about_section_3" onclick="loadaboutsection3Page(); return false;">
                         <span class="sub-item">Section 3</span>
-                      </a>
+                      </a> 
+                    </li>
+
+                    <li>
+                      <a href="/admin/about_section_4" onclick="loadaboutsection4Page(); return false;">
+                        <span class="sub-item">Section 4</span>
+                      </a> 
                     </li>
                   </ul>
                 </div>

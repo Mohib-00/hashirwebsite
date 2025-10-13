@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutSection1;
 use App\Models\AboutSection2;
 use App\Models\AboutSection3;
+use App\Models\AboutSection4;
 use App\Models\Section1;
 use App\Models\Section10;
 use App\Models\Section2;
@@ -47,7 +48,8 @@ class UserAuthController extends Controller
          $aboutsection1s = AboutSection1::all();
          $aboutsection2s = AboutSection2::all();
          $aboutsection3s = AboutSection3::all();
-        return view('users.aboutus', compact('sections','services','aboutsection1s','aboutsection2s','aboutsection3s'));
+         $sections6s = AboutSection4::all();
+        return view('users.aboutus', compact('sections','services','aboutsection1s','aboutsection2s','aboutsection3s','sections6s'));
     }
 
      public function career()

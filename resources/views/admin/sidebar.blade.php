@@ -197,6 +197,12 @@
                         <span class="sub-item">Section 4</span>
                       </a> 
                     </li>
+
+                     <li>
+                      <a href="/admin/about_section_5" onclick="loadaboutsection5Page(); return false;">
+                        <span class="sub-item">Section 5</span>
+                      </a> 
+                    </li>
                   </ul>
                 </div>
               </li>

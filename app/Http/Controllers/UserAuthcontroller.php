@@ -6,6 +6,7 @@ use App\Models\AboutSection1;
 use App\Models\AboutSection2;
 use App\Models\AboutSection3;
 use App\Models\AboutSection4;
+use App\Models\AboutSection5;
 use App\Models\Section1;
 use App\Models\Section10;
 use App\Models\Section2;
@@ -49,7 +50,8 @@ class UserAuthController extends Controller
          $aboutsection2s = AboutSection2::all();
          $aboutsection3s = AboutSection3::all();
          $sections6s = AboutSection4::all();
-        return view('users.aboutus', compact('sections','services','aboutsection1s','aboutsection2s','aboutsection3s','sections6s'));
+         $aboutsections5s = AboutSection5::all();
+        return view('users.aboutus', compact('sections','services','aboutsection1s','aboutsection2s','aboutsection3s','sections6s','aboutsections5s'));
     }
 
      public function career()

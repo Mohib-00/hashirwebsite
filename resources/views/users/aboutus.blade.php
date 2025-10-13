@@ -155,6 +155,8 @@
     padding: 50px 0;
   }
 }
+
+
 </style>
 </head>
 <body>
@@ -174,9 +176,6 @@
         </div>
     @endforeach
 </section>
-
-
-
 
 @foreach ($aboutsection2s as $index => $section3)
 <section class="support-section {{ $index % 2 == 1 ? 'reverse' : '' }}" data-index="{{ $index }}">
@@ -281,52 +280,29 @@
     @endif
 @endforeach
 
+<section class="qa-wrapper">
+  <div class="qa-content">
+    <h2 class="qa-main-heading">Questions & Answers</h2>
 
-
-<section class="faqs">
-  <h2>FAQs</h2>
-  <div class="faq-row">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>What is your return policy?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        You can return any item within 30 days of purchase. Please keep the receipt.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Do you offer international shipping?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        Yes, we ship worldwide. Shipping charges vary based on location.
-      </div>
-    </div>
-  </div>
-
-  <div class="faq-row">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>How can I track my order?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        You will receive a tracking link via email once your order is shipped.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Do you offer discounts for bulk orders?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        Yes, please contact our sales team for bulk order pricing.
-      </div>
+    <div class="qa-section">
+      @foreach($aboutsections5s as $aboutsections5)
+        <div class="qa-card" style="background:#093945">
+          <input type="checkbox" id="qa-q{{ $loop->index }}">
+          <label for="qa-q{{ $loop->index }}" class="qa-question">
+            <h3>{{ $aboutsections5->heading }}</h3>
+            <span class="qa-toggle"></span>
+          </label>
+          <div class="qa-answer">
+            <p>{{ $aboutsections5->paragraph }}</p>
+          </div>
+        </div>
+      @endforeach
     </div>
   </div>
 </section>
+
+
+
  
   @include('users.section12')
 
@@ -401,6 +377,9 @@ document.addEventListener("DOMContentLoaded", () => {
   elements.forEach(el => observer.observe(el));
 });
 </script>
+
+
+
 
 </body>
 </html>

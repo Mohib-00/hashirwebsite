@@ -336,24 +336,28 @@
 @endforeach
 
 
-<section class="faqs">
-  @foreach($servicedetailsection5s as $sections10)
-  <h2 class="luxury">{{$sections10->main_heading}}</h2>
-  @endforeach
-  <div class="faq-row">
-    
+
+
+<section class="qa-wrapper">
+  <div class="qa-content">
     @foreach($servicedetailsection5s as $sections10)
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>{{$sections10->heading}}</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        {{$sections10->paragraph}}
-      </div>
-    </div>
+    <h2 class="qa-main-heading">{{$sections10->main_heading}}</h2>
     @endforeach
 
+    <div class="qa-section">
+      @foreach($servicedetailsection5s as $sections10)
+        <div class="qa-card" style="background:#093945">
+          <input type="checkbox" id="qa-q{{ $loop->index }}">
+          <label for="qa-q{{ $loop->index }}" class="qa-question">
+            <h3>{{ $sections10->heading }}</h3>
+            <span class="qa-toggle"></span>
+          </label>
+          <div class="qa-answer">
+            <p>{{ $sections10->paragraph }}</p>
+          </div>
+        </div>
+      @endforeach
+    </div>
   </div>
 </section>
 

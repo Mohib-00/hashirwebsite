@@ -253,6 +253,7 @@ function loadaboutsection1Page() { loadPage('/admin/about_section_1', '/admin/ab
 function loadaboutsection2Page() { loadPage('/admin/about_section_2', '/admin/about_section_2'); }
 function loadaboutsection3Page() { loadPage('/admin/about_section_3', '/admin/about_section_3'); }
 function loadaboutsection4Page() { loadPage('/admin/about_section_4', '/admin/about_section_4'); }
+function loadaboutsection5Page() { loadPage('/admin/about_section_5', '/admin/about_section_5'); }
 </script>
 
 </body>

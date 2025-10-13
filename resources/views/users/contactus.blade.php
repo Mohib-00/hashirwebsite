@@ -8,6 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="{{ asset('logo2.png') }}">
   @include('users.css')
+  <style>
+    .is-invalid {
+  border: 1px solid red !important;
+  background-color: #ffe6e6;
+}
+.text-danger {
+  font-size: 13px;
+}
+  </style>
 </style>
 </head>
 <body>
@@ -73,18 +82,35 @@
         </div>
       </div>
 
-      <!-- Right Column -->
       <div class="contact-form" data-aos="fade-left">
         <h3>Leave Your Message</h3>
         <p>Fill out the form below, and our team will respond promptly.</p>
 
-        <form action="#" method="post" class="form">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <input type="tel" name="phone" placeholder="Your Phone" required>
-          <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-          <button type="submit" class="send-btn">Send Message</button>
-        </form>
+       <form id="contactForm" class="form">
+  @csrf
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Your Name" >
+    <small class="error text-danger" id="error-name"></small>
+  </div>
+
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Your Email" >
+    <small class="error text-danger" id="error-email"></small>
+  </div>
+
+  <div class="form-group">
+    <input type="tel" name="phone" placeholder="Your Phone" >
+    <small class="error text-danger" id="error-phone"></small>
+  </div>
+
+  <div class="form-group">
+    <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+    <small class="error text-danger" id="error-message"></small>
+  </div>
+
+  <button type="submit" class="send-btn">Send Message</button>
+</form>
+
       </div>
     </div>
   </div>
@@ -115,6 +141,24 @@
   @include('users.section12')
   @include('users.js')
   @include('ajax')
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".banner img");
+  const contents = document.querySelectorAll(".banner-content");
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    contents[index].classList.remove("active");
+
+    index = (index + 1) % slides.length;
+
+    slides[index].classList.add("active");
+    contents[index].classList.add("active");
+  }, 5000); 
+});
+</script>
 
 
 </body>

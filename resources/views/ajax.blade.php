@@ -398,13 +398,12 @@ $(document).ready(function () {
   function loadloginpage() { loadPage('/login', '/login'); }
 </script>
 
+
 <script>
 function loadserviceDetails(heading) {
-  // show clean heading in URL (e.g. 24/7)
-  const displayUrl = `/service/${heading}/details`;
+   const displayUrl = `/service/${heading}/details`;
 
-  // encode only for fetch, not for URL display
-  const encodedSlug = encodeURIComponent(heading);
+   const encodedSlug = encodeURIComponent(heading);
 
   let loader = document.getElementById('loader');
   if (!loader) {
@@ -515,7 +514,6 @@ function loadserviceDetails(heading) {
       document.write(html);
       document.close();
 
-      // show clean version in URL bar (no encoding)
       window.history.pushState({}, '', displayUrl);
     })
     .catch(error => console.error('Error loading service details:', error))
@@ -523,6 +521,71 @@ function loadserviceDetails(heading) {
       loader.style.display = 'none';
     });
 }
+</script>
+
+<script>
+$(document).ready(function () {
+  $('#contactForm').on('submit', function (e) {
+    e.preventDefault();
+
+    $('.error').text('');
+    $('input, textarea').removeClass('is-invalid');
+
+    let formData = new FormData(this);
+
+    Swal.fire({
+      title: 'Submitting...',
+      text: 'Please wait while we send your message.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
+    $.ajax({
+      url: "{{ route('contact.store') }}",
+      method: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        Swal.close();
+        if (response.status === 'success') {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: response.message,
+          });
+          $('#contactForm')[0].reset();
+        }
+      },
+      error: function (xhr) {
+        Swal.close();
+
+        if (xhr.status === 422) {
+          let errors = xhr.responseJSON.errors;
+          $.each(errors, function (key, value) {
+            let inputField = $('[name="' + key + '"]');
+            inputField.addClass('is-invalid');
+            $('#error-' + key).text(value[0]);
+          });
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Validation Error!',
+            text: 'Please correct the highlighted fields.',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong. Please try again later.',
+          });
+        }
+      }
+    });
+  });
+});
 </script>
 
 

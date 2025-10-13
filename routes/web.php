@@ -8,6 +8,7 @@ use App\Http\Controllers\AboutSection5Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailServiceSection2controller;
 use App\Http\Controllers\DetailServiceSection3controller;
 use App\Http\Controllers\DetailServiceSection4controller;
@@ -271,3 +272,7 @@ Route::get('/aboutsection5/{id}/edit', [AboutSection5Controller::class, 'edit'])
 Route::post('/aboutsection5/update', [AboutSection5Controller::class, 'update'])->name('aboutsection5.update');
 //to del aboutsection5
 Route::delete('/aboutsection5/{id}', [AboutSection5Controller::class, 'destroy'])->name('aboutsection5.destroy');
+//About end
+
+//to send message
+Route::post('/submit-contact', [ContactController::class, 'store'])->name('contact.store');

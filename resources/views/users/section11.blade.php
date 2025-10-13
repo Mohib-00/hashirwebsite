@@ -1,7 +1,3 @@
-
-
-
-
 <section class="qa-wrapper">
   <div class="qa-content">
     <h2 class="qa-main-heading">{{$settingssssss->section11_heading}}</h2>

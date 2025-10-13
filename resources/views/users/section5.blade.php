@@ -8,7 +8,8 @@
         <img src="{{ asset('logos/' . $service->image) }}" alt="{{ $service->title }}">
         <h3>{{ $service->heading }}</h3>
         <p>{{ $service->paragraph }}</p>
-        <a href="#" onclick="loadserviceDetails('{{ Str::slug($service->heading) }}'); return false;" class="read-more-btn">Read More</a>
+        <a href="#" 
+           onclick="loadserviceDetails('{{ addslashes($service->heading) }}'); return false;" class="read-more-btn">Read More</a>
       </div>
       @endforeach
     </div>

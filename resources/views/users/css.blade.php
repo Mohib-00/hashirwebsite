@@ -499,7 +499,6 @@ nav ul li a:hover {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* ----------- TABLET & MEDIUM SCREENS ----------- */
 @media (max-width: 768px) {
   .support-section .container,
   .support-section.reverse .container {
@@ -537,7 +536,6 @@ nav ul li a:hover {
   }
 }
 
-/* ----------- SMALL SCREENS ----------- */
 @media (max-width: 400px) {
   .support-section {
     padding: 50px 0;
@@ -551,7 +549,7 @@ nav ul li a:hover {
 
   .text-column,
   .image-column {
-    min-width: unset; /* remove fixed width */
+    min-width: unset; 
     width: 100%;
     text-align: center;
     padding: 0 10px;
@@ -572,7 +570,6 @@ nav ul li a:hover {
   }
 }
 
-/* ----------- VERY SMALL SCREENS (less than 360px) ----------- */
 @media (max-width: 360px) {
   .support-section {
     padding: 40px 0;
@@ -612,7 +609,6 @@ nav ul li a:hover {
   }
 }
 
-/* ----------- EXTRA SMALL DEVICES (below 280px) ----------- */
 @media (max-width: 280px) {
   .text-column {
     padding: 0 5px;

@@ -178,6 +178,59 @@
     padding: 50px 0;
   }
 }
+
+.industry-card {
+  background: linear-gradient(135deg, #093945, #0f172a); 
+  border-radius: 30px 4px 30px 4px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.industry-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at top left, rgba(0, 210, 255, 0.3), transparent 60%);
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+}
+
+.industry-card:hover::before {
+  top: -30%;
+  left: -30%;
+  background: radial-gradient(circle at bottom right, rgba(0, 114, 255, 0.5), transparent 70%);
+}
+
+.industry-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3);
+}
+
+.industry-card .icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.industry-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.industry-card p {
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
 </style>
 
 @php
@@ -242,21 +295,31 @@
     @endif
 @endforeach
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll('.text-content, .image-content');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.3 });
 
-  elements.forEach(el => observer.observe(el));
-});
-</script>
+<section class="industries-sectio" style="background:#f3f4f6">
+  <div class="container">
+    <div class="section-header luxury">
+      @foreach($servicedetailsection3s as $servicedetailsection3)
+      <h2>{{$servicedetailsection3->main_heading}}</h2>
+      @endforeach
+    </div>
 
+    <div class="industries-grid">
+
+      @foreach($servicedetailsection3s as $servicedetailsection3)
+      <div class="industry-card">
+        <div class="icon-wrapper">
+          <img src="{{ asset('logos/' . $servicedetailsection3->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
+         
+        </div>
+        <h3>{{ $servicedetailsection3->heading }}</h3>
+        <p>{{ $servicedetailsection3->paragraph }}</p>
+      </div>
+      @endforeach
+
+    </div>
+  </div>
+</section>
 
   @include('ajax')
 
@@ -275,6 +338,39 @@ document.addEventListener("DOMContentLoaded", () => {
     slides[index].classList.add("active");
     contents[index].classList.add("active");
   }, 5000); 
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll('.text-content, .image-content');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  elements.forEach(el => observer.observe(el));
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".industry-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
 });
 </script>
 

@@ -244,6 +244,7 @@ function loadsection10Page() { loadPage('/admin/section_10', '/admin/section_10'
 function loadsettingsPage() { loadPage('/admin/website_settings', '/admin/website_settings'); }
 function loadservicedetailssection1Page() { loadPage('/admin/details_service_section1', '/admin/details_service_section1'); }
 function loadservicedetailssection2Page() { loadPage('/admin/details_service_section2', '/admin/details_service_section2'); }
+function loadservicedetailssection3Page() { loadPage('/admin/details_service_section3', '/admin/details_service_section3'); }
 </script>
 
 </body>

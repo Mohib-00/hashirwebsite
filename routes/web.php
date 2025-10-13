@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\DetailServiceSection2controller;
+use App\Http\Controllers\DetailServiceSection3controller;
 use App\Http\Controllers\Section10Controller;
 use App\Http\Controllers\Section1Controller;
 use App\Http\Controllers\Section2Controller;
@@ -70,6 +71,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("website_settings", [SettingsController::class, "websitesettings"]);
     Route::get("details_service_section1", [ServicesBannerDetailsController::class, "detailsservicesection1"]);
     Route::get("details_service_section2", [DetailServiceSection2controller::class, "detailsservicesection2"]);
+    Route::get("details_service_section3", [DetailServiceSection3controller::class, "detailsservicesection3"]);
 });
 
 //register user from admin panel
@@ -186,3 +188,11 @@ Route::get('/detailsservicesection2/{id}/edit', [DetailServiceSection2controller
 Route::post('/detailsservicesection2/update', [DetailServiceSection2controller::class, 'update'])->name('detailsservicesection2.update');
 //to del detailsservicesection2
 Route::delete('/detailsservicesection2/{id}', [DetailServiceSection2controller::class, 'destroy'])->name('detailsservicesection2.destroy');
+//to save detailsservicesection3
+Route::post('/detailsservicesection3/store', [DetailServiceSection3controller::class, 'store'])->name('detailsservicesection3.store');
+//to get detailsservicesection3
+Route::get('/detailsservicesection3/{id}/edit', [DetailServiceSection3controller::class, 'edit'])->name('detailsservicesection3.edit');
+//to edit detailsservicesection3
+Route::post('/detailsservicesection3/update', [DetailServiceSection3controller::class, 'update'])->name('detailsservicesection3.update');
+//to del detailsservicesection3
+Route::delete('/detailsservicesection3/{id}', [DetailServiceSection3controller::class, 'destroy'])->name('detailsservicesection3.destroy');

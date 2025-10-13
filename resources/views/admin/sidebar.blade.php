@@ -166,6 +166,24 @@
           </li>
 
 
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarLayouts">
+                  <i class="fas fa-th-list"></i>
+                  <p>About Us</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="sidebarLayouts">
+                  <ul class="nav nav-collapse">
+                     <li>
+                      <a href="/admin/about_section_1" onclick="loadaboutsection1Page(); return false;">
+                        <span class="sub-item">Section 1</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+
            <li class="nav-item">
             <a href="/admin/website_settings" onclick="loadsettingsPage(); return false;">
               <i class="icon-settings"></i>

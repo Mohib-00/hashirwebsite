@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailServiceSection3;
+use App\Models\DetailServiceSection4;
 use App\Models\DetialServiceSection2;
 use App\Models\Section4;
 use App\Models\ServicesDetailsSection1;
@@ -126,7 +127,8 @@ public function detailsservice($slug)
         $servicedetailsection1s = ServicesDetailsSection1::whereIn('slug', $service->pluck('links'))->get();
         $sections6s = DetialServiceSection2::whereIn('slug', $service->pluck('links'))->get();
         $servicedetailsection3s = DetailServiceSection3::whereIn('slug', $service->pluck('links'))->get();
+        $servicedetailsection4s = DetailServiceSection4::whereIn('slug', $service->pluck('links'))->get();
         
-        return view('users.servicedetails', compact('service', 'servicedetailsection1s','sections6s','servicedetailsection3s'));
+        return view('users.servicedetails', compact('service', 'servicedetailsection1s','sections6s','servicedetailsection3s','servicedetailsection4s'));
     }
 }

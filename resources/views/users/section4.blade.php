@@ -1,5 +1,3 @@
-
-
 @foreach ($section3s as $index => $section3)
 <section class="support-section {{ $index % 2 == 1 ? 'reverse' : '' }}" data-index="{{ $index }}">
   <div class="container">

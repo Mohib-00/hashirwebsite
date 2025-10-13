@@ -47,6 +47,9 @@ Route::get("/careers", [UserAuthcontroller::class, "career"]);
 Route::get("/blogs", [UserAuthcontroller::class, "blog"]);
 //to open contact us page
 Route::get("/contact-us", [UserAuthcontroller::class, "contact"]);
+//to open service detail
+Route::get('/service/{slug}/details', [Section4Controller::class, 'detailsservice'])
+    ->name('service.details'); 
 
 Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');

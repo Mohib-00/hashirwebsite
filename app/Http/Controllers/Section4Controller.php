@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetialServiceSection2;
 use App\Models\Section4;
+use App\Models\ServicesDetailsSection1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -112,4 +114,17 @@ public function destroy($id)
         'id' => $id
     ]);
 }
+
+public function detailsservice($slug)
+    {
+        $user = Auth::check() ? Auth::user() : null;
+        $service = Section4::whereRaw("LOWER(REPLACE(heading, ' ', '-')) = ?", [strtolower($slug)])->get();
+        if ($service->isEmpty()) {
+            return abort(404, 'service not found');
+        }
+        $servicedetailsection1s = ServicesDetailsSection1::whereIn('slug', $service->pluck('links'))->get();
+        $sections6s = DetialServiceSection2::whereIn('slug', $service->pluck('links'))->get();
+        
+        return view('users.servicedetails', compact('service', 'servicedetailsection1s','sections6s'));
+    }
 }

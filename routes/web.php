@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutSection1Controller;
+use App\Http\Controllers\AboutSection2Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -80,6 +81,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("details_service_section5", [DetailServiceSection5controller::class, "detailsservicesection5"]);
     //about start
     Route::get("about_section_1", [AboutSection1Controller::class, "aboutsection1"]);
+    Route::get("about_section_2", [AboutSection2Controller::class, "aboutsection2"]);
 });
 
 //register user from admin panel
@@ -231,3 +233,11 @@ Route::get('/aboutsection1/{id}/edit', [AboutSection1Controller::class, 'edit'])
 Route::post('/aboutsection1/update', [AboutSection1Controller::class, 'update'])->name('aboutsection1.update');
 //to del aboutsection1
 Route::delete('/aboutsection1/{id}', [AboutSection1Controller::class, 'destroy'])->name('aboutsection1.destroy');
+//to save aboutsection2
+Route::post('/aboutsection2/store', [AboutSection2Controller::class, 'store'])->name('aboutsection2.store');
+//to get aboutsection2
+Route::get('/aboutsection2/{id}/edit', [AboutSection2Controller::class, 'edit'])->name('aboutsection2.edit');
+//to edit aboutsection2
+Route::post('/aboutsection2/update', [AboutSection2Controller::class, 'update'])->name('aboutsection2.update');
+//to del aboutsection2
+Route::delete('/aboutsection2/{id}', [AboutSection2Controller::class, 'destroy'])->name('aboutsection2.destroy');

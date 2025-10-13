@@ -250,6 +250,7 @@ function loadservicedetailssection5Page() { loadPage('/admin/details_service_sec
 
 //About start
 function loadaboutsection1Page() { loadPage('/admin/about_section_1', '/admin/about_section_1'); }
+function loadaboutsection2Page() { loadPage('/admin/about_section_2', '/admin/about_section_2'); }
 </script>
 
 </body>

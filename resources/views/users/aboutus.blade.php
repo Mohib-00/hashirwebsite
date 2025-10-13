@@ -31,28 +31,19 @@
 
 
 
-
-<section class="vision-section">
-  <div class="vision-container">
-    <div class="vision-text fadeInLeft">
-      <h2 class="vision-title">
-        Our <span>Vision</span>
-      </h2>
-      <p class="vision-description">
-        We want businesses to provide outstanding customer support without the
-        stress of managing calls. Our goal is to set new industry standards in
-        call handling, dispatch services, and quality assurance. We achieve this
-        by combining advanced technology with excellent customer service.
-      </p>
+@foreach ($aboutsection2s as $index => $section3)
+<section class="support-section {{ $index % 2 == 1 ? 'reverse' : '' }}" data-index="{{ $index }}">
+  <div class="container">
+    <div class="image-column">
+      <img src="{{ asset('logos/' . $section3->image) }}" alt="Customer Support {{ $index + 1 }}">
     </div>
-    <div class="vision-image fadeInRight">
-      <img
-        src="https://cabcallexperts.com/wp-content/uploads/2025/05/19-Our-Vision.webp"
-        alt="Our Vision - Call Handling Services"
-      />
+    <div class="text-column">
+      <h2>{!! $section3->heading !!}</h2>
+      <p>{{ $section3->paragraph }}</p>
     </div>
   </div>
 </section>
+@endforeach
 
 
 <section class="core-values-section">
@@ -161,6 +152,26 @@ document.addEventListener("DOMContentLoaded", () => {
     contents[index].classList.add("active");
   }, 5000); 
 });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll('.support-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.25,
+    rootMargin: '0px 0px -10% 0px'
+  });
+
+  sections.forEach(section => observer.observe(section));
+});
+
 </script>
 
 

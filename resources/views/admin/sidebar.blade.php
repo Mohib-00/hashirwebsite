@@ -179,6 +179,12 @@
                         <span class="sub-item">Section 1</span>
                       </a>
                     </li>
+
+                    <li>
+                      <a href="/admin/about_section_2" onclick="loadaboutsection2Page(); return false;">
+                        <span class="sub-item">Section 2</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </li>

@@ -111,6 +111,12 @@
                         <span class="sub-item">Add Details Section 4</span>
                       </a>
                     </li>
+
+                     <li>
+                      <a href="/admin/details_service_section5" onclick="loadservicedetailssection5Page(); return false;">
+                        <span class="sub-item">Add Details Section 5</span>
+                      </a>
+                    </li>
                    
                   </ul>
                 </div>

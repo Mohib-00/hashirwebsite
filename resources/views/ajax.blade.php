@@ -399,7 +399,13 @@ $(document).ready(function () {
 </script>
 
 <script>
-function loadserviceDetails(slug) {
+function loadserviceDetails(heading) {
+  // show clean heading in URL (e.g. 24/7)
+  const displayUrl = `/service/${heading}/details`;
+
+  // encode only for fetch, not for URL display
+  const encodedSlug = encodeURIComponent(heading);
+
   let loader = document.getElementById('loader');
   if (!loader) {
     loader = document.createElement('div');
@@ -499,15 +505,20 @@ function loadserviceDetails(slug) {
 
   loader.style.display = 'flex';
 
-  fetch(`/service/${slug}/details`)
-    .then(response => response.text())
+  fetch(`/service/${encodedSlug}/details`)
+    .then(response => {
+      if (!response.ok) throw new Error('Network error');
+      return response.text();
+    })
     .then(html => {
       document.open();
       document.write(html);
       document.close();
-      window.history.pushState({}, '', `/service/${slug}/details`);
+
+      // show clean version in URL bar (no encoding)
+      window.history.pushState({}, '', displayUrl);
     })
-    .catch(error => console.error('Error loading feature details:', error))
+    .catch(error => console.error('Error loading service details:', error))
     .finally(() => {
       loader.style.display = 'none';
     });

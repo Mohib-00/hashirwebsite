@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\DetailServiceSection2controller;
 use App\Http\Controllers\DetailServiceSection3controller;
 use App\Http\Controllers\DetailServiceSection4controller;
+use App\Http\Controllers\DetailServiceSection5controller;
 use App\Http\Controllers\Section10Controller;
 use App\Http\Controllers\Section1Controller;
 use App\Http\Controllers\Section2Controller;
@@ -51,7 +52,8 @@ Route::get("/blogs", [UserAuthcontroller::class, "blog"]);
 Route::get("/contact-us", [UserAuthcontroller::class, "contact"]);
 //to open service detail
 Route::get('/service/{slug}/details', [Section4Controller::class, 'detailsservice'])
-    ->name('service.details'); 
+    ->where('slug', '.*') // allows characters like / and &
+    ->name('service.details');
 
 Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
@@ -74,6 +76,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("details_service_section2", [DetailServiceSection2controller::class, "detailsservicesection2"]);
     Route::get("details_service_section3", [DetailServiceSection3controller::class, "detailsservicesection3"]);
     Route::get("details_service_section4", [DetailServiceSection4controller::class, "detailsservicesection4"]);
+    Route::get("details_service_section5", [DetailServiceSection5controller::class, "detailsservicesection5"]);
 });
 
 //register user from admin panel
@@ -206,3 +209,11 @@ Route::get('/detailsservicesection4/{id}/edit', [DetailServiceSection4controller
 Route::post('/detailsservicesection4/update', [DetailServiceSection4controller::class, 'update'])->name('detailsservicesection4.update');
 //to del detailsservicesection4
 Route::delete('/detailsservicesection4/{id}', [DetailServiceSection4controller::class, 'destroy'])->name('detailsservicesection4.destroy');
+//to save detailsservicesection5
+Route::post('/detailsservicesection5/store', [DetailServiceSection5controller::class, 'store'])->name('detailsservicesection5.store');
+//to get detailsservicesection5
+Route::get('/detailsservicesection5/{id}/edit', [DetailServiceSection5controller::class, 'edit'])->name('detailsservicesection5.edit');
+//to edit detailsservicesection5
+Route::post('/detailsservicesection5/update', [DetailServiceSection5controller::class, 'update'])->name('detailsservicesection5.update');
+//to del detailsservicesection5
+Route::delete('/detailsservicesection5/{id}', [DetailServiceSection5controller::class, 'destroy'])->name('detailsservicesection5.destroy');

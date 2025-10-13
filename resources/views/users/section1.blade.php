@@ -46,12 +46,10 @@
             Services <i class="fa-solid fa-caret-down"></i>
           </label>
           <ul class="dropdown-menu">
-            <li><a href="#">Call Answering Services</a></li>
-            <li><a href="#">Taxi Dispatch Services</a></li>
-            <li><a href="#">QA Management</a></li>
-            <li><a href="#">Digital Marketing</a></li>
-            <li><a href="#">NEMT Call Center</a></li>
-            <li><a href="#">Accounting Services</a></li>
+            @foreach($services as $service)
+            <li><a href="#" 
+           onclick="loadserviceDetails('{{ addslashes($service->heading) }}'); return false;">{{$service->heading}}</a></li>
+            @endforeach
           </ul>
         </li>
 

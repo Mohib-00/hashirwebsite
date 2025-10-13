@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutSection1Controller;
 use App\Http\Controllers\AboutSection2Controller;
+use App\Http\Controllers\AboutSection3Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -54,7 +55,7 @@ Route::get("/blogs", [UserAuthcontroller::class, "blog"]);
 Route::get("/contact-us", [UserAuthcontroller::class, "contact"]);
 //to open service detail
 Route::get('/service/{slug}/details', [Section4Controller::class, 'detailsservice'])
-    ->where('slug', '.*') // allows characters like / and &
+    ->where('slug', '.*') 
     ->name('service.details');
 
 Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () {
@@ -82,6 +83,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     //about start
     Route::get("about_section_1", [AboutSection1Controller::class, "aboutsection1"]);
     Route::get("about_section_2", [AboutSection2Controller::class, "aboutsection2"]);
+    Route::get("about_section_3", [AboutSection3Controller::class, "aboutsection3"]);
 });
 
 //register user from admin panel
@@ -241,3 +243,11 @@ Route::get('/aboutsection2/{id}/edit', [AboutSection2Controller::class, 'edit'])
 Route::post('/aboutsection2/update', [AboutSection2Controller::class, 'update'])->name('aboutsection2.update');
 //to del aboutsection2
 Route::delete('/aboutsection2/{id}', [AboutSection2Controller::class, 'destroy'])->name('aboutsection2.destroy');
+//to save aboutsection3
+Route::post('/aboutsection3/store', [AboutSection3Controller::class, 'store'])->name('aboutsection3.store');
+//to get aboutsection3
+Route::get('/aboutsection3/{id}/edit', [AboutSection3Controller::class, 'edit'])->name('aboutsection3.edit');
+//to edit aboutsection3
+Route::post('/aboutsection3/update', [AboutSection3Controller::class, 'update'])->name('aboutsection3.update');
+//to del aboutsection3
+Route::delete('/aboutsection3/{id}', [AboutSection3Controller::class, 'destroy'])->name('aboutsection3.destroy');

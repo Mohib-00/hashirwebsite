@@ -45,43 +45,28 @@
 </section>
 @endforeach
 
-
-<section class="core-values-section">
-  <div class="core-values-container">
-    <div class="core-values-header fadeInUp">
-      <h2 class="core-values-title">
-        Core <span>Values</span>
-      </h2>
-      <p class="core-values-subtitle">
-        The guiding principles that shape our culture, drive our performance,
-        and define our commitment to excellence.
-      </p>
+<section class="industries-sectio">
+  <div class="container">
+    <div class="section-header">
+      @foreach($aboutsection3s as $aboutsection3)
+      <h2 class="luxury">{{$aboutsection3->main_heading}}</h2>
+      <p style="color:#093945;text-align:center">{{$aboutsection3->main_paragraph}}</p>
+      @endforeach
     </div>
 
-    <div class="core-values-grid fadeInUp">
-      <div class="value-card">
-        <div class="icon">💡</div>
-        <h3>Innovation</h3>
-        <p>We embrace new ideas and cutting-edge technologies to stay ahead.</p>
-      </div>
+    <div class="industries-grid" style="margin-top:20px">
 
-      <div class="value-card">
-        <div class="icon">🤝</div>
-        <h3>Integrity</h3>
-        <p>We uphold honesty and transparency in every interaction.</p>
+      @foreach($aboutsection3s as $aboutsection3)
+      <div class="industry-card">
+        <div class="icon-wrapper">
+          <img src="{{ asset('logos/' . $aboutsection3->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
+         
+        </div>
+        <h3 style="color:#093945">{{ $aboutsection3->heading }}</h3>
+        <p style="color:#093945">{{ $aboutsection3->paragraph }}</p>
       </div>
+      @endforeach
 
-      <div class="value-card">
-        <div class="icon">🚀</div>
-        <h3>Excellence</h3>
-        <p>We strive to exceed expectations and deliver superior results.</p>
-      </div>
-
-      <div class="value-card">
-        <div class="icon">❤️</div>
-        <h3>Customer Focus</h3>
-        <p>We put our clients at the heart of everything we do.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -135,6 +120,23 @@
   @include('users.section12')
 
   @include('ajax')
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".industry-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
 
   <script>
 document.addEventListener("DOMContentLoaded", () => {

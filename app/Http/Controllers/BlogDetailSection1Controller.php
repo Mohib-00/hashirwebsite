@@ -6,6 +6,7 @@ use App\Models\BlogDetailSection1;
 use App\Models\BlogDetailSection2;
 use App\Models\BlogDetailSection3;
 use App\Models\BlogdetailSection4;
+use App\Models\Blogdetailsection5;
 use App\Models\BlogSection2;
 use App\Models\Section4;
 use Illuminate\Http\Request;
@@ -134,6 +135,7 @@ public function detailsblogs($slug)
     $sections6s = BlogDetailSection2::whereIn('slug', $blog->pluck('links'))->get();
     $blogdetailsection3s = BlogDetailSection3::whereIn('slug', $blog->pluck('links'))->get();
     $blogdetailsection4s = BlogdetailSection4::whereIn('slug', $blog->pluck('links'))->get();
+    $blogdetailsection5s = Blogdetailsection5::whereIn('slug', $blog->pluck('links'))->get();
     $services = Section4::all();
 
     return view('users.blogdetails', compact(
@@ -142,7 +144,8 @@ public function detailsblogs($slug)
     'sections6s',
     'services',
     'blogdetailsection3s',
-    'blogdetailsection4s'
+    'blogdetailsection4s',
+    'blogdetailsection5s',
     ));
 }
 }

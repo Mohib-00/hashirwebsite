@@ -331,6 +331,30 @@
 </section>
 @endforeach
 
+
+<section class="qa-wrapper">
+  <div class="qa-content">
+    @foreach($blogdetailsection5s as $blogdetailsection5)
+    <h2 class="qa-main-heading">{{$blogdetailsection5->main_heading}}</h2>
+    @endforeach
+
+    <div class="qa-section">
+      @foreach($blogdetailsection5s as $blogdetailsection5)
+        <div class="qa-card" style="background:#093945">
+          <input type="checkbox" id="qa-q{{ $loop->index }}">
+          <label for="qa-q{{ $loop->index }}" class="qa-question">
+            <h3>{{ $blogdetailsection5->heading }}</h3>
+            <span class="qa-toggle"></span>
+          </label>
+          <div class="qa-answer">
+            <p>{{ $blogdetailsection5->paragraph }}</p>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</section>
+
 @include('users.section12')
 
 @include('users.js')

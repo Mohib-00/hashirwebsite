@@ -262,6 +262,7 @@ function loadblogdetailsection1Page() { loadPage('/admin/blog_detail_section_1',
 function loadblogdetailsection2Page() { loadPage('/admin/blog_detail_section_2', '/admin/blog_detail_section_2'); }
 function loadblogdetailsection3Page() { loadPage('/admin/blog_detail_section_3', '/admin/blog_detail_section_3'); }
 function loadblogdetailsection4Page() { loadPage('/admin/blog_detail_section_4', '/admin/blog_detail_section_4'); }
+function loadblogdetailsection5Page() { loadPage('/admin/blog_detail_section_5', '/admin/blog_detail_section_5'); }
 </script>
 
 </body>

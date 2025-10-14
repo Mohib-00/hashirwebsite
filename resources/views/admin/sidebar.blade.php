@@ -252,6 +252,12 @@
                         <span class="sub-item">Detail Section 4</span>
                       </a>
                     </li>
+
+                    <li>
+                      <a href="/admin/blog_detail_section_5" onclick="loadblogdetailsection5Page(); return false;">
+                        <span class="sub-item">Detail Section 5</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </li>

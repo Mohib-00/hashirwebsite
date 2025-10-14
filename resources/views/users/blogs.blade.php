@@ -8,8 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="{{ asset('logo2.png') }}">
   @include('users.css')
-  <style>
-
+ <style>
 .industry-card {
   background: linear-gradient(135deg, #093945, #0f172a); 
   border-radius: 30px 4px 30px 4px;
@@ -20,7 +19,7 @@
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
 .industry-card::before {
@@ -33,6 +32,13 @@
   background: radial-gradient(circle at top left, rgba(0, 210, 255, 0.3), transparent 60%);
   transform: rotate(25deg);
   transition: all 0.6s ease;
+  pointer-events: none;  
+  z-index: 0; 
+}
+
+.industry-card * {
+  position: relative;
+  z-index: 1;
 }
 
 .industry-card:hover::before {
@@ -63,6 +69,23 @@
   font-size: 0.95rem;
   color: #d1d5db;
 }
+
+.read-more-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #00d2ff;
+  color: #093945;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background: #093945;
+  color: #fff;
+}
 </style>
 </style>
 </head>
@@ -88,28 +111,30 @@
 <section class="industries-sectio" style="background:#f3f4f6">
   <div class="container">
     <div class="section-header">
-       @foreach($blogsection2s as $blogsection2)
-      <h2 class="luxury">{{$blogsection2->main_heading}}</h2>
-      <p style="color:#093945;text-align:center">{{$blogsection2->main_paragraph}}</p>
+      @foreach($blogsection2s as $blogsection2)
+        <h2 class="luxury">{{ $blogsection2->main_heading }}</h2>
+        <p style="color:#093945; text-align:center">{{ $blogsection2->main_paragraph }}</p>
       @endforeach
     </div>
 
     <div class="industries-grid">
-
       @foreach($blogsection2s as $blogsection2)
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="{{ asset('logos/' . $blogsection2->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
-         
+          <img src="{{ asset('logos/' . $blogsection2->image) }}" 
+               alt="Clutch" width="108" height="108" style="border-radius:50%">
         </div>
+
         <h3>{{ $blogsection2->heading }}</h3>
         <p>{{ $blogsection2->paragraph }}</p>
+
         <a href="#" 
-           onclick="loadserviceDetails('{{ addslashes($blogsection2->heading) }}'); return false;" class="read-more-btn">Read More
+           onclick="loadblogDetails('{{ addslashes($blogsection2->heading) }}'); return false;" 
+           class="read-more-btn">
+           Read More
         </a>
       </div>
       @endforeach
-
     </div>
   </div>
 </section>

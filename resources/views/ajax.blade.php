@@ -400,6 +400,131 @@ $(document).ready(function () {
 
 
 <script>
+function loadblogDetails(heading) {
+   const displayUrl = `/blogs/${heading}/details`;
+
+   const encodedSlug = encodeURIComponent(heading);
+
+  let loader = document.getElementById('loader');
+  if (!loader) {
+    loader = document.createElement('div');
+    loader.id = 'loader';
+    Object.assign(loader.style, {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      overflow: 'hidden',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      zIndex: '9999',
+      transition: 'opacity 0.5s ease',
+      background: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)',
+      perspective: '1000px'
+    });
+
+    for (let i = 0; i < 12; i++) {
+      const orb = document.createElement('div');
+      orb.classList.add('orb');
+      Object.assign(orb.style, {
+        position: 'absolute',
+        borderRadius: '50%',
+        width: `${Math.random() * 100 + 50}px`,
+        height: `${Math.random() * 100 + 50}px`,
+        background: `radial-gradient(circle, rgba(52,152,219,0.8) 0%, rgba(255,255,255,0) 70%)`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        transform: `translate3d(0,0,${Math.random() * 500 - 250}px)`,
+        animation: `floatOrb ${4 + Math.random() * 6}s ease-in-out infinite alternate`
+      });
+      loader.appendChild(orb);
+    }
+
+    const spinnerContainer = document.createElement('div');
+    Object.assign(spinnerContainer.style, {
+      position: 'relative',
+      width: '80px',
+      height: '80px',
+      zIndex: '10'
+    });
+
+    const spinner = document.createElement('div');
+    Object.assign(spinner.style, {
+      position: 'absolute',
+      width: '80px',
+      height: '80px',
+      border: '6px solid rgba(255,255,255,0.3)',
+      borderTop: '6px solid #00d2ff',
+      borderRadius: '50%',
+      animation: 'spin 1.2s linear infinite, glow 2s ease-in-out infinite'
+    });
+
+    const text = document.createElement('p');
+    text.textContent = 'Loading... Please wait';
+    Object.assign(text.style, {
+      color: '#fff',
+      fontSize: '18px',
+      fontWeight: '500',
+      marginTop: '20px',
+      letterSpacing: '1px',
+      textShadow: '0 0 10px rgba(255,255,255,0.4)',
+      animation: 'fadeText 2s infinite ease-in-out',
+      zIndex: '10'
+    });
+
+    spinnerContainer.appendChild(spinner);
+    loader.appendChild(spinnerContainer);
+    loader.appendChild(text);
+    document.body.appendChild(loader);
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff; }
+        50% { box-shadow: 0 0 30px #0072ff, 0 0 60px #0072ff; }
+      }
+      @keyframes fadeText {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+      }
+      @keyframes floatOrb {
+        0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+        100% { transform: translate3d(50px, -50px, 100px) scale(1.3); opacity: 0.5; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  loader.style.display = 'flex';
+
+  fetch(`/blogs/${encodedSlug}/details`)
+    .then(response => {
+      if (!response.ok) throw new Error('Network error');
+      return response.text();
+    })
+    .then(html => {
+      document.open();
+      document.write(html);
+      document.close();
+
+      window.history.pushState({}, '', displayUrl);
+    })
+    .catch(error => console.error('Error loading service details:', error))
+    .finally(() => {
+      loader.style.display = 'none';
+    });
+}
+</script>
+
+
+<script>
 function loadserviceDetails(heading) {
    const displayUrl = `/service/${heading}/details`;
 

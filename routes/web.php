@@ -8,6 +8,7 @@ use App\Http\Controllers\AboutSection5Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\BlogDetailSection1;
 use App\Http\Controllers\BlogSection2controller;
 use App\Http\Controllers\BlogsSection1Controller;
 use App\Http\Controllers\ContactController;
@@ -63,6 +64,11 @@ Route::get('/service/{slug}/details', [Section4Controller::class, 'detailsservic
     ->where('slug', '.*') 
     ->name('service.details');
 
+//to open blogs detail
+Route::get('/blogs/{slug}/details', [BlogDetailSection1::class, 'detailsblogs'])
+    ->where('slug', '.*') 
+    ->name('blogs.details');    
+
 Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get("users", [UserAuthcontroller::class, "users"]);
@@ -94,6 +100,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     //blog start
     Route::get("blog_section_1", [BlogsSection1Controller::class, "blogsection1"]);
     Route::get("blog_section_2", [BlogSection2controller::class, "blogsection2"]);
+    Route::get("blog_detail_section_1", [BlogDetailSection1::class, "blogdetailsection1"]);
 });
 
 //register user from admin panel
@@ -299,3 +306,11 @@ Route::get('/blogsection2/{id}/edit', [BlogSection2Controller::class, 'edit'])->
 Route::post('/blogsection2/update', [BlogSection2Controller::class, 'update'])->name('blogsection2.update');
 //to del blogsection2
 Route::delete('/blogsection2/{id}', [BlogSection2Controller::class, 'destroy'])->name('blogsection2.destroy');
+//to save blogdetailsection1
+Route::post('/blogdetailsection1/store', [BlogDetailSection1::class, 'store'])->name('blogdetailsection1.store');
+//to get blogdetailsection1
+Route::get('/blogdetailsection1/{id}/edit', [BlogDetailSection1::class, 'edit'])->name('blogdetailsection1.edit');
+//to edit blogdetailsection1
+Route::post('/blogdetailsection1/update', [BlogDetailSection1::class, 'update'])->name('blogdetailsection1.update');
+//to del blogdetailsection1
+Route::delete('/blogdetailsection1/{id}', [BlogDetailSection1::class, 'destroy'])->name('blogdetailsection1.destroy');

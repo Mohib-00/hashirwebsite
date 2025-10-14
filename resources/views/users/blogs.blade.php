@@ -8,6 +8,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="{{ asset('logo2.png') }}">
   @include('users.css')
+  <style>
+
+.industry-card {
+  background: linear-gradient(135deg, #093945, #0f172a); 
+  border-radius: 30px 4px 30px 4px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom:30px;
+}
+
+.industry-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at top left, rgba(0, 210, 255, 0.3), transparent 60%);
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+}
+
+.industry-card:hover::before {
+  top: -30%;
+  left: -30%;
+  background: radial-gradient(circle at bottom right, rgba(0, 114, 255, 0.5), transparent 70%);
+}
+
+.industry-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 210, 255, 0.3);
+}
+
+.industry-card .icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.industry-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.industry-card p {
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+</style>
 </style>
 </head>
 <body>
@@ -29,66 +85,31 @@
 </section>
 
 
-<section class="blog-section">
+<section class="industries-sectio" style="background:#f3f4f6">
   <div class="container">
-    <!-- Section Header -->
-    <div class="blog-header">
-      <h2>Latest <span>Blogs</span></h2>
-      <p>
-        Stay updated with the latest insights, trends, and stories from our team.  
-        Explore what’s new in the world of customer care, innovation, and technology.
-      </p>
+    <div class="section-header">
+       @foreach($blogsection2s as $blogsection2)
+      <h2 class="luxury">{{$blogsection2->main_heading}}</h2>
+      <p style="color:#093945;text-align:center">{{$blogsection2->main_paragraph}}</p>
+      @endforeach
     </div>
 
-    <!-- Blog Grid -->
-    <div class="blog-grid">
-      <!-- Blog Card 1 -->
-      <div class="blog-card">
-        <div class="blog-image">
-          <img src="images1.jpeg" alt="Blog 1">
-        </div>
-        <div class="blog-content">
-          <h3>Enhancing Customer Experience with AI</h3>
-          <p>Discover how artificial intelligence is revolutionizing call center operations and improving customer satisfaction.</p>
-          <a href="#" class="see-more-btn">See More</a>
-        </div>
-      </div>
+    <div class="industries-grid">
 
-      <!-- Blog Card 2 -->
-      <div class="blog-card">
-        <div class="blog-image">
-          <img src="images2.jpeg" alt="Blog 2">
+      @foreach($blogsection2s as $blogsection2)
+      <div class="industry-card">
+        <div class="icon-wrapper">
+          <img src="{{ asset('logos/' . $blogsection2->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
+         
         </div>
-        <div class="blog-content">
-          <h3>The Future of Taxi Dispatch Services</h3>
-          <p>Automation and AI-driven systems are reshaping the taxi industry for faster, more reliable rides.</p>
-          <a href="#" class="see-more-btn">See More</a>
-        </div>
+        <h3>{{ $blogsection2->heading }}</h3>
+        <p>{{ $blogsection2->paragraph }}</p>
+        <a href="#" 
+           onclick="loadserviceDetails('{{ addslashes($blogsection2->heading) }}'); return false;" class="read-more-btn">Read More
+        </a>
       </div>
+      @endforeach
 
-      <!-- Blog Card 3 -->
-      <div class="blog-card">
-        <div class="blog-image">
-          <img src="images3.jpeg" alt="Blog 3">
-        </div>
-        <div class="blog-content">
-          <h3>Building a Strong Customer Support Team</h3>
-          <p>Learn key strategies to train and motivate your call center staff for excellence in service delivery.</p>
-          <a href="#" class="see-more-btn">See More</a>
-        </div>
-      </div>
-
-      <!-- Blog Card 4 -->
-      <div class="blog-card">
-        <div class="blog-image">
-          <img src="images1.jpeg" alt="Blog 4">
-        </div>
-        <div class="blog-content">
-          <h3>Outsourcing Done Right</h3>
-          <p>How to choose the perfect partner for your customer service outsourcing needs — without compromising quality.</p>
-          <a href="#" class="see-more-btn">See More</a>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -115,6 +136,23 @@ document.addEventListener("DOMContentLoaded", () => {
     slides[index].classList.add("active");
     contents[index].classList.add("active");
   }, 5000); 
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".industry-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
 });
 </script>
 

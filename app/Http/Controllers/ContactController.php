@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
@@ -30,6 +31,30 @@ class ContactController extends Controller
         'status'  => 'success',
         'message' => 'Thank you for contacting us! Our team has received your message and will get back to you shortly.'
     ]);
+}
+
+
+public function message()
+    {
+        $user = Auth::user();
+        $contacts = Contact::all();
+        return view('admin.contactmessages',compact('contacts'),[
+            'userName' => $user->name,
+            'userEmail' => $user->email,
+        ]);
+    }
+
+  public function markAsRead(Request $request)
+{
+    $contact = Contact::find($request->id);
+
+    if ($contact) {
+        $contact->status = 'complete';
+        $contact->save();
+        return response()->json(['success' => true]);
+    }
+
+    return response()->json(['success' => false]);
 }
 
 }

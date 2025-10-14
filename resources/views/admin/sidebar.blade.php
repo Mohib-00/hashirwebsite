@@ -54,6 +54,16 @@
           </li>
 
            <li class="nav-item">
+                <a href="/admin/messages" onclick="loadmessagesPage(); return false;">
+                  <i class="fas fa-comments"></i>
+                  <p>Messages</p>
+                  <span class="badge badge-success">
+                    {{ \App\Models\Contact::where('status', 'pending')->count() }}
+                  </span>
+                </a>
+            </li>
+
+           <li class="nav-item">
             <a href="/admin/section_1" onclick="loadsection1Page(); return false;">
               <i class="icon-list"></i>
               <p>Section 1</p>

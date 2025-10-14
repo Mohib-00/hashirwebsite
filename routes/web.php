@@ -109,6 +109,8 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("blog_detail_section_3", [BlogDetailSection3Controller::class, "blogdetailsection3"]);
     Route::get("blog_detail_section_4", [BlogDetailSection4Controller::class, "blogdetailsection4"]);
     Route::get("blog_detail_section_5", [BlogDetailSection5Controller::class, "blogdetailsection5"]);
+    //end
+    Route::get("/messages", [ContactController::class, "message"]);
 });
 
 //register user from admin panel
@@ -354,3 +356,5 @@ Route::get('/blogdetailsection5/{id}/edit', [BlogDetailSection5Controller::class
 Route::post('/blogdetailsection5/update', [BlogDetailSection5Controller::class, 'update'])->name('blogdetailsection5.update');
 //to del blogdetailsection5
 Route::delete('/blogdetailsection5/{id}', [BlogDetailSection5Controller::class, 'destroy'])->name('blogdetailsection5.destroy');
+//to amrk msg as read
+Route::post('/contacts/mark-as-read', [ContactController::class, 'markAsRead'])->name('contacts.markAsRead');

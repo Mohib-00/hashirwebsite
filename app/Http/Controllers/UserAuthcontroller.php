@@ -74,7 +74,8 @@ class UserAuthController extends Controller
     {
         $services = Section4::all();
         $sections10s = Section10::all();
-        return view('users.contactus',compact('services','sections10s'));
+        $sections = Section1::all();
+        return view('users.contactus',compact('services','sections10s','sections'));
     }
     public function loginn()
     {

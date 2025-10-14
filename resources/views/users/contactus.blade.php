@@ -22,19 +22,19 @@
 <body>
 
   @include('users.section1')
-   <section class="banner">
-  <img src="images1.jpeg" alt="Slide 1" class="active">
-  <img src="images2.jpeg" alt="Slide 2">
-  <img src="images3.jpeg" alt="Slide 3">
+<section class="banner">
+    @foreach ($sections as $section)
+        <img src="{{ asset('logos/' . $section->image) }}" 
+             alt="Slide {{ $loop->iteration }}" 
+             class="{{ $loop->first ? 'active' : '' }}">
+    @endforeach
 
-  <div class="banner-content">
-    <h1 class="slide-left"><span>Contact Experts</span> – Inbound Call Centre and Customer Support Services</h1>
-    <p class="slide-right">
-       Call Centre for Your Taxi Business. CabCall Experts offers fast, automated, 
-      and dependable services. We also provide taxi dispatch services to help you handle bookings 
-      and improve customer satisfaction.
-    </p>
-  </div>
+    @foreach ($sections as $section)
+        <div class="banner-content {{ $loop->first ? 'active' : '' }}">
+            <h1 class="slide-left">{{ $section->heading }}</h1>
+            <p class="slide-right">{{ $section->paragraph }}</p>
+        </div>
+    @endforeach
 </section>
 
 
@@ -42,26 +42,17 @@
   <div class="container">
     <div class="contact-wrapper">
       
-      <!-- Left Column -->
       <div class="contact-info" data-aos="fade-right">
         <h2>How to <span>Reach Us</span></h2>
         <p>
-          Our dedicated support team is available 24/7 to assist you. Whether you need help with taxi dispatch, call answering, or customer service, we’re just a call or message away.
+          Get in touch with us for collaborations, service inquiries, or support. Our dedicated team is ready to assist you with any questions.
         </p>
 
         <div class="info-box">
           <div class="icon"><i class="fas fa-phone-alt"></i></div>
           <div>
-            <h3>Phone Support (UK)</h3>
-            <p><a href="tel:+442031372799">+44 20 3137 2799</a></p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <div class="icon"><i class="fas fa-phone"></i></div>
-          <div>
-            <h3>Phone Support (US)</h3>
-            <p><a href="tel:+16467624106">+1 646 762 4106</a></p>
+            <h3>Phone Support</h3>
+            <p><a href="tel:+442031372799">{{$settingssssss->number}}</a></p>
           </div>
         </div>
 
@@ -69,15 +60,15 @@
           <div class="icon"><i class="fas fa-envelope"></i></div>
           <div>
             <h3>Email Support</h3>
-            <p><a href="mailto:info@cabcallexperts.com">info@cabcallexperts.com</a></p>
+            <p><a href="mailto:info@cabcallexperts.com">{{$settingssssss->email}}</a></p>
           </div>
         </div>
 
         <div class="info-box">
-          <div class="icon"><i class="fas fa-headset"></i></div>
+          <div class="icon"><i class="fas fa-location"></i></div>
           <div>
-            <h3>Live Chat Support</h3>
-            <p>Our agents are available round the clock for real-time chat assistance.</p>
+            <h3>Location</h3>
+            <p>{{$settingssssss->location}}</p>
           </div>
         </div>
       </div>
@@ -143,6 +134,24 @@
   @include('ajax')
 
   <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".banner img");
+  const contents = document.querySelectorAll(".banner-content");
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    contents[index].classList.remove("active");
+
+    index = (index + 1) % slides.length;
+
+    slides[index].classList.add("active");
+    contents[index].classList.add("active");
+  }, 5000); 
+});
+</script>
+
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".banner img");
   const contents = document.querySelectorAll(".banner-content");

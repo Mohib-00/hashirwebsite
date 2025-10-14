@@ -8,7 +8,7 @@
         align-items: center;
     }
 
-    .addblogdetailsection2btn {
+    .addblogdetailsection3btn {
         padding: 8px 16px;
         background-color: #4CAF50;
         color: white;            
@@ -19,11 +19,11 @@
         margin-left: auto;
     }
 
-    .addblogdetailsection2btn:hover {
+    .addblogdetailsection3btn:hover {
         background-color: #45a049;  
     }
 
-    .custom-modal.addblogdetailsection2 {
+    .custom-modal.addblogdetailsection3 {
       position: fixed;
     z-index: 1050;
     left: 0;
@@ -37,7 +37,7 @@
 }
 
 
-.custom-modal1.etstgsblogdetailsection2 {
+.custom-modal1.etstgsblogdetailsection3 {
   position: fixed;
     z-index: 1050;
     left: 0;
@@ -93,12 +93,12 @@
                   <div class="card-header">
                     <div class="d-flex align-items-center">
                        
-              <button class="addblogdetailsection2"
+              <button class="addblogdetailsection3"
   style="background: linear-gradient(135deg, #4CAF50, #2E7D32); 
          color: white; border: none; padding: 10px 20px; border-radius: 8px; 
          font-size: 14px; font-weight: bold; cursor: pointer; 
          box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: all 0.3s ease;"
-  data-bs-toggle="modal" data-bs-target="#blogdetailsection2Modal">
+  data-bs-toggle="modal" data-bs-target="#blogdetailsection3Modal">
   Add Row
 </button>
 
@@ -108,47 +108,45 @@
                   </div>
                  <div class="card-body">
   <div class="table-responsive">
-    <table  class="display table table-striped table-hover blogdetailsection2-table">
+    <table  class="display table table-striped table-hover blogdetailsection3-table">
       <thead>
         <tr>
           <th>Id</th>
           <th style="white-space: nowrap;">Image</th>
+          <th>Main Heading</th>
           <th>Heading</th>
           <th>Paragraph</th>
-          <th>Point Headings</th>
-          <th>Points</th>
-          <th>Links</th>
+          <th>Slug</th>
           <th style="width:10%">Action</th>
         </tr>
       </thead>
       <tbody>
         @php $counter = 1; @endphp
-      @foreach($blogdetailsection2s as $blogdetailsection2)
-<tr id="blogdetailsection2-row-{{ $blogdetailsection2->id }}">
+      @foreach($blogdetailsection3s as $blogdetailsection3)
+<tr id="blogdetailsection3-row-{{ $blogdetailsection3->id }}">
     <td>{{ $counter }}</td>
-    <td class="blogdetailsection2-image">
-        @if($blogdetailsection2->image)
-            <img src="{{ asset('logos/'.$blogdetailsection2->image) }}" width="80" height="80">
+    <td class="blogdetailsection3-image">
+        @if($blogdetailsection3->image)
+            <img src="{{ asset('logos/'.$blogdetailsection3->image) }}" width="80" height="80">
         @endif
     </td>
-    <td class="blogdetailsection2-heading">{{ $blogdetailsection2->heading }}</td>
+    <td class="blogdetailsection3-main_heading">{{ $blogdetailsection3->main_heading }}</td>
+    <td class="blogdetailsection3-heading">{{ $blogdetailsection3->heading }}</td>
     @php
-        $words = str_word_count($blogdetailsection2->paragraph, 2);
+        $words = str_word_count($blogdetailsection3->paragraph, 2);
         $limitedText = implode(' ', array_slice($words, 0, 5));
-        $isTruncated = str_word_count($blogdetailsection2->paragraph) > 5;
+        $isTruncated = str_word_count($blogdetailsection3->paragraph) > 5;
     @endphp
-    <td class="blogdetailsection2-paragraph" style="white-space: nowrap" title="{{ $blogdetailsection2->paragraph }}">
+    <td class="blogdetailsection3-paragraph" style="white-space: nowrap" title="{{ $blogdetailsection3->paragraph }}">
         {{ $limitedText }}{{ $isTruncated ? ' ...' : '' }}
     </td>
-    <td class="blogdetailsection2-points_headings">{{ $blogdetailsection2->points_headings }}</td>
-    <td class="blogdetailsection2-point">{{ $blogdetailsection2->point }}</td>
-    <td class="blogdetailsection2-slug">{{ $blogdetailsection2->slug }}</td>
+    <td class="blogdetailsection3-slug">{{ $blogdetailsection3->slug }}</td>
     <td>
         <div style="display: flex; gap: 6px;">
-            <button class="btn btn-sm btn-primary edit-blogdetailsection2-btn" data-blogdetailsection2-id="{{ $blogdetailsection2->id }}" title="Edit blogdetailsection2">
+            <button class="btn btn-sm btn-primary edit-blogdetailsection3-btn" data-blogdetailsection3-id="{{ $blogdetailsection3->id }}" title="Edit blogdetailsection3">
                 <i class="fas fa-edit"></i>
             </button>
-            <button class="btn btn-sm btn-danger delete-blogdetailsection2-btn" data-blogdetailsection2-id="{{ $blogdetailsection2->id }}" title="Delete blogdetailsection2">
+            <button class="btn btn-sm btn-danger delete-blogdetailsection3-btn" data-blogdetailsection3-id="{{ $blogdetailsection3->id }}" title="Delete blogdetailsection3">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
@@ -171,13 +169,13 @@
     </div>
 
 
-    <div class="modal fade" id="blogdetailsection2Modal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="blogdetailsection3Modal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
-    <form id="blogdetailsection2Form" enctype="multipart/form-data">
+    <form id="blogdetailsection3Form" enctype="multipart/form-data">
       @csrf
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add Section 2</h5>
+          <h5 class="modal-title">Add Section 3</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -187,7 +185,12 @@
   <label>Image</label>
   <input type="file" name="image" class="form-control" accept="image/*">
 </div>
-
+@if($main_heading_count < 1)
+<div class="mb-3">
+  <label>Main Heading</label>
+  <input type="text" name="main_heading" class="form-control">
+</div>
+@endif
 <div class="mb-3">
   <label>Heading</label>
   <input type="text" name="heading" class="form-control">
@@ -199,17 +202,7 @@
 </div>
 
 <div class="mb-3">
-  <label>Point Heading</label>
-  <input type="text" name="points_headings" class="form-control">
-</div>
-
-<div class="mb-3">
-  <label>Point</label>
-  <input type="text" name="point" class="form-control">
-</div>
-
-<div class="mb-3">
-  <label>Link</label>
+  <label>Slug</label>
   <input type="text" name="slug" class="form-control">
 </div>
 
@@ -222,31 +215,26 @@
   </div>
 </div>
 
-<div class="modal fade" id="editblogdetailsection2Modal" tabindex="-1">
+<div class="modal fade" id="editblogdetailsection3Modal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Section 2</h5>
+        <h5 class="modal-title">Edit Section 3</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <form id="editblogdetailsection2Form" enctype="multipart/form-data">
+        <form id="editblogdetailsection3Form" enctype="multipart/form-data">
           @csrf
-          <input type="hidden" name="blogdetailsection2_id" id="edit_blogdetailsection2_id">
+          <input type="hidden" name="blogdetailsection3_id" id="edit_blogdetailsection3_id">
 
+          
+          <div class="mb-3">
+  <label>Main Heading</label>
+  <input type="text" name="main_heading" id="edit_main_heading" class="form-control">
+</div>
           <div class="mb-3">
             <label>Heading</label>
             <input type="text" name="heading" id="edit_heading" class="form-control">
-          </div>
-
-           <div class="mb-3">
-            <label>Point Heading</label>
-            <input type="text" name="points_headings" id="edit_points_headings" class="form-control">
-          </div>
-
-           <div class="mb-3">
-            <label>Point</label>
-            <input type="text" name="point" id="edit_point" class="form-control">
           </div>
 
           <div class="mb-3">
@@ -255,8 +243,8 @@
           </div>
 
           <div class="mb-3">
-  <label>Link</label>
-  <input type="text" name="slug"  id="edit_slug" class="form-control">
+  <label>Slug</label>
+  <input type="text" id="edit_slug" name="slug" class="form-control">
 </div>
 
           <div class="mb-3">
@@ -267,7 +255,7 @@
 
          
 
-          <button type="submit" class="btn btn-primary">Update blogdetailsection2</button>
+          <button type="submit" class="btn btn-primary">Update blogdetailsection3</button>
         </form>
       </div>
     </div>
@@ -281,7 +269,7 @@
 
 <script>
 $(document).ready(function () {
-    $('#blogdetailsection2Form').on('submit', function (e) {
+    $('#blogdetailsection3Form').on('submit', function (e) {
         e.preventDefault();
 
         let formData = new FormData(this);
@@ -294,7 +282,7 @@ $(document).ready(function () {
         });
 
         $.ajax({
-            url: "{{ route('blogdetailsection2.store') }}",
+            url: "{{ route('blogdetailsection3.store') }}",
             type: "POST",
             data: formData,
             contentType: false,
@@ -303,28 +291,27 @@ $(document).ready(function () {
                 Swal.close();
 
                 if (res.status === 'success') {
-                    Swal.fire('Success', 'blogdetailsection2 added successfully!', 'success');
+                    Swal.fire('Success', 'blogdetailsection3 added successfully!', 'success');
 
                     // Use consistent row ID
                     let newRow = `
-                        <tr id="blogdetailsection2-row-${res.blogdetailsection2.id}">
+                        <tr id="blogdetailsection3-row-${res.blogdetailsection3.id}">
                             <td>${$('.table tbody tr').length + 1}</td>
-                            <td class="blogdetailsection2-image">
-                                ${res.blogdetailsection2.image ? `<img height=100 width=100 src="/logos/${res.blogdetailsection2.image}" />` : ''}
+                            <td class="blogdetailsection3-image">
+                                ${res.blogdetailsection3.image ? `<img height=100 width=100 src="/logos/${res.blogdetailsection3.image}" />` : ''}
                             </td>
-                            <td class="blogdetailsection2-heading">${res.blogdetailsection2.heading ?? ''}</td>
-                            <td class="blogdetailsection2-paragraph" style="white-space:nowrap">${res.blogdetailsection2.paragraph ?? ''}</td>
-                            <td class="blogdetailsection2-points_headings">${res.blogdetailsection2.points_headings ?? ''}</td>
-                            <td class="blogdetailsection2-point">${res.blogdetailsection2.point ?? ''}</td>
-                            <td class="blogdetailsection2-slug">${res.blogdetailsection2.slug ?? ''}</td>
+                            <td class="blogdetailsection3-main_heading">${res.blogdetailsection3.main_heading ?? ''}</td>
+                            <td class="blogdetailsection3-heading">${res.blogdetailsection3.heading ?? ''}</td>
+                            <td class="blogdetailsection3-paragraph" style="white-space:nowrap">${res.blogdetailsection3.paragraph ?? ''}</td>
+                            <td class="blogdetailsection3-slug">${res.blogdetailsection3.slug ?? ''}</td>
                             <td>
                                 <div style="display: flex; gap: 6px;">
-                                    <button class="btn btn-sm btn-primary edit-blogdetailsection2-btn" 
-                                            data-blogdetailsection2-id="${res.blogdetailsection2.id}" title="Edit blogdetailsection2">
+                                    <button class="btn btn-sm btn-primary edit-blogdetailsection3-btn" 
+                                            data-blogdetailsection3-id="${res.blogdetailsection3.id}" title="Edit blogdetailsection3">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-danger delete-blogdetailsection2-btn" 
-                                            data-blogdetailsection2-id="${res.blogdetailsection2.id}" title="Delete blogdetailsection2">
+                                    <button class="btn btn-sm btn-danger delete-blogdetailsection3-btn" 
+                                            data-blogdetailsection3-id="${res.blogdetailsection3.id}" title="Delete blogdetailsection3">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -333,8 +320,8 @@ $(document).ready(function () {
                     `;
 
                     $('table tbody').append(newRow);
-                    $('#blogdetailsection2Modal').modal('hide');
-                    $('#blogdetailsection2Form')[0].reset();
+                    $('#blogdetailsection3Modal').modal('hide');
+                    $('#blogdetailsection3Form')[0].reset();
                 }
             },
             error: function (xhr) {
@@ -346,12 +333,12 @@ $(document).ready(function () {
 });
 
 
-$(document).on('click', '.edit-blogdetailsection2-btn', function () {
-    let id = $(this).data('blogdetailsection2-id');
+$(document).on('click', '.edit-blogdetailsection3-btn', function () {
+    let id = $(this).data('blogdetailsection3-id');
 
     Swal.fire({
         title: 'Loading...',
-        text: 'Fetching blogdetailsection2 details',
+        text: 'Fetching blogdetailsection3 details',
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
@@ -359,21 +346,20 @@ $(document).on('click', '.edit-blogdetailsection2-btn', function () {
     });
 
     $.ajax({
-        url: `/blogdetailsection2/${id}/edit`,
+        url: `/blogdetailsection3/${id}/edit`,
         type: "GET",
         success: function (res) {
             if (res.status === 'success') {
-                let blogdetailsection2 = res.blogdetailsection2;
+                let blogdetailsection3 = res.blogdetailsection3;
 
-                $('#edit_blogdetailsection2_id').val(blogdetailsection2.id);
-                $('#edit_heading').val(blogdetailsection2.heading);
-                $('#edit_paragraph').val(blogdetailsection2.paragraph);
-                $('#edit_points_headings').val(blogdetailsection2.points_headings);
-                $('#edit_point').val(blogdetailsection2.point);
-                $('#edit_slug').val(blogdetailsection2.slug);
+                $('#edit_blogdetailsection3_id').val(blogdetailsection3.id);
+                $('#edit_heading').val(blogdetailsection3.heading);
+                $('#edit_paragraph').val(blogdetailsection3.paragraph);
+                $('#edit_main_heading').val(blogdetailsection3.main_heading);
+                $('#edit_slug').val(blogdetailsection3.slug);
 
-                if (blogdetailsection2.image) {
-                    $('#editImagePreview').html(`<img src="/logos/${blogdetailsection2.image}" width="100">`);
+                if (blogdetailsection3.image) {
+                    $('#editImagePreview').html(`<img src="/logos/${blogdetailsection3.image}" width="100">`);
                 } else {
                     $('#editImagePreview').html('');
                 }
@@ -381,23 +367,23 @@ $(document).on('click', '.edit-blogdetailsection2-btn', function () {
 
                 Swal.close();
 
-                $('#editblogdetailsection2Modal').modal('show');
+                $('#editblogdetailsection3Modal').modal('show');
             }
         },
         error: function () {
-            Swal.fire('Error', 'Could not fetch blogdetailsection2 details', 'error');
+            Swal.fire('Error', 'Could not fetch blogdetailsection3 details', 'error');
         }
     });
 });
 
-$('#editblogdetailsection2Form').submit(function (e) {
+$('#editblogdetailsection3Form').submit(function (e) {
     e.preventDefault();
 
     let formData = new FormData(this);
 
     Swal.fire({
         title: 'Updating...',
-        text: 'Please wait while we update the blogdetailsection2',
+        text: 'Please wait while we update the blogdetailsection3',
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
@@ -405,7 +391,7 @@ $('#editblogdetailsection2Form').submit(function (e) {
     });
 
     $.ajax({
-        url: "{{ route('blogdetailsection2.update') }}",
+        url: "{{ route('blogdetailsection3.update') }}",
         type: "POST",
         data: formData,
         contentType: false,
@@ -414,44 +400,42 @@ $('#editblogdetailsection2Form').submit(function (e) {
             Swal.close();
             Swal.fire('Updated!', res.message, 'success');
 
-            $('#editblogdetailsection2Modal').modal('hide');
+            $('#editblogdetailsection3Modal').modal('hide');
 
-            let row = $("#blogdetailsection2-row-" + res.blogdetailsection2.id);
+            let row = $("#blogdetailsection3-row-" + res.blogdetailsection3.id);
 
             if (row.length) {
-                if (res.blogdetailsection2.image) {
-                    row.find(".blogdetailsection2-image").html(`<img src="/logos/${res.blogdetailsection2.image}" width="80" height="80">`);
+                if (res.blogdetailsection3.image) {
+                    row.find(".blogdetailsection3-image").html(`<img src="/logos/${res.blogdetailsection3.image}" width="80" height="80">`);
                 } else {
-                    row.find(".blogdetailsection2-image").html('');
+                    row.find(".blogdetailsection3-image").html('');
                 }
 
-                row.find(".blogdetailsection2-heading").text(res.blogdetailsection2.heading);
+                row.find(".blogdetailsection3-heading").text(res.blogdetailsection3.heading);
+                row.find(".blogdetailsection3-main_heading").text(res.blogdetailsection3.main_heading);
+                row.find(".blogdetailsection3-slug").text(res.blogdetailsection3.slug);
 
-                row.find(".blogdetailsection2-points_headings").text(res.blogdetailsection2.points_headings);
-                row.find(".blogdetailsection2-point").text(res.blogdetailsection2.point);
-                row.find(".blogdetailsection2-slug").text(res.blogdetailsection2.slug);
-
-                let words = res.blogdetailsection2.paragraph ? res.blogdetailsection2.paragraph.split(' ') : [];
+                let words = res.blogdetailsection3.paragraph ? res.blogdetailsection3.paragraph.split(' ') : [];
                 let limitedText = words.slice(0, 5).join(' ');
                 let isTruncated = words.length > 5;
-                row.find(".blogdetailsection2-paragraph")
+                row.find(".blogdetailsection3-paragraph")
                    .text(limitedText + (isTruncated ? ' ...' : ''))
-                   .attr('title', res.blogdetailsection2.paragraph);
+                   .attr('title', res.blogdetailsection3.paragraph);
             }
         },
         error: function (xhr) {
             Swal.close();
-            Swal.fire('Error', 'Could not update blogdetailsection2', 'error');
+            Swal.fire('Error', 'Could not update blogdetailsection3', 'error');
         }
     });
 });
 
-$(document).on('click', '.delete-blogdetailsection2-btn', function () {
-    let id = $(this).data('blogdetailsection2-id');
+$(document).on('click', '.delete-blogdetailsection3-btn', function () {
+    let id = $(this).data('blogdetailsection3-id');
 
     Swal.fire({
         title: 'Are you sure?',
-        text: "This will permanently delete the blogdetailsection2.",
+        text: "This will permanently delete the blogdetailsection3.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
@@ -461,7 +445,7 @@ $(document).on('click', '.delete-blogdetailsection2-btn', function () {
         if (result.isConfirmed) {
             Swal.fire({
                 title: 'Deleting...',
-                text: 'Please wait while the blogdetailsection2 is being deleted.',
+                text: 'Please wait while the blogdetailsection3 is being deleted.',
                 allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
@@ -469,7 +453,7 @@ $(document).on('click', '.delete-blogdetailsection2-btn', function () {
             });
 
             $.ajax({
-                url: `/blogdetailsection2/${id}`,
+                url: `/blogdetailsection3/${id}`,
                 type: "DELETE",
                 data: {
                     _token: "{{ csrf_token() }}"
@@ -477,13 +461,13 @@ $(document).on('click', '.delete-blogdetailsection2-btn', function () {
                 success: function (res) {
                     if (res.status === 'success') {
                         Swal.fire('Deleted!', res.message, 'success');
-                        $("#blogdetailsection2-row-" + id).fadeOut(500, function () {
+                        $("#blogdetailsection3-row-" + id).fadeOut(500, function () {
                             $(this).remove(); 
                         });
                     }
                 },
                 error: function () {
-                    Swal.fire('Error', 'Could not delete blogdetailsection2.', 'error');
+                    Swal.fire('Error', 'Could not delete blogdetailsection3.', 'error');
                 }
             });
         }

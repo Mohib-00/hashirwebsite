@@ -292,7 +292,30 @@
     @endif
 @endforeach
 
+<section class="industries-sectio" style="background:#f3f4f6">
+  <div class="container">
+    <div class="section-header luxury">
+      @foreach($blogdetailsection3s as $blogdetailsection3)
+      <h2>{{$blogdetailsection3->main_heading}}</h2>
+      @endforeach
+    </div>
 
+    <div class="industries-grid">
+
+      @foreach($blogdetailsection3s as $blogdetailsection3)
+      <div class="industry-card">
+        <div class="icon-wrapper">
+          <img src="{{ asset('logos/' . $blogdetailsection3->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
+         
+        </div>
+        <h3>{{ $blogdetailsection3->heading }}</h3>
+        <p>{{ $blogdetailsection3->paragraph }}</p>
+      </div>
+      @endforeach
+
+    </div>
+  </div>
+</section>
 
 
 @include('users.section12')

@@ -260,6 +260,7 @@ function loadblogsection1Page() { loadPage('/admin/blog_section_1', '/admin/blog
 function loadblogsection2Page() { loadPage('/admin/blog_section_2', '/admin/blog_section_2'); }
 function loadblogdetailsection1Page() { loadPage('/admin/blog_detail_section_1', '/admin/blog_detail_section_1'); }
 function loadblogdetailsection2Page() { loadPage('/admin/blog_detail_section_2', '/admin/blog_detail_section_2'); }
+function loadblogdetailsection3Page() { loadPage('/admin/blog_detail_section_3', '/admin/blog_detail_section_3'); }
 </script>
 
 </body>

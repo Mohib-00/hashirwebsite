@@ -129,6 +129,7 @@ public function detailsblogs($slug)
 
     $blogdetailsection1s = \App\Models\BlogDetailSection1::whereIn('slug', $blog->pluck('links'))->get();
     $sections6s = \App\Models\BlogDetailSection2::whereIn('slug', $blog->pluck('links'))->get();
+    $blogdetailsection3s = \App\Models\BlogDetailSection3::whereIn('slug', $blog->pluck('links'))->get();
    
     $services = Section4::all();
 
@@ -136,7 +137,8 @@ public function detailsblogs($slug)
     'blog',
     'blogdetailsection1s',
     'sections6s',
-    'services'
+    'services',
+    'blogdetailsection3s'
     ));
 }
 

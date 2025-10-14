@@ -269,6 +269,7 @@ function loadmessagesPage() { loadPage('/admin/messages', '/admin/messages'); }
 //careers start
 function loadcareersection1() { loadPage('/admin/careers_section1', '/admin/careers_section1'); }
 function loadcareersection2() { loadPage('/admin/careers_section2', '/admin/careers_section2'); }
+function loadcareersection3() { loadPage('/admin/careers_section3', '/admin/careers_section3'); }
 </script>
 
 </body>

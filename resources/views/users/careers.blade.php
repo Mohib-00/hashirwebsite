@@ -175,6 +175,32 @@
     @endforeach
 </section>
 
+<section class="industries-sectio">
+  <div class="container">
+    <div class="section-header">
+      @foreach($careersection3s as $careersection3)
+      <h2 class="luxury">{{$careersection3->main_heading}}</h2>
+      <p style="color:#093945;text-align:center">{{$careersection3->main_paragraph}}</p>
+      @endforeach
+    </div>
+
+    <div class="industries-grid" style="margin-top:20px">
+
+      @foreach($careersection3s as $careersection3)
+      <div class="industry-card">
+        <div class="icon-wrapper">
+          <img src="{{ asset('logos/' . $careersection3->image) }}" alt="Clutch" width="108" height="108" style="border-radius:50%">
+         
+        </div>
+        <h3 style="color:#093945">{{ $careersection3->heading }}</h3>
+        <p style="color:#093945">{{ $careersection3->paragraph }}</p>
+      </div>
+      @endforeach
+
+    </div>
+  </div>
+</section>
+
 @php
     $sections = $sections6s->values();
     $filled = fn($v) => isset($v) && trim(strtolower($v)) !== '' && strtolower(trim($v)) !== 'null';
@@ -238,51 +264,11 @@
 @endforeach
 
 
-<section class="core-values-section">
-  <div class="core-values-container">
-    <div class="core-values-header fadeInUp">
-      <h2 class="core-values-title">
-        Why Work at CabCall Experts?
-      </h2>
-      <p class="core-values-subtitle">
-        The guiding principles that shape our culture, drive our performance,
-        and define our commitment to excellence.
-      </p>
-    </div>
-
-    <div class="core-values-grid fadeInUp">
-      <div class="value-card">
-        <div class="icon">💡</div>
-        <h3>Innovation</h3>
-        <p>We embrace new ideas and cutting-edge technologies to stay ahead.</p>
-      </div>
-
-      <div class="value-card">
-        <div class="icon">🤝</div>
-        <h3>Integrity</h3>
-        <p>We uphold honesty and transparency in every interaction.</p>
-      </div>
-
-      <div class="value-card">
-        <div class="icon">🚀</div>
-        <h3>Excellence</h3>
-        <p>We strive to exceed expectations and deliver superior results.</p>
-      </div>
-
-      <div class="value-card">
-        <div class="icon">❤️</div>
-        <h3>Customer Focus</h3>
-        <p>We put our clients at the heart of everything we do.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <section class="industries-section">
   <div class="container">
     <div class="section-header">
-      <h2>Current Job Openings</h2>
+      <h2 class="luxury">Current Job Openings</h2>
     </div>
 
     <div class="industries-grid">
@@ -379,6 +365,23 @@
  
   @include('users.section12')
   @include('ajax')
+
+   <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".industry-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
 
    <script>
 document.addEventListener("DOMContentLoaded", () => {

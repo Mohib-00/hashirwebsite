@@ -17,6 +17,7 @@ use App\Http\Controllers\BlogSection2controller;
 use App\Http\Controllers\BlogsSection1Controller;
 use App\Http\Controllers\CareerSection1Controller;
 use App\Http\Controllers\CareerSection2Controller;
+use App\Http\Controllers\CareerSection3Controller;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailServiceSection2controller;
 use App\Http\Controllers\DetailServiceSection3controller;
@@ -116,6 +117,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     //careers start
     Route::get("/careers_section1", [CareerSection1Controller::class, "careerssection1"]);
     Route::get("/careers_section2", [CareerSection2Controller::class, "careerssection2"]);
+    Route::get("/careers_section3", [CareerSection3Controller::class, "careerssection3"]);
 });
 
 //register user from admin panel
@@ -380,3 +382,11 @@ Route::get('/careerssection2/{id}/edit', [CareerSection2Controller::class, 'edit
 Route::post('/careerssection2/update', [CareerSection2Controller::class, 'update'])->name('careerssection2.update');
 //to del careerssection2
 Route::delete('/careerssection2/{id}', [CareerSection2Controller::class, 'destroy'])->name('careerssection2.destroy');
+//to save careerssection3
+Route::post('/careerssection3/store', [CareerSection3Controller::class, 'store'])->name('careerssection3.store');
+//to get careerssection3
+Route::get('/careerssection3/{id}/edit', [CareerSection3Controller::class, 'edit'])->name('careerssection3.edit');
+//to edit careerssection3
+Route::post('/careerssection3/update', [CareerSection3Controller::class, 'update'])->name('careerssection3.update');
+//to del careerssection3
+Route::delete('/careerssection3/{id}', [CareerSection3Controller::class, 'destroy'])->name('careerssection3.destroy');

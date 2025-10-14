@@ -11,6 +11,7 @@ use App\Models\BlogSection1;
 use App\Models\BlogSection2;
 use App\Models\CareerSection1;
 use App\Models\CareerSection2;
+use App\Models\CareerSection3;
 use App\Models\Section1;
 use App\Models\Section10;
 use App\Models\Section2;
@@ -63,7 +64,8 @@ class UserAuthController extends Controller
         $services = Section4::all();
         $careersection1s = CareerSection1::all();
         $sections6s = CareerSection2::all();
-        return view('users.careers', compact('services','careersection1s','sections6s'));
+        $careersection3s = CareerSection3::all();
+        return view('users.careers', compact('services','careersection1s','sections6s','careersection3s'));
     }
 
      public function blog()

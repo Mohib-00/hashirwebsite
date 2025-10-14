@@ -233,6 +233,12 @@
                         <span class="sub-item">Detail Section 1</span>
                       </a>
                     </li>
+
+                    <li>
+                      <a href="/admin/blog_detail_section_2" onclick="loadblogdetailsection2Page(); return false;">
+                        <span class="sub-item">Detail Section 2</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </li>

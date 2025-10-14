@@ -230,6 +230,67 @@
     @endforeach
 </section>
 
+@php
+    $sections = $sections6s->values();
+    $filled = fn($v) => isset($v) && trim(strtolower($v)) !== '' && strtolower(trim($v)) !== 'null';
+@endphp
+
+@foreach ($sections as $index => $section)
+    @php
+        $isFull = $filled($section->heading)
+                && $filled($section->paragraph)
+                && $filled($section->points_headings)
+                && $filled($section->image);
+
+        if (!$isFull && !$filled($section->point)) continue;
+
+        $mergedPoints = [];
+        if ($filled($section->point)) {
+            foreach (explode(',', $section->point) as $p) {
+                if ($filled($p)) $mergedPoints[] = trim($p);
+            }
+        }
+
+        if (isset($sections[$index + 1])) {
+            $next = $sections[$index + 1];
+            $nextIsFull = $filled($next->heading)
+                        && $filled($next->paragraph)
+                        && $filled($next->points_headings)
+                        && $filled($next->image);
+            $nextHasPointsOnly = !$nextIsFull && $filled($next->point);
+            if ($nextHasPointsOnly) {
+                foreach (explode(',', $next->point) as $extra) {
+                    if ($filled($extra)) $mergedPoints[] = trim($extra);
+                }
+            }
+        }
+
+        $reverse = $loop->iteration % 2 === 0 ? 'reverse' : '';
+    @endphp
+
+    @if($isFull)
+    <section class="animated-section {{ $reverse }}">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2 style="color:#093945">{{ $section->heading }}</h2>
+                    <p>{{ $section->paragraph }}</p>
+                    <p><strong>{{ $section->points_headings }}</strong></p>
+                    <ul>
+                        @foreach($mergedPoints as $point)
+                            <li>{{ $point }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <div class="image-content">
+                    <img src="{{ asset('logos/' . $section->image) }}" alt="Section Image" />
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+@endforeach
 
 
 

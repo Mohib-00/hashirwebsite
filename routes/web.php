@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogDetailSection1;
+use App\Http\Controllers\BlogDetailSection2;
 use App\Http\Controllers\BlogSection2controller;
 use App\Http\Controllers\BlogsSection1Controller;
 use App\Http\Controllers\ContactController;
@@ -101,6 +102,7 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("blog_section_1", [BlogsSection1Controller::class, "blogsection1"]);
     Route::get("blog_section_2", [BlogSection2controller::class, "blogsection2"]);
     Route::get("blog_detail_section_1", [BlogDetailSection1::class, "blogdetailsection1"]);
+    Route::get("blog_detail_section_2", [BlogDetailSection2::class, "blogdetailsection2"]);
 });
 
 //register user from admin panel
@@ -314,3 +316,11 @@ Route::get('/blogdetailsection1/{id}/edit', [BlogDetailSection1::class, 'edit'])
 Route::post('/blogdetailsection1/update', [BlogDetailSection1::class, 'update'])->name('blogdetailsection1.update');
 //to del blogdetailsection1
 Route::delete('/blogdetailsection1/{id}', [BlogDetailSection1::class, 'destroy'])->name('blogdetailsection1.destroy');
+//to save blogdetailsection2
+Route::post('/blogdetailsection2/store', [BlogDetailSection2::class, 'store'])->name('blogdetailsection2.store');
+//to get blogdetailsection2
+Route::get('/blogdetailsection2/{id}/edit', [BlogDetailSection2::class, 'edit'])->name('blogdetailsection2.edit');
+//to edit blogdetailsection2
+Route::post('/blogdetailsection2/update', [BlogDetailSection2::class, 'update'])->name('blogdetailsection2.update');
+//to del blogdetailsection2
+Route::delete('/blogdetailsection2/{id}', [BlogDetailSection2::class, 'destroy'])->name('blogdetailsection2.destroy');

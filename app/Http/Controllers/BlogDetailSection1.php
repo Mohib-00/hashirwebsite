@@ -128,13 +128,15 @@ public function detailsblogs($slug)
     }
 
     $blogdetailsection1s = \App\Models\BlogDetailSection1::whereIn('slug', $blog->pluck('links'))->get();
+    $sections6s = \App\Models\BlogDetailSection2::whereIn('slug', $blog->pluck('links'))->get();
    
     $services = Section4::all();
 
     return view('users.blogdetails', compact(
     'blog',
     'blogdetailsection1s',
-               'services'
+    'sections6s',
+    'services'
     ));
 }
 

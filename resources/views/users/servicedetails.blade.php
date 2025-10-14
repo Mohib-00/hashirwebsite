@@ -70,12 +70,10 @@
   transition: all 1s ease-out;
 }
 
-/* 🔹 Reverse section: image left, text right */
 .reverse .content-wrapper {
   flex-direction: row-reverse;
 }
 
-/* 🔹 Reverse animation direction */
 .reverse .text-content {
   transform: translateX(50px);
 }
@@ -113,7 +111,6 @@
   border-radius: 15px;
 }
 
-/* 🔹 RESPONSIVE DESIGN */
 @media (max-width: 992px) {
   .text-content h2 {
     font-size: 2rem;

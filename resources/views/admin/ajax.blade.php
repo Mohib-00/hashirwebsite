@@ -259,7 +259,7 @@ function loadaboutsection5Page() { loadPage('/admin/about_section_5', '/admin/ab
 function loadblogsection1Page() { loadPage('/admin/blog_section_1', '/admin/blog_section_1'); }
 function loadblogsection2Page() { loadPage('/admin/blog_section_2', '/admin/blog_section_2'); }
 function loadblogdetailsection1Page() { loadPage('/admin/blog_detail_section_1', '/admin/blog_detail_section_1'); }
-
+function loadblogdetailsection2Page() { loadPage('/admin/blog_detail_section_2', '/admin/blog_detail_section_2'); }
 </script>
 
 </body>

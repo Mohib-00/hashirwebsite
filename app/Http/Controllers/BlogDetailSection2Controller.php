@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogDetailSection2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class BlogDetailSection2 extends Controller
+class BlogDetailSection2Controller extends Controller
 {
     public function blogdetailsection2()
     {
         $user = Auth::user();
-        $blogdetailsection2s = \App\Models\BlogDetailSection2::all();
+        $blogdetailsection2s = BlogDetailSection2::all();
         return view('admin.blogdetailsection2',compact('blogdetailsection2s'),[
             'userName' => $user->name,
             'userEmail' => $user->email,
@@ -28,7 +29,7 @@ class BlogDetailSection2 extends Controller
             'slug' => 'nullable',
         ]);
 
-        $blogdetailsection2 = new \App\Models\BlogDetailSection2();
+        $blogdetailsection2 = new BlogDetailSection2();
 
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
@@ -52,7 +53,7 @@ class BlogDetailSection2 extends Controller
 
     public function edit($id)
 {
-    $blogdetailsection2 = \App\Models\BlogDetailSection2::findOrFail($id);
+    $blogdetailsection2 = BlogDetailSection2::findOrFail($id);
 
     return response()->json([
         'status' => 'success',
@@ -63,7 +64,7 @@ class BlogDetailSection2 extends Controller
  public function update(Request $request)
 {
     $request->validate([
-        'blogdetailsection2_id' => 'required|exists:detial_service_section2s,id',
+        'blogdetailsection2_id' => 'required|exists:blog_detail_section2s,id',
         'heading'   => 'required',
         'paragraph' => 'nullable',
         'image'     => 'nullable',
@@ -72,7 +73,7 @@ class BlogDetailSection2 extends Controller
         'slug' => 'nullable',
     ]);
 
-    $blogdetailsection2 = \App\Models\BlogDetailSection2::findOrFail($request->blogdetailsection2_id);
+    $blogdetailsection2 = BlogDetailSection2::findOrFail($request->blogdetailsection2_id);
 
     $blogdetailsection2->heading   = $request->heading;
     $blogdetailsection2->paragraph = $request->paragraph;
@@ -98,7 +99,7 @@ class BlogDetailSection2 extends Controller
 
 public function destroy($id)
 {
-    $blogdetailsection2 = \App\Models\BlogDetailSection2::find($id);
+    $blogdetailsection2 = BlogDetailSection2::find($id);
 
     if (!$blogdetailsection2) {
         return response()->json([

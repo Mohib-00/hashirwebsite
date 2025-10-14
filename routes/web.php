@@ -8,8 +8,8 @@ use App\Http\Controllers\AboutSection5Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\BlogDetailSection1;
-use App\Http\Controllers\BlogDetailSection2;
+use App\Http\Controllers\BlogDetailSection1Controller;
+use App\Http\Controllers\BlogDetailSection2Controller;
 use App\Http\Controllers\BlogDetailSection3Controller;
 use App\Http\Controllers\BlogDetailSection4Controller;
 use App\Http\Controllers\BlogSection2controller;
@@ -68,7 +68,7 @@ Route::get('/service/{slug}/details', [Section4Controller::class, 'detailsservic
     ->name('service.details');
 
 //to open blogs detail
-Route::get('/blogs/{slug}/details', [BlogDetailSection1::class, 'detailsblogs'])
+Route::get('/blogs/{slug}/details', [BlogDetailSection1Controller::class, 'detailsblogs'])
     ->where('slug', '.*') 
     ->name('blogs.details');    
 
@@ -103,8 +103,8 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     //blog start
     Route::get("blog_section_1", [BlogsSection1Controller::class, "blogsection1"]);
     Route::get("blog_section_2", [BlogSection2controller::class, "blogsection2"]);
-    Route::get("blog_detail_section_1", [BlogDetailSection1::class, "blogdetailsection1"]);
-    Route::get("blog_detail_section_2", [BlogDetailSection2::class, "blogdetailsection2"]);
+    Route::get("blog_detail_section_1", [BlogDetailSection1Controller::class, "blogdetailsection1"]);
+    Route::get("blog_detail_section_2", [BlogDetailSection2Controller::class, "blogdetailsection2"]);
     Route::get("blog_detail_section_3", [BlogDetailSection3Controller::class, "blogdetailsection3"]);
     Route::get("blog_detail_section_4", [BlogDetailSection4Controller::class, "blogdetailsection4"]);
 });
@@ -313,21 +313,21 @@ Route::post('/blogsection2/update', [BlogSection2Controller::class, 'update'])->
 //to del blogsection2
 Route::delete('/blogsection2/{id}', [BlogSection2Controller::class, 'destroy'])->name('blogsection2.destroy');
 //to save blogdetailsection1
-Route::post('/blogdetailsection1/store', [BlogDetailSection1::class, 'store'])->name('blogdetailsection1.store');
+Route::post('/blogdetailsection1/store', [BlogDetailSection1Controller::class, 'store'])->name('blogdetailsection1.store');
 //to get blogdetailsection1
-Route::get('/blogdetailsection1/{id}/edit', [BlogDetailSection1::class, 'edit'])->name('blogdetailsection1.edit');
+Route::get('/blogdetailsection1/{id}/edit', [BlogDetailSection1Controller::class, 'edit'])->name('blogdetailsection1.edit');
 //to edit blogdetailsection1
-Route::post('/blogdetailsection1/update', [BlogDetailSection1::class, 'update'])->name('blogdetailsection1.update');
+Route::post('/blogdetailsection1/update', [BlogDetailSection1Controller::class, 'update'])->name('blogdetailsection1.update');
 //to del blogdetailsection1
-Route::delete('/blogdetailsection1/{id}', [BlogDetailSection1::class, 'destroy'])->name('blogdetailsection1.destroy');
+Route::delete('/blogdetailsection1/{id}', [BlogDetailSection1Controller::class, 'destroy'])->name('blogdetailsection1.destroy');
 //to save blogdetailsection2
-Route::post('/blogdetailsection2/store', [BlogDetailSection2::class, 'store'])->name('blogdetailsection2.store');
+Route::post('/blogdetailsection2/store', [BlogDetailSection2Controller::class, 'store'])->name('blogdetailsection2.store');
 //to get blogdetailsection2
-Route::get('/blogdetailsection2/{id}/edit', [BlogDetailSection2::class, 'edit'])->name('blogdetailsection2.edit');
+Route::get('/blogdetailsection2/{id}/edit', [BlogDetailSection2Controller::class, 'edit'])->name('blogdetailsection2.edit');
 //to edit blogdetailsection2
-Route::post('/blogdetailsection2/update', [BlogDetailSection2::class, 'update'])->name('blogdetailsection2.update');
+Route::post('/blogdetailsection2/update', [BlogDetailSection2Controller::class, 'update'])->name('blogdetailsection2.update');
 //to del blogdetailsection2
-Route::delete('/blogdetailsection2/{id}', [BlogDetailSection2::class, 'destroy'])->name('blogdetailsection2.destroy');
+Route::delete('/blogdetailsection2/{id}', [BlogDetailSection2Controller::class, 'destroy'])->name('blogdetailsection2.destroy');
 //to save blogdetailsection3
 Route::post('/blogdetailsection3/store', [BlogDetailSection3Controller::class, 'store'])->name('blogdetailsection3.store');
 //to get blogdetailsection3

@@ -317,6 +317,19 @@
   </div>
 </section>
 
+@foreach ($blogdetailsection4s as $index => $blogdetailsection4)
+<section class="support-section {{ $index % 2 == 1 ? 'reverse' : '' }}" data-index="{{ $index }}" style="margin-top:10%">
+  <div class="container">
+    <div class="image-column">
+      <img src="{{ asset('logos/' . $blogdetailsection4->image) }}" alt="Customer Support {{ $index + 1 }}">
+    </div>
+    <div class="text-column">
+      <h2>{!! $blogdetailsection4->heading !!}</h2>
+      <p>{{ $blogdetailsection4->paragraph }}</p>
+    </div>
+  </div>
+</section>
+@endforeach
 
 @include('users.section12')
 

@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\blogsDetailsSection1;
+use App\Models\BlogDetailSection1;
+use App\Models\BlogDetailSection2;
+use App\Models\BlogDetailSection3;
+use App\Models\BlogdetailSection4;
 use App\Models\BlogSection2;
 use App\Models\Section4;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class BlogDetailSection1 extends Controller
+class BlogDetailSection1Controller extends Controller
 {
     public function blogdetailsection1()
     {
         $user = Auth::user();
-        $blogdetailsection1s = \App\Models\BlogDetailSection1::all();
+        $blogdetailsection1s = BlogDetailSection1::all();
         return view('admin.blogdetailsection1',compact('blogdetailsection1s'),[
             'userName' => $user->name,
             'userEmail' => $user->email,
@@ -29,7 +32,7 @@ class BlogDetailSection1 extends Controller
             'slug' => 'nullable'
         ]);
 
-        $blogdetailsection1 = new \App\Models\BlogDetailSection1();
+        $blogdetailsection1 = new BlogDetailSection1();
 
        
 
@@ -53,7 +56,7 @@ class BlogDetailSection1 extends Controller
 
     public function edit($id)
 {
-    $blogdetailsection1 = \App\Models\BlogDetailSection1::findOrFail($id);
+    $blogdetailsection1 = BlogDetailSection1::findOrFail($id);
 
     return response()->json([
         'status' => 'success',
@@ -71,7 +74,7 @@ class BlogDetailSection1 extends Controller
         'slug'     => 'nullable',
     ]);
 
-    $blogdetailsection1 = \App\Models\BlogDetailSection1::findOrFail($request->blogdetailsection1_id);
+    $blogdetailsection1 = BlogDetailSection1::findOrFail($request->blogdetailsection1_id);
 
     $blogdetailsection1->heading   = $request->heading;
     $blogdetailsection1->paragraph = $request->paragraph;
@@ -95,7 +98,7 @@ class BlogDetailSection1 extends Controller
 
 public function destroy($id)
 {
-    $blogdetailsection1 = \App\Models\BlogDetailSection1::find($id);
+    $blogdetailsection1 = BlogDetailSection1::find($id);
 
     if (!$blogdetailsection1) {
         return response()->json([
@@ -127,10 +130,10 @@ public function detailsblogs($slug)
         return abort(404, 'blog not found');
     }
 
-    $blogdetailsection1s = \App\Models\BlogDetailSection1::whereIn('slug', $blog->pluck('links'))->get();
-    $sections6s = \App\Models\BlogDetailSection2::whereIn('slug', $blog->pluck('links'))->get();
-    $blogdetailsection3s = \App\Models\BlogDetailSection3::whereIn('slug', $blog->pluck('links'))->get();
-   
+    $blogdetailsection1s = BlogDetailSection1::whereIn('slug', $blog->pluck('links'))->get();
+    $sections6s = BlogDetailSection2::whereIn('slug', $blog->pluck('links'))->get();
+    $blogdetailsection3s = BlogDetailSection3::whereIn('slug', $blog->pluck('links'))->get();
+    $blogdetailsection4s = BlogdetailSection4::whereIn('slug', $blog->pluck('links'))->get();
     $services = Section4::all();
 
     return view('users.blogdetails', compact(
@@ -138,9 +141,8 @@ public function detailsblogs($slug)
     'blogdetailsection1s',
     'sections6s',
     'services',
-    'blogdetailsection3s'
+    'blogdetailsection3s',
+    'blogdetailsection4s'
     ));
 }
-
-
 }

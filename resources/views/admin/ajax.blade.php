@@ -254,6 +254,11 @@ function loadaboutsection2Page() { loadPage('/admin/about_section_2', '/admin/ab
 function loadaboutsection3Page() { loadPage('/admin/about_section_3', '/admin/about_section_3'); }
 function loadaboutsection4Page() { loadPage('/admin/about_section_4', '/admin/about_section_4'); }
 function loadaboutsection5Page() { loadPage('/admin/about_section_5', '/admin/about_section_5'); }
+
+//Blogs start
+function loadblogsection1Page() { loadPage('/admin/blog_section_1', '/admin/blog_section_1'); }
+function loadblogsection2Page() { loadPage('/admin/blog_section_2', '/admin/blog_section_2'); }
+
 </script>
 
 </body>

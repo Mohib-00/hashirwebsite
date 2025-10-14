@@ -207,6 +207,29 @@
                 </div>
               </li>
 
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#tables">
+                  <i class="fas fa-table"></i>
+                  <p>Blogs</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="tables">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="/admin/blog_section_1" onclick="loadblogsection1Page(); return false;">
+                        <span class="sub-item">Section 1</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/admin/blog_section_2" onclick="loadblogsection2Page(); return false;">
+                        <span class="sub-item">Section 2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
 
            <li class="nav-item">
             <a href="/admin/website_settings" onclick="loadsettingsPage(); return false;">

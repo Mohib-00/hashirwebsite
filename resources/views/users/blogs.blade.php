@@ -13,19 +13,19 @@
 <body>
 
   @include('users.section1')
-   <section class="banner">
-  <img src="images1.jpeg" alt="Slide 1" class="active">
-  <img src="images2.jpeg" alt="Slide 2">
-  <img src="images3.jpeg" alt="Slide 3">
+  <section class="banner">
+    @foreach ($blogsection1s as $section)
+        <img src="{{ asset('logos/' . $section->image) }}" 
+             alt="Slide {{ $loop->iteration }}" 
+             class="{{ $loop->first ? 'active' : '' }}">
+    @endforeach
 
-  <div class="banner-content">
-    <h1 class="slide-left"><span>Blogs Experts</span> – Inbound Call Centre and Customer Support Services</h1>
-    <p class="slide-right">
-       Call Centre for Your Taxi Business. CabCall Experts offers fast, automated, 
-      and dependable services. We also provide taxi dispatch services to help you handle bookings 
-      and improve customer satisfaction.
-    </p>
-  </div>
+    @foreach ($blogsection1s as $section)
+        <div class="banner-content {{ $loop->first ? 'active' : '' }}">
+            <h1 class="slide-left">{{ $section->heading }}</h1>
+            <p class="slide-right">{{ $section->paragraph }}</p>
+        </div>
+    @endforeach
 </section>
 
 
@@ -98,8 +98,25 @@
 
  
   @include('users.section12')
-  @include('users.js')
   @include('ajax')
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".banner img");
+  const contents = document.querySelectorAll(".banner-content");
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    contents[index].classList.remove("active");
+
+    index = (index + 1) % slides.length;
+
+    slides[index].classList.add("active");
+    contents[index].classList.add("active");
+  }, 5000); 
+});
+</script>
 
 
 </body>

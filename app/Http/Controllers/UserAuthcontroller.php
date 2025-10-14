@@ -7,6 +7,7 @@ use App\Models\AboutSection2;
 use App\Models\AboutSection3;
 use App\Models\AboutSection4;
 use App\Models\AboutSection5;
+use App\Models\BlogSection1;
 use App\Models\Section1;
 use App\Models\Section10;
 use App\Models\Section2;
@@ -63,7 +64,8 @@ class UserAuthController extends Controller
      public function blog()
     {
         $services = Section4::all();
-        return view('users.blogs',compact('services'));
+        $blogsection1s = BlogSection1::all();
+        return view('users.blogs',compact('services','blogsection1s'));
     }
 
      public function contact()

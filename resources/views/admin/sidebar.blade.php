@@ -272,6 +272,30 @@
                 </div>
               </li>
 
+                <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#maps">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <p>Careers</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="maps">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="/admin/careers_section1" onclick="loadcareersection1(); return false;">
+                        <span class="sub-item">Section 1</span>
+                      </a>
+                    </li>
+
+                     <li>
+                      <a href="/admin/careers_section2" onclick="loadcareersection2(); return false;">
+                        <span class="sub-item">Section 2</span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </li>
+
 
            <li class="nav-item">
             <a href="/admin/website_settings" onclick="loadsettingsPage(); return false;">

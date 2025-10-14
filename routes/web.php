@@ -15,6 +15,8 @@ use App\Http\Controllers\BlogDetailSection4Controller;
 use App\Http\Controllers\BlogDetailSection5Controller;
 use App\Http\Controllers\BlogSection2controller;
 use App\Http\Controllers\BlogsSection1Controller;
+use App\Http\Controllers\CareerSection1Controller;
+use App\Http\Controllers\CareerSection2Controller;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailServiceSection2controller;
 use App\Http\Controllers\DetailServiceSection3controller;
@@ -111,6 +113,9 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("blog_detail_section_5", [BlogDetailSection5Controller::class, "blogdetailsection5"]);
     //end
     Route::get("/messages", [ContactController::class, "message"]);
+    //careers start
+    Route::get("/careers_section1", [CareerSection1Controller::class, "careerssection1"]);
+    Route::get("/careers_section2", [CareerSection2Controller::class, "careerssection2"]);
 });
 
 //register user from admin panel
@@ -358,3 +363,20 @@ Route::post('/blogdetailsection5/update', [BlogDetailSection5Controller::class, 
 Route::delete('/blogdetailsection5/{id}', [BlogDetailSection5Controller::class, 'destroy'])->name('blogdetailsection5.destroy');
 //to amrk msg as read
 Route::post('/contacts/mark-as-read', [ContactController::class, 'markAsRead'])->name('contacts.markAsRead');
+//career start
+//to save careerssection1
+Route::post('/careerssection1/store', [CareerSection1Controller::class, 'store'])->name('careerssection1.store');
+//to get careerssection1
+Route::get('/careerssection1/{id}/edit', [CareerSection1Controller::class, 'edit'])->name('careerssection1.edit');
+//to edit careerssection1
+Route::post('/careerssection1/update', [CareerSection1Controller::class, 'update'])->name('careerssection1.update');
+//to del careerssection1
+Route::delete('/careerssection1/{id}', [CareerSection1Controller::class, 'destroy'])->name('careerssection1.destroy');
+//to save careerssection2
+Route::post('/careerssection2/store', [CareerSection2Controller::class, 'store'])->name('careerssection2.store');
+//to get careerssection2
+Route::get('/careerssection2/{id}/edit', [CareerSection2Controller::class, 'edit'])->name('careerssection2.edit');
+//to edit careerssection2
+Route::post('/careerssection2/update', [CareerSection2Controller::class, 'update'])->name('careerssection2.update');
+//to del careerssection2
+Route::delete('/careerssection2/{id}', [CareerSection2Controller::class, 'destroy'])->name('careerssection2.destroy');

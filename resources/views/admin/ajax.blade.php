@@ -266,6 +266,9 @@ function loadblogdetailsection5Page() { loadPage('/admin/blog_detail_section_5',
 //end
 
 function loadmessagesPage() { loadPage('/admin/messages', '/admin/messages'); }
+//careers start
+function loadcareersection1() { loadPage('/admin/careers_section1', '/admin/careers_section1'); }
+function loadcareersection2() { loadPage('/admin/careers_section2', '/admin/careers_section2'); }
 </script>
 
 </body>

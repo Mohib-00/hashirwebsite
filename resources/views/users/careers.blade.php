@@ -265,103 +265,33 @@
 
 
 
-<section class="industries-section">
+<section class="industries-section" style="margin-bottom:40px">
   <div class="container">
+    @foreach($careersection4s as $careersection4)
     <div class="section-header">
-      <h2 class="luxury">Current Job Openings</h2>
+      <h2 class="luxury">{{$careersection4->main_heading}}</h2>
     </div>
+    @endforeach
 
     <div class="industries-grid">
-      <!-- CARD 1 -->
-      <div class="industry-card">
-        <div class="icon-wrapper">
-          <img src="images1.jpeg" alt="Transportation" width="108" height="108" style="border-radius:50%">
-        </div>
-        <h3>Transportation <br>(Cab, Limo, Taxi)</h3>
-        <p>We manage bookings, dispatch, and customer support to keep rides running smoothly.</p>
-        <a href="#" class="apply-btn">Apply Now</a>
-      </div>
 
-      <!-- CARD 2 -->
+      @foreach($careersection4s as $careersection4)
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="images1.jpeg" alt="E-commerce" width="108" height="108" style="border-radius:50%">
+          <img src="{{ asset('logos/' . $careersection4->image) }}" alt="Transportation" width="108" height="108" style="border-radius:50%">
         </div>
-        <h3>E-commerce & <br>Retail</h3>
-        <p>Our agents handle order inquiries, returns, and customer support for online and retail stores.</p>
+        <h3>{{$careersection4->heading}}</h3>
+        <p>{{$careersection4->paragraph}}</p>
         <a href="#" class="apply-btn">Apply Now</a>
       </div>
+      @endforeach
 
-      <!-- CARD 3 -->
-      <div class="industry-card">
-        <div class="icon-wrapper">
-          <img src="images1.jpeg" alt="Logistics" width="108" height="108" style="border-radius:50%">
-        </div>
-        <h3>Logistics & <br>Delivery Services</h3>
-        <p>We streamline communication, track deliveries, and ensure timely updates for customers.</p>
-        <a href="#" class="apply-btn">Apply Now</a>
-      </div>
-
-      <!-- CARD 4 -->
-      <div class="industry-card">
-        <div class="icon-wrapper">
-          <img src="images1.jpeg" alt="Healthcare" width="108" height="108" style="border-radius:50%">
-        </div>
-        <h3>Healthcare</h3>
-        <p>Our services help coordinate appointments, patient inquiries, and administrative support.</p>
-        <a href="#" class="apply-btn">Apply Now</a>
-      </div>
+    
     </div>
   </div>
 </section>
 
 
-
-
-<section class="faqs">
-  <h2>Careers FAQs</h2>
-  <div class="faq-row">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>What is your return policy?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        You can return any item within 30 days of purchase. Please keep the receipt.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Do you offer international shipping?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        Yes, we ship worldwide. Shipping charges vary based on location.
-      </div>
-    </div>
-  </div>
-
-  <div class="faq-row">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>How can I track my order?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        You will receive a tracking link via email once your order is shipped.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Do you offer discounts for bulk orders?</span>
-        <span class="faq-toggle">+</span>
-      </div>
-      <div class="faq-answer">
-        Yes, please contact our sales team for bulk order pricing.
-      </div>
-    </div>
-  </div>
-</section>
  
   @include('users.section12')
   @include('ajax')

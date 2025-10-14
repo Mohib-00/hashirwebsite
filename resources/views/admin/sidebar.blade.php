@@ -297,6 +297,12 @@
                         <span class="sub-item">Section 3</span>
                       </a>
                     </li>
+
+                    <li>
+                      <a href="/admin/careers_section4" onclick="loadcareersection4(); return false;">
+                        <span class="sub-item">Section 4</span>
+                      </a>
+                    </li>
                     
                   </ul>
                 </div>

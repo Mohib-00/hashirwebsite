@@ -24,6 +24,7 @@ use App\Http\Controllers\DetailServiceSection2controller;
 use App\Http\Controllers\DetailServiceSection3controller;
 use App\Http\Controllers\DetailServiceSection4controller;
 use App\Http\Controllers\DetailServiceSection5controller;
+use App\Http\Controllers\JobApplyController;
 use App\Http\Controllers\Section10Controller;
 use App\Http\Controllers\Section1Controller;
 use App\Http\Controllers\Section2Controller;
@@ -75,7 +76,10 @@ Route::get('/service/{slug}/details', [Section4Controller::class, 'detailsservic
 //to open blogs detail
 Route::get('/blogs/{slug}/details', [BlogDetailSection1Controller::class, 'detailsblogs'])
     ->where('slug', '.*') 
-    ->name('blogs.details');    
+    ->name('blogs.details');  
+    
+//open job apply page
+Route::get("/job_apply", [UserAuthcontroller::class, "jobapply"]);    
 
 Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
@@ -120,6 +124,8 @@ Route::group(['middleware' => ['admin.auth'], 'prefix' => 'admin'], function () 
     Route::get("/careers_section2", [CareerSection2Controller::class, "careerssection2"]);
     Route::get("/careers_section3", [CareerSection3Controller::class, "careerssection3"]);
     Route::get("/careers_section4", [CareerSection4Controller::class, "careerssection4"]);
+    //end
+    Route::get("/job_applications", [JobApplyController::class, "jobapplications"]);
 });
 
 //register user from admin panel
@@ -400,3 +406,8 @@ Route::get('/careerssection4/{id}/edit', [CareerSection4Controller::class, 'edit
 Route::post('/careerssection4/update', [CareerSection4Controller::class, 'update'])->name('careerssection4.update');
 //to del careerssection4
 Route::delete('/careerssection4/{id}', [CareerSection4Controller::class, 'destroy'])->name('careerssection4.destroy');
+
+//to apply job
+Route::post('/apply-job', [JobApplyController::class, 'store'])->name('job.apply');
+//to amrk job msg as read
+Route::post('/jobs/mark-as-read', [JobApplyController::class, 'markAsReadjobapply'])->name('jobapplicants.markAsRead');

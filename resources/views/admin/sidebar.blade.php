@@ -63,6 +63,16 @@
                 </a>
             </li>
 
+             <li class="nav-item">
+                <a href="/admin/job_applications" onclick="loadjobapplicationsPage(); return false;">
+                  <i class="fas fa-comment"></i>
+                  <p>Job Applications</p>
+                  <span class="badge badge-success">
+                    {{ \App\Models\JobApply::where('status', 'pending')->count() }}
+                  </span>
+                </a>
+            </li>
+
            <li class="nav-item">
             <a href="/admin/section_1" onclick="loadsection1Page(); return false;">
               <i class="icon-list"></i>

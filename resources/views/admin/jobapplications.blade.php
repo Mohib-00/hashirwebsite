@@ -50,7 +50,7 @@
        @include('admin.header')
 
         <div class="container mt-5" >
-    <h2 class="text-center mb-4" style="margin-top:5%">Contact Messages</h2>
+    <h2 class="text-center mb-4" style="margin-top:5%">Job Applications</h2>
 
     <div class="mb-3 text-end">
         <input type="text" id="contactSearch" class="form-control w-50 d-inline-block" 
@@ -58,10 +58,12 @@
                style="border-radius: 25px; border: 2px solid #093945;">
     </div>
 
-     <div style="overflow-x: auto; max-width: 100%;">
+   <div style="overflow-x: auto; max-width: 100%;">
   <table class="table table-striped">
     <thead>
       <tr>
+        <th>CV</th>
+        <th>Job Title</th>
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -71,8 +73,43 @@
       </tr>
     </thead>
     <tbody id="contactTableBody">
-      @foreach($contacts as $contact)
+      @foreach($jobs as $contact)
       <tr id="contactRow{{ $contact->id }}">
+        <td>
+          @if($contact->cv)
+    @php
+        $cvPath = 'public/uploads/cv/' . $contact->cv;
+        $extension = strtolower(pathinfo($contact->cv, PATHINFO_EXTENSION));
+    @endphp
+
+    @if($extension === 'pdf')
+        <!-- PDF CV -->
+        <a href="{{ asset($cvPath) }}" target="_blank" title="View PDF CV">
+            <img src="{{ asset('images/pdf-icon.png') }}" alt="PDF" width="80" height="80">
+        </a>
+        <br>
+        <a href="{{ asset($cvPath) }}" download>Download PDF</a>
+
+    @elseif(in_array($extension, ['doc', 'docx']))
+        <!-- Word CV -->
+        <a href="{{ asset($cvPath) }}" download title="Download Word CV">
+            <img src="{{ asset('images/word-icon.png') }}" alt="Word" width="80" height="80">
+        </a>
+        <br>
+        <a href="{{ asset($cvPath) }}" download>Download Word</a>
+
+    @else
+        <!-- Other files -->
+        <a href="{{ asset($cvPath) }}" download title="Download CV">
+            <img src="{{ asset('images/file-icon.png') }}" alt="CV" width="80" height="80">
+        </a>
+        <br>
+        <a href="{{ asset($cvPath) }}" download>Download CV</a>
+    @endif
+@endif
+
+        </td>
+        <td>{{ $contact->job_title }}</td>
         <td>{{ $contact->name }}</td>
         <td>{{ $contact->email }}</td>
         <td>{{ $contact->phone }}</td>
@@ -96,6 +133,7 @@
     </tbody>
   </table>
 </div>
+
 </div>
 
         @include('admin.footer')
@@ -142,7 +180,7 @@ $(document).ready(function() {
                 });
 
                 $.ajax({
-                    url: "{{ route('contacts.markAsRead') }}",
+                    url: "{{ route('jobapplicants.markAsRead') }}",
                     type: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",

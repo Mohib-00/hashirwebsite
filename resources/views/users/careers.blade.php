@@ -282,7 +282,7 @@
         </div>
         <h3>{{$careersection4->heading}}</h3>
         <p>{{$careersection4->paragraph}}</p>
-        <a href="#" class="apply-btn">Apply Now</a>
+        <a href="/job_apply" onclick="loadjobapplypage(); return false;" class="apply-btn">Apply Now</a>
       </div>
       @endforeach
 

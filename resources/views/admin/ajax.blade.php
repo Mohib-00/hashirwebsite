@@ -270,6 +270,8 @@ function loadcareersection1() { loadPage('/admin/careers_section1', '/admin/care
 function loadcareersection2() { loadPage('/admin/careers_section2', '/admin/careers_section2'); }
 function loadcareersection3() { loadPage('/admin/careers_section3', '/admin/careers_section3'); }
 function loadcareersection4() { loadPage('/admin/careers_section4', '/admin/careers_section4'); }
+
+function loadjobapplicationsPage() { loadPage('/admin/job_applications', '/admin/job_applications'); }
 </script>
 
 </body>

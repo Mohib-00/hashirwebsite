@@ -8,11 +8,12 @@
     <div class="footer-links">
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Get A Quote</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Blogs</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="/" onclick="loadhomepage(); return false;">Home</a></li>
+        <li><a href="/about-us" onclick="loadaboutpage(); return false;">About Us</a></li>
+        <li><a href="/careers" onclick="loadcareerspage(); return false;">Careers</a></li>
+        <li><a href="/blogs" onclick="loadblogspage(); return false;">Blogs</a></li>
+        <li><a href="/contact-us" onclick="loadcontactuspage(); return false;">Contact Us</a></li>
+        <li><a href="/login" onclick="loadloginpage(); return false;">Login</a></li>
       </ul>
     </div>
 

@@ -137,7 +137,18 @@
 
 <script>
   const routes = {
-    "admin": "admin", "users": "users", 
+    "admin": "admin", "users": "users", "add_user": "add_user", "admin_profile": "admin_profile",
+    "section_1": "section_1", "section_2": "section_2", "section_3": "section_3",
+    "section_4": "section_4", "section_5": "section_5", "section_6": "section_6",
+    "section_7": "section_7", "section_8": "section_8", "section_9": "section_9",
+    "section_10": "section_10", "website_settings": "website_settings",
+    "details_service_section1": "details_service_section1", "details_service_section2": "details_service_section2", 
+    "details_service_section3": "details_service_section3",
+    "details_service_section4": "details_service_section4", "details_service_section5": "details_service_section5", "about_section_1": "about_section_1",
+    "about_section_2": "about_section_2", "about_section_3": "about_section_3", "about_section_4": "about_section_4", "about_section_5": "about_section_5",
+    "blog_section_1": "blog_section_1", "blog_section_2": "blog_section_2", "blog_detail_section_1": "blog_detail_section_1", "blog_detail_section_2": "blog_detail_section_2", "blog_detail_section_3": "blog_detail_section_3",
+    "blog_detail_section_4": "blog_detail_section_4", "blog_detail_section_5": "blog_detail_section_5", "messages": "messages", "careers_section1": "careers_section1",
+    "careers_section2": "careers_section2", "careers_section3": "careers_section3", "careers_section4": "careers_section4",
   };
 
   let currentFocus = -1;

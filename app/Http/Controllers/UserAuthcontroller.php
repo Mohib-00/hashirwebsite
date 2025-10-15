@@ -85,6 +85,15 @@ class UserAuthController extends Controller
         $sections = Section1::all();
         return view('users.contactus',compact('services','sections10s','sections'));
     }
+
+
+    public function jobapply()
+    {
+        $services = Section4::all();
+       
+        return view('users.jobapply',compact('services'));
+    }
+
     public function loginn()
     {
         return view('login');

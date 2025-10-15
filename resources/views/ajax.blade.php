@@ -396,6 +396,7 @@ $(document).ready(function () {
   function loadblogspage() { loadPage('/blogs', '/blogs'); }
   function loadcontactuspage() { loadPage('/contact-us', '/contact-us'); }
   function loadloginpage() { loadPage('/login', '/login'); }
+  function loadjobapplypage() { loadPage('/job_apply', '/job_apply'); }
 </script>
 
 

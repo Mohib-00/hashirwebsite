@@ -49,8 +49,8 @@
       <div class="main-panel">
        @include('admin.header')
 
-        <div class="container mt-5">
-    <h2 class="text-center mb-4">Contact Messages</h2>
+        <div class="container mt-5" >
+    <h2 class="text-center mb-4" style="margin-top:5%">Contact Messages</h2>
 
     <div class="mb-3 text-end">
         <input type="text" id="contactSearch" class="form-control w-50 d-inline-block" 

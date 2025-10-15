@@ -1586,28 +1586,7 @@ nav ul li a:hover {
     filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
 }
 
-@keyframes flyInSpin {
-    0% {
-        transform: translateZ(-1200px) rotateY(1080deg) scale(0.1);
-        opacity: 0;
-        filter: brightness(0.3) blur(4px);
-    }
-    30% {
-        transform: translateZ(-600px) rotateY(720deg) scale(0.5);
-        opacity: 0.5;
-        filter: brightness(0.7) blur(2px);
-    }
-    60% {
-        transform: translateZ(-150px) rotateY(360deg) scale(1.1);
-        opacity: 1;
-        filter: brightness(1);
-    }
-    100% {
-        transform: translateZ(0) rotateY(0deg) scale(1);
-        opacity: 1;
-        filter: brightness(1);
-    }
-}
+
 
 @keyframes floatPulse {
     0% {

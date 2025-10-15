@@ -22,48 +22,112 @@ header {
   z-index: 9999;
 }
 
+/* 🌟 BEAUTIFUL 3D TOP BAR DESIGN 🌟 */
 .top-bar {
-  background: #093945;
-  color: #fff;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 80px;
-  flex-wrap: wrap;
-  font-size: 14px;
-  letter-spacing: 0.3px;
+  padding: 14px 6%;
+  background: linear-gradient(135deg, #001f2d, #004e64, #007a8a, #00b4cc);
+  background-size: 400% 400%;
+  animation: beautifulGradient 10s ease infinite;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25),
+              inset 0 2px 8px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 50;
+  overflow: hidden;
 }
 
-.contact-info a {
-  color: #fff;
-  margin-right: 25px;
-  text-decoration: none;
-  display: inline-flex;
+/* Moving gradient animation */
+@keyframes beautifulGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.top-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.25), transparent 70%),
+              linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), transparent 80%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.top-bar .contact-info {
+  display: flex;
   align-items: center;
+  gap: 25px;
+  z-index: 2;
+}
+
+.top-bar .contact-info a {
+  color: #eaf6f7;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.35s ease;
+}
+
+.top-bar .contact-info a i {
+  color: #00eaff;
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.6);
   transition: all 0.3s ease;
 }
 
-.contact-info a i {
-  margin-right: 8px;
-  color: #ffcc00;
-  font-size: 15px;
+.top-bar .contact-info a:hover {
+  color: #00eaff;
+  transform: translateY(-1.5px);
 }
 
-.contact-info a:hover {
-  color: #ffcc00;
+.top-bar .contact-info a:hover i {
+  transform: scale(1.2);
+  text-shadow: 0 0 15px rgba(0, 234, 255, 0.9);
 }
 
-.social-icons a {
-  color: #fff;
-  margin-left: 15px;
-  font-size: 15px;
+.top-bar .social-icons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  z-index: 2;
+}
+
+.top-bar .social-icons a {
+  color: #eaf6f7;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
-.social-icons a:hover {
-  color: #ffcc00;
-  transform: scale(1.1);
+.top-bar .social-icons a:hover {
+  color: #00eaff;
+  transform: translateY(-2px) scale(1.2);
+  text-shadow: 0 0 12px rgba(0, 234, 255, 0.9);
 }
+
+/* Responsive version */
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 12px 4%;
+  }
+
+  .top-bar .contact-info {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+
 
 .main-header {
   background: #fff;
@@ -555,6 +619,7 @@ nav ul li a:hover {
     width: 100%;
     text-align: center;
     padding: 0 10px;
+    margin-left:-10px
   }
 
   .text-column h2 {
